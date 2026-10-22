@@ -20,7 +20,10 @@ export function ResearchFocus() {
         <div className="research-head">
           <div className="research-head-main">
             <div className="lbl">{research.eyebrow}</div>
-            <h2 className="h2">{research.heading}</h2>
+            <h2 className="h2">
+              {research.heading}
+              <span style={{ color: 'var(--cyan)' }}>{research.headingAccent}</span>
+            </h2>
           </div>
           <p className="p research-head-intro">{research.intro}</p>
         </div>

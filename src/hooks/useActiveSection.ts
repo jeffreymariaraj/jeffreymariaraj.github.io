@@ -11,11 +11,11 @@ import { useEffect, useState } from 'react';
  * design's own spy does.
  */
 const SECTION_TO_NAV: [sectionId: string, navId: string][] = [
+  ['cv', 'cv'],
   ['research', 'research'],
   ['publications', 'publications'],
   ['projects', 'projects'],
   ['method', 'projects'],
-  ['cv', 'cv'],
   ['contact', 'contact'],
 ];
 

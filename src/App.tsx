@@ -27,11 +27,11 @@ function App() {
 
         <main id="main">
           <Hero />
+          <CV />
           <ResearchFocus />
           <Publications />
           <Projects />
           <Method />
-          <CV />
           <Contact />
         </main>
 

@@ -94,10 +94,10 @@ export const content = {
   nav: {
     logoName: ['Jeff ', ph('[Surname]')] as Rich,
     items: [
-      { id: 'research', n: '01', label: 'Research' },
-      { id: 'publications', n: '02', label: 'Publications' },
-      { id: 'projects', n: '03', label: 'Projects' },
-      { id: 'cv', n: '05', label: 'CV' },
+      { id: 'cv', n: '01', label: 'CV' },
+      { id: 'research', n: '02', label: 'Research' },
+      { id: 'publications', n: '03', label: 'Publications' },
+      { id: 'projects', n: '04', label: 'Projects' },
       { id: 'contact', n: '06', label: 'Contact' },
     ] as NavItem[],
   },
@@ -105,14 +105,28 @@ export const content = {
   hero: {
     status: {
       role: 'Student researcher',
-      org: 'RVCE Bengaluru',
-      cohort: 'Class of 2027',
+      domain: 'Efficient & resource-constrained ML',
     },
-    headlineLines: ['How little', 'precision can', 'a network', 'afford'],
-    headlineAccent: '?',
-    lead: 'I study what is lost, and what survives, when neural networks are made small: low-bit quantization, spiking computation and distillation, under the compute limits that real deployment imposes.',
+    nameFirst: 'Jeff',
+    nameSurname: ph('[Surname]'),
+    portrait: {
+      alt: ['Portrait of Jeff ', ph('[Surname]')] as Rich,
+      captionLabel: 'Fig. 00 · portrait',
+      position: '12.92°N 77.50°E',
+      placeholderLabel: ['[Your photo]', 'face shot · 4:5 · cool grade'],
+    },
+    identity: [
+      {
+        label: 'Studying',
+        value: 'B.E. Computer Science & Engineering, RV College of Engineering, Bengaluru · 2027',
+      },
+      { label: 'Next', value: 'Incoming SDE at Deutsche Bank' },
+      { label: 'Research', value: 'Quantization, spiking networks, distillation' },
+    ],
+    statement: 'I study what is lost, and what survives, when neural networks are made small.',
     ctas: [
-      { label: 'Research', href: '#research', variant: 'primary', icon: '→' },
+      { label: 'View CV', href: '#cv', variant: 'primary', icon: '↓' },
+      { label: 'Research', href: '#research', variant: 'ghost' },
       { label: 'Publications', href: '#publications', variant: 'ghost' },
       { label: 'GitHub', href: '#contact', variant: 'ghost', icon: '↗' },
     ] as { label: string; href: string; variant: 'primary' | 'ghost'; icon?: string }[],
@@ -128,9 +142,11 @@ export const content = {
   },
 
   research: {
-    eyebrow: '01 — Research direction',
-    heading: 'One question, approached from three directions.',
-    intro: "Each thread asks which parts of a model's precision, activity and capacity are actually load-bearing, and what breaks first when they are removed.",
+    eyebrow: '02 — Research direction',
+    heading: 'How little precision can a network afford',
+    headingAccent: '?',
+    intro:
+      "One question, approached from three directions: which parts of a model's precision, activity and capacity are load-bearing, and what breaks first when they are removed.",
     items: [
       {
         code: 'R.1',
@@ -169,7 +185,7 @@ export const content = {
   },
 
   publications: {
-    eyebrow: '02 — Publications & ongoing work',
+    eyebrow: '03 — Publications & ongoing work',
     heading: 'Published, ongoing and exploratory work, kept visibly apart.',
     statusKey: [
       { status: 'published' as Status, note: 'peer-reviewed, citable' },
@@ -243,7 +259,7 @@ export const content = {
   },
 
   projects: {
-    eyebrow: '03 — Selected projects',
+    eyebrow: '04 — Selected projects',
     heading: 'Each project is a small research artefact.',
     items: [
       {
@@ -313,7 +329,7 @@ export const content = {
   },
 
   method: {
-    eyebrow: '04 — Method',
+    eyebrow: '05 — Method',
     heading: 'Evidence before claims.',
     intro:
       'Accuracy alone is a thin result. I try to report what changed, by how much, across how many runs, and where the method fails.',
@@ -345,13 +361,17 @@ export const content = {
   },
 
   cv: {
-    eyebrow: '05 — Curriculum vitae',
-    statement: 'B.E. Computer Science & Engineering, RV College of Engineering, Bengaluru. Expected 2027.',
-    button: {
-      label: 'Download CV',
-      sub: [ph('[PDF · updated date]')] as Rich,
-      href: '#cv',
-    },
+    eyebrow: '01 — Curriculum vitae',
+    heading: 'Read it here, or take it with you.',
+    intro: [
+      'Education, research experience, publications and technical skills. Last updated ',
+      ph('[date]'),
+      '.',
+    ] as Rich,
+    downloadLabel: 'Download PDF',
+    openNewTabLabel: 'Open in new tab',
+    pdfHref: '/cv/CV.pdf',
+    pdfFilename: 'CV.pdf',
   },
 
   contact: {
