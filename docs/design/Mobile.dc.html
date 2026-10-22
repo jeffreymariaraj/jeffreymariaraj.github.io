@@ -62,34 +62,78 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 </div>
 <sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
 <nav id="m-menu" aria-label="Primary" style="background: #0A0E14; border-top: 1px solid #1E2938; padding-bottom: 12px">
-<a class="mrow" href="#research" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">01</span>Research</span><span style="color: #5CC8DC">→</span></a>
-<a class="mrow" href="#publications" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">02</span>Publications</span><span style="color: #5CC8DC">→</span></a>
-<a class="mrow" href="#projects" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">03</span>Projects</span><span style="color: #5CC8DC">→</span></a>
-<a class="mrow" href="#cv" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">05</span>CV</span><span style="color: #5CC8DC">→</span></a>
+<a class="mrow" href="#cv" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">01</span>CV</span><span style="color: #5CC8DC">→</span></a>
+<a class="mrow" href="#research" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">02</span>Research</span><span style="color: #5CC8DC">→</span></a>
+<a class="mrow" href="#publications" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">03</span>Publications</span><span style="color: #5CC8DC">→</span></a>
+<a class="mrow" href="#projects" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">04</span>Projects</span><span style="color: #5CC8DC">→</span></a>
 <a class="mrow" href="#contact" onClick="{{closeMenu}}"><span><span class="mono" style="color: #8793A6; font-size: 10px; margin-right: 14px">06</span>Contact</span><span style="color: #5CC8DC">→</span></a>
 </nav>
 </sc-if>
 </header>
 
 <!-- HERO -->
-<section id="hero" data-bg="0" style="min-height: 780px; padding: 56px 20px 32px; display: flex; flex-direction: column; box-sizing: border-box">
-<div class="fi mono" style="display: flex; align-items: center; gap: 10px; color: #A3AFC0; font-size: 11px; flex-wrap: wrap"><span class="pd" aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #5CC8DC; flex: none"></span><span>Student researcher</span><span style="color: #5B6B83">/</span><span>RVCE · 2027</span></div>
-<h1 class="fi" style="animation-delay: 80ms; margin: 36px 0 0; font-size: 52px; line-height: .98; letter-spacing: -.045em; font-weight: 500">How little precision can a network afford<span style="color: #5CC8DC">?</span></h1>
-<div style="flex: 1; min-height: 120px"></div>
-<p class="fi p" style="animation-delay: 160ms; font-size: 17px; color: #C3CDDA">I study what is lost, and what survives, when neural networks are made small: low-bit quantization, spiking computation and distillation.</p>
-<div class="fi" style="animation-delay: 240ms; display: flex; flex-direction: column; gap: 10px; margin-top: 28px">
-<a class="btn btn-p" href="#research">Research <span aria-hidden="true">→</span></a>
-<a class="btn btn-g" href="#publications">Publications <span aria-hidden="true" class="mono" style="font-size: 11px; color: #8793A6">02</span></a>
+<section id="hero" data-bg="0" style="padding: 32px 20px 40px; display: flex; flex-direction: column; box-sizing: border-box">
+<div class="fi mono" style="display: flex; align-items: center; gap: 10px; color: #A3AFC0; font-size: 11px; flex-wrap: wrap"><span class="pd" aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #5CC8DC; flex: none"></span><span>Student researcher</span><span style="color: #5B6B83">/</span><span>Efficient ML</span></div>
+<figure class="fi" style="animation-delay: 60ms; margin: 24px 7px 0; position: relative">
+<div style="position: relative; aspect-ratio: 4 / 5; border: 1px dashed rgba(227,183,102,0.7); background: rgba(12,17,25,0.7); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; box-sizing: border-box">
+<span class="ph mono" style="font-size: 12px; line-height: 1.8">[Your photo]<br>face shot · 4:5</span>
+<span aria-hidden="true" style="position: absolute; left: -7px; top: -7px; width: 14px; height: 14px; border-top: 1.5px solid #5CC8DC; border-left: 1.5px solid #5CC8DC"></span>
+<span aria-hidden="true" style="position: absolute; right: -7px; top: -7px; width: 14px; height: 14px; border-top: 1.5px solid #5CC8DC; border-right: 1.5px solid #5CC8DC"></span>
+<span aria-hidden="true" style="position: absolute; left: -7px; bottom: -7px; width: 14px; height: 14px; border-bottom: 1.5px solid #5CC8DC; border-left: 1.5px solid #5CC8DC"></span>
+<span aria-hidden="true" style="position: absolute; right: -7px; bottom: -7px; width: 14px; height: 14px; border-bottom: 1.5px solid #5CC8DC; border-right: 1.5px solid #5CC8DC"></span>
+</div>
+<figcaption class="mono" style="margin-top: 12px; font-size: 10px; color: #8793A6">Fig. 00 · portrait</figcaption>
+</figure>
+<h1 class="fi" style="animation-delay: 120ms; margin: 32px 0 0; font-size: 58px; line-height: .98; letter-spacing: -.045em; font-weight: 500">Jeff <br><span class="ph">[Surname]</span></h1>
+<dl class="fi" style="animation-delay: 180ms; margin: 28px 0 0; border-top: 1px solid #2C3B50">
+<div style="padding: 14px 0; border-bottom: 1px solid #1E2938"><dt class="lbl" style="font-size: 10px">Studying</dt><dd style="margin: 6px 0 0; font-size: 17px; line-height: 1.4">B.E. Computer Science &amp; Engineering, RV College of Engineering, Bengaluru · 2027</dd></div>
+<div style="padding: 14px 0; border-bottom: 1px solid #1E2938"><dt class="lbl" style="font-size: 10px">Next</dt><dd style="margin: 6px 0 0; font-size: 17px; line-height: 1.4">Incoming SDE at Deutsche Bank</dd></div>
+<div style="padding: 14px 0; border-bottom: 1px solid #1E2938"><dt class="lbl" style="font-size: 10px">Research</dt><dd style="margin: 6px 0 0; font-size: 17px; line-height: 1.4">Quantization, spiking networks, distillation</dd></div>
+</dl>
+<p class="fi p" style="animation-delay: 220ms; margin-top: 24px; font-size: 17px; color: #C3CDDA">I study what is lost, and what survives, when neural networks are made small.</p>
+<div class="fi" style="animation-delay: 260ms; display: flex; flex-direction: column; gap: 10px; margin-top: 24px">
+<a class="btn btn-p" href="#cv">View CV <span aria-hidden="true">↓</span></a>
+<a class="btn btn-g" href="#research">Research <span aria-hidden="true">→</span></a>
+<a class="btn btn-g" href="#publications">Publications</a>
 <a class="btn btn-g" href="#contact">GitHub <span aria-hidden="true" class="mono" style="font-size: 11px">↗</span></a>
 </div>
-<div class="mono" style="margin-top: 28px; padding-top: 14px; border-top: 1px solid #1E2938; font-size: 10px; color: #A3AFC0; line-height: 1.8"><span style="color: #5CC8DC">●</span> Ongoing: vision-model quantization study<br><span style="color: #8793A6">Quantization · SNNs · Distillation</span></div>
+</section>
+
+<!-- CV -->
+<section id="cv" data-bg="1" style="padding: 56px 20px 64px">
+<div class="lbl" style="margin-bottom: 18px">01 — Curriculum vitae</div>
+<h2 class="h2">Read it here, or take it with you.</h2>
+<p class="p" style="margin-top: 16px">Education, research experience, publications and skills. Updated <span class="ph">[date]</span>.</p>
+<a class="btn btn-p" href="#cv" style="margin-top: 24px">Download PDF <span aria-hidden="true">↓</span></a>
+<div style="margin-top: 20px; border: 1px solid #2C3B50; background: rgba(12,17,25,0.94)">
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 4px 4px 14px; border-bottom: 1px solid #1E2938">
+<span class="mono" style="font-size: 10px; color: #A3AFC0">1 / <span class="ph">[n]</span></span>
+<div style="display: flex; gap: 2px" role="toolbar" aria-label="CV viewer controls">
+<button type="button" aria-label="Previous page" style="width: 44px; height: 44px; background: transparent; border: 0; color: #E8EDF4; font-size: 20px">‹</button>
+<button type="button" aria-label="Next page" style="width: 44px; height: 44px; background: transparent; border: 0; color: #E8EDF4; font-size: 20px">›</button>
+<button type="button" aria-label="Zoom out" style="width: 44px; height: 44px; background: transparent; border: 0; color: #E8EDF4; font-size: 20px">−</button>
+<button type="button" aria-label="Zoom in" style="width: 44px; height: 44px; background: transparent; border: 0; color: #E8EDF4; font-size: 20px">+</button>
+</div>
+</div>
+<div style="height: 460px; overflow: auto; background: #10161F; padding: 14px">
+<div role="img" aria-label="Placeholder for the CV page" style="aspect-ratio: 1 / 1.414; background: #FFFFFF; padding: 9%; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px">
+<div style="height: 14px; width: 46%; background: #3B4656"></div>
+<div style="height: 7px; width: 62%; background: #C9D0DA"></div>
+<div style="height: 1px; background: #C9D0DA; margin: 4px 0"></div>
+<div style="height: 7px; width: 28%; background: #8793A6"></div>
+<div style="height: 7px; width: 92%; background: #D7DCE4"></div><div style="height: 7px; width: 86%; background: #D7DCE4"></div><div style="height: 7px; width: 90%; background: #D7DCE4"></div>
+<div style="flex: 1; display: flex; align-items: flex-end; justify-content: center"><span style="font-family: 'Geist Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #3B4656">[CV renders here]</span></div>
+</div>
+</div>
+</div>
+<a class="lnk mono" href="#cv" style="margin-top: 8px">Open in new tab ↗</a>
 </section>
 
 <!-- RESEARCH -->
 <section id="research" data-bg="1" style="padding: 80px 20px 72px">
-<div class="lbl" style="margin-bottom: 18px">01 — Research direction</div>
-<h2 class="h2">One question, three directions.</h2>
-<p class="p" style="margin-top: 20px">Each thread asks which parts of a model's precision, activity and capacity are load-bearing, and what breaks first when they are removed.</p>
+<div class="lbl" style="margin-bottom: 18px">02 — Research direction</div>
+<h2 class="h2">How little precision can a network afford<span style="color: #5CC8DC">?</span></h2>
+<p class="p" style="margin-top: 20px">One question, three directions: which parts of a model's precision, activity and capacity are load-bearing, and what breaks first when they are removed.</p>
 
 <article style="margin-top: 48px; border-top: 1px solid #2C3B50; padding-top: 28px">
 <div style="display: flex; gap: 14px; align-items: center"><span class="mono" style="color: #5CC8DC">R.1</span><span class="chip c-on">Ongoing</span></div>
@@ -121,7 +165,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 
 <!-- PUBLICATIONS -->
 <section id="publications" data-bg="2" style="padding: 72px 20px">
-<div class="lbl" style="margin-bottom: 18px">02 — Publications &amp; ongoing</div>
+<div class="lbl" style="margin-bottom: 18px">03 — Publications &amp; ongoing</div>
 <h2 class="h2">Published, ongoing, exploratory: kept apart.</h2>
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 28px">
 <div style="display: flex; gap: 12px; align-items: center"><span class="chip c-pub" style="min-width: 112px">Published</span><span class="mono" style="font-size: 10px; color: #8793A6">peer-reviewed</span></div>
@@ -151,7 +195,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 
 <!-- PROJECTS -->
 <section id="projects" data-bg="2" style="padding: 72px 20px 56px">
-<div class="lbl" style="margin-bottom: 18px">03 — Selected projects</div>
+<div class="lbl" style="margin-bottom: 18px">04 — Selected projects</div>
 <h2 class="h2">Small research artefacts.</h2>
 
 <article style="margin-top: 44px; border-top: 1px solid #2C3B50; padding-top: 28px; display: flex; flex-direction: column; gap: 18px">
@@ -201,7 +245,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 
 <!-- METHOD -->
 <section id="method" data-bg="2" style="padding: 56px 20px 72px">
-<div class="lbl" style="margin-bottom: 18px">04 — Method</div>
+<div class="lbl" style="margin-bottom: 18px">05 — Method</div>
 <h2 class="h2">Evidence before claims.</h2>
 <p class="p" style="margin-top: 20px">Accuracy alone is a thin result. I report what changed, across how many runs, and where the method fails.</p>
 <ol style="list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid #2C3B50">
@@ -213,13 +257,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 </ol>
 </section>
 
-<!-- CV + CONTACT -->
-<section id="cv" data-bg="2" style="padding: 8px 20px 64px">
-<div class="lbl" style="margin-bottom: 12px">05 — Curriculum vitae</div>
-<div style="font-size: 19px; line-height: 1.4; letter-spacing: -.01em">B.E. Computer Science &amp; Engineering, RV College of Engineering, Bengaluru. Expected 2027.</div>
-<a class="btn btn-g" href="#cv" style="margin-top: 20px">Download CV <span class="mono ph" style="font-size: 10px">[PDF]</span><span aria-hidden="true">↓</span></a>
-</section>
-
+<!-- CONTACT -->
 <section id="contact" data-bg="3" style="padding: 56px 20px 0; min-height: 640px; display: flex; flex-direction: column; box-sizing: border-box">
 <div class="lbl" style="margin-bottom: 18px">06 — Contact</div>
 <h2 style="margin: 0; font-size: 40px; line-height: 1.02; letter-spacing: -.04em; font-weight: 500">If this overlaps with your work, let's compare notes.</h2>

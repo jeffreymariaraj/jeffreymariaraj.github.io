@@ -18,14 +18,16 @@ The design is approved and lives in `docs/design/`. **Build to it; do not redesi
 ## Stack and hard constraints
 - Vite + React 18 + TypeScript (strict). Plain CSS with CSS custom properties (tokens). No Tailwind, no UI kit.
 - No animation libraries, no WebGL, no three.js, no analytics, no backend, no paid assets.
-- Runtime dependencies: `react`, `react-dom`, and self-hosted fonts via `@fontsource-variable/geist` and `@fontsource/geist-mono`. Anything else needs a stated reason and my approval.
+- Runtime dependencies: `react`, `react-dom`, self-hosted fonts via `@fontsource-variable/geist` and `@fontsource/geist-mono`, and `pdfjs-dist` (CV viewer only, **lazy-loaded** via dynamic `import()` so it never touches the initial bundle; worker file served from the site, not a CDN). Anything else needs a stated reason and my approval.
 - Single page, anchor navigation (`#research`, `#publications`, `#projects`, `#cv`, `#contact`). No client router.
 - `vite.config.ts`: `base: '/'` (user site at the domain root).
 - Node 20. Use `npm`, commit `package-lock.json`.
 
 ## Content rules (important)
 - **Never invent** publications, results, metrics, citations, awards, dates, names or links.
-- Verified facts only: RVCE Bengaluru, B.E. CSE, expected 2027; an IEEE conference paper on LLM query routing with a fine-tuned DistilBERT classifier, co-authors Maurya Pradeep Gowda and Ronan Lobo; an ongoing student-team study of contradictions in vision-model quantization (public checkpoints, PyTorch/timm/torchvision, Colab-class GPUs); GitHub username `jeffreymariaraj`.
+- Verified facts only: RVCE Bengaluru, B.E. CSE, expected 2027; an IEEE conference paper on LLM query routing with a fine-tuned DistilBERT classifier, co-authors Maurya Pradeep Gowda and Ronan Lobo; an ongoing student-team study of contradictions in vision-model quantization (public checkpoints, PyTorch/timm/torchvision, Colab-class GPUs); GitHub username `jeffreymariaraj`; incoming SDE at Deutsche Bank (exact wording: "Incoming SDE at Deutsche Bank", no start date).
+- The portrait is a **placeholder** until I supply a photo. Build the real `<img>` pipeline (WebP, 4:5, `srcset`, `width`/`height`, meaningful `alt`, `decoding="async"`, `fetchpriority="high"` since it is the LCP element) and render the amber placeholder frame while `src/assets/portrait.webp` does not exist.
+- The CV is `public/cv/CV.pdf` (placeholder file until I supply mine). Never put a phone number or home address in anything you generate.
 - Everything else stays a **placeholder**, rendered with the `.ph` class (amber text, dashed underline). Keep a single file `src/content/content.ts` holding all copy and placeholders so I can fill it in later. Components read from it.
 - Keep the "illustration, not a result" and "schematic · not data" captions on every figure.
 - The hero question, routing-pipeline diagram and `results/` layout are proposals; keep them but they are editable in `content.ts`.

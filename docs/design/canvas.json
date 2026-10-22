@@ -5,12 +5,12 @@
   "launch": { "view": "canvas" },
   "pages": [],
   "boards": {
-    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 8400, "title": "01 Desktop homepage", "expand": "fill", "is_interactive": true },
-    "Mobile.dc.html": { "x": 1520, "y": 0, "w": 390, "h": 9400, "title": "02 Mobile homepage", "is_interactive": true },
-    "Research.dc.html": { "x": 0, "y": 9520, "w": 1440, "h": 3400, "title": "03 Featured research + project detail", "expand": "fill" },
-    "DesignSystem.dc.html": { "x": 1520, "y": 9520, "w": 1440, "h": 3600, "title": "04 Design system" },
-    "BackgroundSpec.dc.html": { "x": 0, "y": 13240, "w": 1440, "h": 2600, "title": "05 Background: behaviour + performance spec", "expand": "fill", "is_interactive": true },
-    "Background.dc.html": { "x": 1520, "y": 13240, "w": 1440, "h": 900, "title": "Background engine (live component)", "is_interactive": true }
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 9200, "title": "01 Desktop homepage", "expand": "fill", "is_interactive": true },
+    "Mobile.dc.html": { "x": 1520, "y": 0, "w": 390, "h": 10600, "title": "02 Mobile homepage", "is_interactive": true },
+    "Research.dc.html": { "x": 0, "y": 10720, "w": 1440, "h": 3400, "title": "03 Featured research + project detail", "expand": "fill" },
+    "DesignSystem.dc.html": { "x": 1520, "y": 10720, "w": 1440, "h": 3600, "title": "04 Design system" },
+    "BackgroundSpec.dc.html": { "x": 0, "y": 14440, "w": 1440, "h": 2600, "title": "05 Background: behaviour + performance spec", "expand": "fill", "is_interactive": true },
+    "Background.dc.html": { "x": 1520, "y": 14440, "w": 1440, "h": 900, "title": "Background engine (live component)", "is_interactive": true }
   },
   "order": ["Main.dc.html", "Mobile.dc.html", "Research.dc.html", "DesignSystem.dc.html", "BackgroundSpec.dc.html", "Background.dc.html"],
   "notes": {},

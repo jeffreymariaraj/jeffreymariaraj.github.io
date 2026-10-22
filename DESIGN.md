@@ -46,15 +46,24 @@ Spacing scale (px): 4, 8, 12, 16, 24, 32, 48, 64, 96. Sections: 120–140px vert
 ## Layout and sections (ids and background state)
 | id | nav | `data-bg` | notes |
 |---|---|---|---|
-| `hero` | — | 0 | asymmetric; headline left, network right; status line; 3 links; bottom annotation bar |
-| `research` | 01 Research | 1 | three rows R.1–R.3, each with chip, text, tags, small SVG figure |
-| `publications` | 02 Publications | 2 | status key; featured publication panel + evidence slot; research ledger |
-| `projects` | 03 Projects | 2 | P.1 ongoing, P.2 exploratory (placeholder), P.3 published; figure panels; P.2 text/figure order flips on desktop |
-| `method` | (under Projects) | 2 | five steps M.1–M.5 + proposed `results/` layout |
-| `cv` | 05 CV (nav "CV") | 2 | one row: education line + download button |
+| `hero` | — | 0 | identity hero: portrait left (4:5, ~33vw, max 440px) with cyan corner ticks and caption; right: status line, name (display type), 3-row definition list (Studying / Next / Research), one-sentence statement, 4 buttons (View CV primary, Research, Publications, GitHub); bottom annotation bar |
+| `cv` | 01 CV | 1 | left: label, heading, updated date, **Download PDF** (primary) + "Open in new tab"; right: PDF viewer panel (toolbar with page counter, prev/next, zoom −/+; 720px-high scroll area on `--ink-3` with the white page; footer note) |
+| `research` | 02 Research | 1 | heading is the question "How little precision can a network afford?" (cyan "?"); three rows R.1–R.3, each with chip, text, tags, small SVG figure |
+| `publications` | 03 Publications | 2 | status key; featured publication panel + evidence slot; research ledger |
+| `projects` | 04 Projects | 2 | P.1 ongoing, P.2 exploratory (placeholder), P.3 published; figure panels; P.2 text/figure order flips on desktop |
+| `method` | (under Projects) | 2 | label 05; five steps M.1–M.5 + proposed `results/` layout |
 | `contact` | 06 Contact | 3 | large closing statement, four link rows, footer |
 
-Nav numbers in the design: Research 01, Publications 02, Projects 03, CV 05, Contact 06 (04 is the Method section label). Sticky header, 68px high, blurred dark background, 1px bottom border. Active section = 2px cyan rule under the item (scroll-spy). Mobile (≤720px): "Menu" button (48px) opens a sheet with 60px rows.
+Nav order follows the page: CV 01, Research 02, Publications 03, Projects 04, Contact 06 (05 is the Method section label). Sticky header, 68px high, blurred dark background, 1px bottom border. Active section = 2px cyan rule under the item (scroll-spy). Mobile (≤720px): "Menu" button (48px) opens a sheet with 60px rows.
+
+## Portrait
+Natural photo with a light cool grade; no duotone. 1px-weight cyan corner ticks outside the frame, 14px. Caption bar: "Fig. 00 · portrait" left, coordinates right. Placeholder state = dashed amber frame with the label. Mobile: full-width (inset 7px so ticks stay on screen), above the name.
+
+## CV viewer (pdf.js)
+- Source: `public/cv/CV.pdf`. Download and "Open in new tab" are plain `<a href="/cv/CV.pdf">` (`download` attribute on the download link) and work without JS.
+- Viewer loads `pdfjs-dist` only when the section is near the viewport (IntersectionObserver, ~400px root margin) or the user presses a control. Show a skeleton page while loading; on any failure show the direct-link fallback with a short message.
+- Render pages to `<canvas>` at device pixel ratio (cap 2), width fitted to the panel; text layer optional (nice to have: selectable text). Controls are real `<button>`s, ≥44px, with `aria-label`s and a live region announcing "Page X of Y". Keyboard: focusable scroll area, arrow/PageUp/PageDown work natively; buttons for zoom (50–200%).
+- The page stays white (no inversion). Panel footer note from the design is design commentary and is **not** shipped.
 
 ## Components
 - **Chip** (status): Published = filled square, cyan tint fill + border; Ongoing = half-filled circle, cyan border; Exploratory = hollow circle, dashed grey border. Mono 11px uppercase.
