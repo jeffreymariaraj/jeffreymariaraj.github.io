@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Featured research and project detail</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.mono{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lbl{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8793A6}
+.wrap{max-width:1312px;margin:0 auto;padding:0 clamp(20px,4.4vw,64px);box-sizing:border-box}
+.h2{font-size:clamp(30px,3.6vw,52px);line-height:1.06;letter-spacing:-.03em;font-weight:500;margin:0}
+.h4{font-size:22px;line-height:1.2;letter-spacing:-.015em;font-weight:500;margin:0}
+.p{font-size:17px;line-height:1.65;color:#A3AFC0;margin:0;text-wrap:pretty}
+.tag{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;color:#A3AFC0;border:1px solid #2C3B50;padding:4px 8px;border-radius:2px;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:2px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;box-sizing:border-box;flex:none}
+.c-pub{background:rgba(92,200,220,.14);color:#9BE5F1;border:1px solid rgba(92,200,220,.55)}
+.c-pub::before{background:#5CC8DC}
+.c-on{color:#9BE5F1;border:1px solid rgba(92,200,220,.45)}
+.c-on::before{border-radius:50%;background:conic-gradient(#5CC8DC 0 50%,transparent 0 100%);border:1px solid #5CC8DC}
+.c-ex{color:#A3AFC0;border:1px dashed #5B6B83}
+.c-ex::before{border-radius:50%;border:1px solid #8793A6}
+.ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
+a{color:inherit}
+a:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
+.lnk{text-decoration:none;color:#E8EDF4;border-bottom:1px solid #2C3B50;padding-bottom:2px;transition:color .16s cubic-bezier(.2,.6,.2,1),border-color .16s cubic-bezier(.2,.6,.2,1)}
+.lnk:hover{color:#9BE5F1;border-color:#5CC8DC}
+.panel{border:1px solid #2C3B50;background:rgba(12,17,25,.92)}
+.th{font-weight:400;padding:10px 12px;border-bottom:1px solid #2C3B50;text-align:left;color:#8793A6}
+.td{padding:14px 12px;border-bottom:1px solid #1E2938;color:#C3CDDA;vertical-align:top}
+.dash{color:#8793A6}
+@media (prefers-reduced-motion:reduce){.lnk{transition:none}}
+</style>
+</helmet>
+<div id="top" style="position: relative; background: #080B10; color: #E8EDF4; font-family: 'Geist', system-ui, sans-serif; overflow-x: clip">
+
+<div aria-hidden="true" style="position: sticky; top: 0; height: 0; z-index: 0; pointer-events: none; --bg-h: min(100vh, 900px); --bg-base: transparent">
+<dc-import name="Background" density="0.8" progress="2" interactive="false" hint-size="100%,900px"></dc-import>
+</div>
+
+<div style="position: relative; z-index: 1; padding: 72px 0 120px">
+<div class="wrap">
+
+<div class="mono" style="color: #8793A6; display: flex; gap: 12px; flex-wrap: wrap; align-items: center"><span style="color: #5CC8DC">A</span><span>Featured research · expanded treatment</span></div>
+<h2 class="h2" style="margin-top: 20px; max-width: 900px">A publication page that leaves room for the evidence.</h2>
+<p class="p" style="margin-top: 20px; max-width: 640px">Every slot below is a placeholder until a verified detail replaces it. No results, citations or metrics are implied.</p>
+
+<!-- A · publication -->
+<article style="margin-top: 56px; display: flex; flex-wrap: wrap; gap: 48px 72px; align-items: flex-start">
+<div style="flex: 1 1 640px; min-width: 0">
+<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap"><span class="chip c-pub">Published</span><span class="mono" style="color: #A3AFC0">IEEE conference · <span class="ph">[Conference name, Year]</span></span></div>
+<h3 style="margin: 24px 0 0; font-size: clamp(30px, 3.4vw, 48px); line-height: 1.1; letter-spacing: -.03em; font-weight: 500"><span class="ph">[Verified paper title]</span></h3>
+<div style="margin-top: 24px; font-size: 17px; line-height: 1.6; color: #C3CDDA">Authors: <span class="ph">[confirm order]</span> Maurya Pradeep Gowda, Ronan Lobo, Jeff <span class="ph">[Surname]</span></div>
+
+<div style="margin-top: 48px; border-top: 1px solid #2C3B50; padding-top: 28px">
+<div class="lbl" style="margin-bottom: 14px">Abstract summary</div>
+<p class="p" style="max-width: 680px">Topic on record: routing queries between large language models using a fine-tuned DistilBERT classifier. <span class="ph">[Three sentences: the problem, the method, the main result with its numbers. Written in your own words, once verified against the paper.]</span></p>
+</div>
+
+<div style="margin-top: 48px; border-top: 1px solid #2C3B50; padding-top: 28px">
+<div class="lbl" style="margin-bottom: 18px">Table 1 · benchmark comparison <span class="ph" style="margin-left: 8px">[placeholder: no values]</span></div>
+<div style="overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 600px; font-family: 'Geist Mono', monospace; font-size: 13px">
+<thead><tr><th class="th">Method</th><th class="th" style="text-align: right">Accuracy</th><th class="th" style="text-align: right">Params</th><th class="th" style="text-align: right">Latency</th><th class="th" style="text-align: right">Runs</th></tr></thead>
+<tbody>
+<tr><td class="td ph">[Baseline A]</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td></tr>
+<tr><td class="td ph">[Baseline B]</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td></tr>
+<tr><td class="td ph">[Proposed method]</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td><td class="td dash" style="text-align: right">—</td></tr>
+</tbody></table></div>
+<p class="mono" style="font-size: 10px; color: #8793A6; margin-top: 12px; text-transform: none; letter-spacing: .04em; line-height: 1.7">Design rule: report mean ± spread over multiple runs, and name the hardware. The best cell is marked with weight, not colour.</p>
+</div>
+</div>
+
+<aside style="flex: 1 1 320px; max-width: 420px; display: flex; flex-direction: column; gap: 20px">
+<div class="panel" style="padding: 24px; display: flex; flex-direction: column; gap: 16px">
+<div class="lbl">Links</div>
+<a class="lnk mono" href="#top" style="align-self: flex-start">Paper <span class="ph">[DOI / IEEE Xplore]</span> ↗</a>
+<a class="lnk mono" href="#top" style="align-self: flex-start">Code <span class="ph">[GitHub repo]</span> ↗</a>
+<a class="lnk mono" href="#top" style="align-self: flex-start">BibTeX</a>
+</div>
+<div class="panel" style="padding: 24px">
+<div class="lbl" style="margin-bottom: 14px">Reproducibility</div>
+<dl style="margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 12px 20px; font-family: 'Geist Mono', monospace; font-size: 12px">
+<dt style="color: #8793A6">Commit</dt><dd class="ph" style="margin: 0; justify-self: start">[hash]</dd>
+<dt style="color: #8793A6">Config</dt><dd class="ph" style="margin: 0; justify-self: start">[path]</dd>
+<dt style="color: #8793A6">Seeds</dt><dd class="ph" style="margin: 0; justify-self: start">[n runs]</dd>
+<dt style="color: #8793A6">Hardware</dt><dd class="ph" style="margin: 0; justify-self: start">[GPU / CPU]</dd>
+</dl>
+</div>
+<figure class="panel" style="margin: 0; padding: 20px">
+<svg viewBox="0 0 340 250" role="img" aria-label="Empty plot of accuracy against model size with a legend of three marker shapes, placeholder" style="width: 100%; height: auto; display: block">
+<rect x="44" y="10" width="288" height="170" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
+<path d="M44 180 V10 M44 180 H332" stroke="#5B6B83"/>
+<g stroke="#2C3B50" stroke-dasharray="2 4"><path d="M116 10V180M188 10V180M260 10V180M44 52H332M44 95H332M44 138H332"/></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" fill="#8793A6"><text x="44" y="202">model size [unit] →</text><text x="2" y="14">acc.</text><text x="120" y="100" fill="#E3B766">[plot goes here]</text></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" fill="#C3CDDA"><circle cx="52" cy="232" r="4.5" fill="#5CC8DC"/><text x="64" y="236">method</text><rect x="130" y="227.5" width="9" height="9" fill="none" stroke="#A3AFC0" stroke-width="1.4"/><text x="145" y="236">baseline</text><path d="M224 237 L229 228 L234 237 Z" fill="none" stroke="#8793A6" stroke-width="1.4"/><text x="240" y="236">ablation</text></g>
+</svg>
+<figcaption class="mono" style="font-size: 10px; color: #8793A6; margin-top: 10px; line-height: 1.7">Fig. 1 · accuracy vs size · series differ by marker shape and fill, not hue alone</figcaption>
+</figure>
+</aside>
+</article>
+
+<!-- divider -->
+<div style="margin: 120px 0 0; border-top: 1px solid #2C3B50"></div>
+
+<!-- B · project detail -->
+<div class="mono" style="color: #8793A6; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 72px"><span style="color: #5CC8DC">B</span><span>Project detail · template</span></div>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 560px; max-width: 860px">
+<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.1</span><span class="chip c-on">Ongoing</span></div>
+<h2 style="margin: 24px 0 0; font-size: clamp(36px, 5vw, 72px); line-height: 1.02; letter-spacing: -.04em; font-weight: 500">Contradiction mining in vision-model quantization</h2>
+</div>
+<dl style="flex: 0 1 340px; margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 24px; font-family: 'Geist Mono', monospace; font-size: 12px; border-top: 1px solid #2C3B50; padding-top: 18px">
+<dt style="color: #8793A6">Team</dt><dd style="margin: 0; color: #C3CDDA">Student team</dd>
+<dt style="color: #8793A6">Compute</dt><dd style="margin: 0; color: #C3CDDA">Colab-class GPU</dd>
+<dt style="color: #8793A6">Stack</dt><dd style="margin: 0; color: #C3CDDA">PyTorch · timm · torchvision</dd>
+<dt style="color: #8793A6">Started</dt><dd class="ph" style="margin: 0; justify-self: start">[month year]</dd>
+</dl>
+</div>
+
+<div style="margin-top: 56px; display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-start">
+<div style="flex: 1 1 360px; max-width: 480px">
+<div class="lbl" style="margin-bottom: 14px">Question</div>
+<p class="p">Published results on quantizing vision models do not always agree. The project begins by finding disagreements, and only a contradiction that survives scrutiny is allowed to become a research question.</p>
+<div class="lbl" style="margin: 36px 0 14px">Constraints</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 16px; line-height: 1.5; color: #C3CDDA">
+<li style="display: flex; gap: 14px"><span class="mono" style="color: #5CC8DC; flex: none">—</span>Public datasets and pretrained models only</li>
+<li style="display: flex; gap: 14px"><span class="mono" style="color: #5CC8DC; flex: none">—</span>No large-scale retraining or custom hardware</li>
+<li style="display: flex; gap: 14px"><span class="mono" style="color: #5CC8DC; flex: none">—</span>Every claim traceable to a source and a setting</li>
+</ul>
+</div>
+<div style="flex: 1 1 560px; min-width: 0">
+<div class="lbl" style="margin-bottom: 14px">Pipeline <span class="ph" style="margin-left: 8px">[proposed stages, confirm]</span></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch">
+<li class="panel" style="flex: 1 1 150px; padding: 18px"><div class="mono" style="font-size: 10px; color: #5CC8DC">01</div><div style="font-size: 16px; margin-top: 8px; font-weight: 500">Collect claims</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 6px; line-height: 1.5">Papers, models, settings</div></li>
+<li class="panel" style="flex: 1 1 150px; padding: 18px"><div class="mono" style="font-size: 10px; color: #5CC8DC">02</div><div style="font-size: 16px; margin-top: 8px; font-weight: 500">Find conflicts</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 6px; line-height: 1.5">Same setup, opposed outcome</div></li>
+<li class="panel" style="flex: 1 1 150px; padding: 18px"><div class="mono" style="font-size: 10px; color: #5CC8DC">03</div><div style="font-size: 16px; margin-top: 8px; font-weight: 500">Stress-test</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 6px; line-height: 1.5">Does it survive a protocol check?</div></li>
+<li class="panel" style="flex: 1 1 150px; padding: 18px; border-color: #5CC8DC"><div class="mono" style="font-size: 10px; color: #5CC8DC">04</div><div style="font-size: 16px; margin-top: 8px; font-weight: 500">Pose question</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 6px; line-height: 1.5">From one survivor only</div></li>
+</ol>
+
+<div class="lbl" style="margin: 44px 0 14px">Evidence ledger <span class="ph" style="margin-left: 8px">[placeholder rows]</span></div>
+<div style="overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 560px; font-family: 'Geist Mono', monospace; font-size: 13px">
+<thead><tr><th class="th">Claim</th><th class="th">Source</th><th class="th">Setting</th><th class="th">Status</th></tr></thead>
+<tbody>
+<tr><td class="td ph">[claim 1]</td><td class="td ph">[citation]</td><td class="td ph">[model, bits]</td><td class="td"><span class="chip c-ex">Unchecked</span></td></tr>
+<tr><td class="td ph">[claim 2]</td><td class="td ph">[citation]</td><td class="td ph">[model, bits]</td><td class="td"><span class="chip c-on">Testing</span></td></tr>
+<tr><td class="td ph">[claim 3]</td><td class="td ph">[citation]</td><td class="td ph">[model, bits]</td><td class="td"><span class="chip c-pub">Survives</span></td></tr>
+</tbody></table></div>
+</div>
+</div>
+
+<div style="margin-top: 56px; display: flex; flex-wrap: wrap; gap: 24px 48px">
+<div class="panel" style="flex: 1 1 360px; padding: 28px">
+<div class="lbl" style="margin-bottom: 14px">Failure modes</div>
+<p class="p" style="font-size: 16px"><span class="ph">[Where does the method or the comparison break? Name the cases, with a link to the failures.md that lists them.]</span></p>
+</div>
+<div class="panel" style="flex: 1 1 360px; padding: 28px">
+<div class="lbl" style="margin-bottom: 14px">Reproduce</div>
+<pre style="margin: 0; font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 1.9; color: #C3CDDA; overflow-x: auto">git clone <span class="ph">[repo url]</span>
+pip install -r requirements.txt
+python run.py --config <span class="ph">[config path]</span></pre>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

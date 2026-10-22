@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Background behaviour and performance spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.mono{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lbl{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8793A6}
+.wrap{max-width:1312px;margin:0 auto;padding:0 clamp(20px,4.4vw,64px);box-sizing:border-box}
+.h2{font-size:clamp(30px,3.6vw,52px);line-height:1.06;letter-spacing:-.03em;font-weight:500;margin:0}
+.h4{font-size:22px;line-height:1.2;letter-spacing:-.015em;font-weight:500;margin:0}
+.p{font-size:16px;line-height:1.65;color:#A3AFC0;margin:0;text-wrap:pretty}
+.panel{border:1px solid #2C3B50;background:rgba(12,17,25,.94)}
+.tag{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;color:#A3AFC0;border:1px solid #2C3B50;padding:4px 8px;border-radius:2px;white-space:nowrap}
+.ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
+.ctl{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;background:transparent;border:1px solid #2C3B50;border-radius:2px;color:#E8EDF4;font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:border-color .16s cubic-bezier(.2,.6,.2,1),color .16s}
+.ctl:hover{border-color:#5CC8DC;color:#9BE5F1}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
+.th{padding:10px 12px;border-bottom:1px solid #2C3B50;color:#8793A6;font-weight:400;text-align:left;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.td{padding:14px 12px;border-bottom:1px solid #1E2938;color:#C3CDDA;font-size:14px;line-height:1.55;vertical-align:top}
+.td.m{font-family:'Geist Mono',monospace;font-size:12px;color:#9BE5F1;white-space:nowrap}
+input[type=range]{accent-color:#5CC8DC;width:100%;min-width:200px;height:44px;margin:0}
+@media (prefers-reduced-motion:reduce){.ctl{transition:none}}
+</style>
+</helmet>
+<div style="background: #080B10; color: #E8EDF4; font-family: 'Geist', system-ui, sans-serif; padding: 72px 0 120px; overflow-x: clip">
+<div class="wrap">
+
+<div class="lbl">05 — Signature feature</div>
+<h1 class="h2" style="margin-top: 20px; max-width: 900px">One node field, four configurations, driven by scroll.</h1>
+<p class="p" style="margin-top: 20px; max-width: 680px; font-size: 17px">The stage below is the real component, not a picture of it. Use the controls to move through the page's states. Pointer interaction, drift and signal pulses are live. Scroll linkage on the actual page reads section positions; here a slider stands in for it.</p>
+
+<!-- LIVE STAGE -->
+<div class="panel" style="margin-top: 40px; position: relative">
+<div style="position: relative; height: 560px; overflow: hidden; --bg-h: 560px; --bg-base: #080B10">
+<dc-import name="Background" progress="{{p}}" density="{{dens}}" animate="{{anim}}" interactive="true" hint-size="100%,560px"></dc-import>
+<div style="position: absolute; left: clamp(20px, 3vw, 48px); top: clamp(20px, 3vw, 44px); max-width: 420px; pointer-events: none">
+<div class="mono" style="font-size: 10px; color: #8793A6">Readability sample · {{cfgName}}</div>
+<div style="font-size: 30px; line-height: 1.1; letter-spacing: -.025em; font-weight: 500; margin-top: 14px">Text stays legible at every state.</div>
+<p style="margin: 14px 0 0; font-size: 17px; line-height: 1.65; color: #A3AFC0">Body copy sits over the quietest region of the field, and the field dims further where reading is dense.</p>
+</div>
+<div class="mono" style="position: absolute; right: 20px; bottom: 16px; font-size: 10px; color: #8793A6; text-align: right; line-height: 1.7; pointer-events: none">config {{cfgIdx}} · quiet ×{{quiet}} · {{nodes}} nodes · {{motionLabel}}</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; padding: 18px 20px; border-top: 1px solid #2C3B50">
+<div role="group" aria-label="Page state" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{items}}" as="item" hint-placeholder-count="4">
+<button type="button" class="ctl" onClick="{{item.press}}" aria-pressed="{{item.on}}" style="{{item.sty}}">{{item.label}}</button>
+</sc-for>
+</div>
+<label style="display: flex; align-items: center; gap: 14px; flex: 1 1 280px; min-width: 240px"><span class="lbl" style="font-size: 10px; flex: none">Scroll progress {{pText}}</span><input type="range" min="0" max="3" step="0.01" value="{{p}}" onChange="{{onSlide}}"></label>
+<div role="group" aria-label="Variants" style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="ctl" onClick="{{toggleAnim}}" aria-pressed="{{reduced}}" style="{{motionSty}}">Reduced motion</button>
+<button type="button" class="ctl" onClick="{{toggleDens}}" aria-pressed="{{mobile}}" style="{{densSty}}">Mobile density</button>
+</div>
+</div>
+</div>
+<p class="mono" style="font-size: 10px; color: #8793A6; margin-top: 12px; text-transform: none; letter-spacing: .04em; line-height: 1.7">Live behaviour. Move the pointer across the stage to see nearby nodes yield. Reduced motion shows the genuinely static fallback: one still frame, no loop, no pulses.</p>
+
+<!-- CONFIGS -->
+<section style="margin-top: 96px; border-top: 1px solid #2C3B50; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 0 0 280px"><div class="lbl">Configurations</div><h2 class="h4" style="margin-top: 14px">Same 64 nodes, four layouts.</h2><p class="p" style="margin-top: 12px; font-size: 15px">Each node keeps its identity and depth. Only its target position changes, so scrolling reads as the network reconfiguring, never as scenes swapping.</p></div>
+<div style="flex: 1 1 640px; min-width: 0; overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 640px">
+<thead><tr><th class="th">#</th><th class="th">Section</th><th class="th">Layout</th><th class="th">Quiet</th><th class="th">Intent</th></tr></thead>
+<tbody>
+<tr><td class="td m">0</td><td class="td">Hero</td><td class="td">Six-layer feed-forward field right of the headline; a sparse left margin</td><td class="td m">1.00</td><td class="td">Immersive; the signature</td></tr>
+<tr><td class="td m">1</td><td class="td">Research</td><td class="td">Three clusters at the right edge, one per research thread</td><td class="td m">0.72</td><td class="td">Echoes R.1 to R.3</td></tr>
+<tr><td class="td m">2</td><td class="td">Publications, Projects, Method</td><td class="td">A thin signal band along the bottom of the viewport</td><td class="td m">0.34</td><td class="td">Quiet under dense reading</td></tr>
+<tr><td class="td m">3</td><td class="td">Contact</td><td class="td">Nodes converge toward a central waist, a funnel</td><td class="td m">0.85</td><td class="td">Closure: the network resolves</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- SCROLL -->
+<section style="margin-top: 72px; border-top: 1px solid #2C3B50; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 0 0 280px"><div class="lbl">Scroll linkage</div><h2 class="h4" style="margin-top: 14px">Position in, state out.</h2></div>
+<ol style="flex: 1 1 640px; min-width: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid #1E2938">
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #1E2938"><span class="mono" style="color: #5CC8DC; flex: 0 0 28px; font-size: 11px">1</span><p class="p" style="font-size: 15px">Each page section carries a <span class="mono" style="font-size: 11px; text-transform: none; color: #C3CDDA">data-bg="0..3"</span> attribute. No scroll maths lives in the section components.</p></li>
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #1E2938"><span class="mono" style="color: #5CC8DC; flex: 0 0 28px; font-size: 11px">2</span><p class="p" style="font-size: 15px">A passive scroll listener only sets a dirty flag. The next frame reads section rectangles once, finds the viewport's midline and interpolates between neighbouring section mid-points, giving a continuous value from 0 to 3.</p></li>
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #1E2938"><span class="mono" style="color: #5CC8DC; flex: 0 0 28px; font-size: 11px">3</span><p class="p" style="font-size: 15px">Progress is smoothed with a frame-rate-independent exponential ease, so fast flicks do not tear the layout. Nodes ease toward their targets, with depth-weighted parallax and a slow sinusoidal drift for physical coherence.</p></li>
+<li style="display: flex; gap: 20px; padding: 18px 0; border-bottom: 1px solid #1E2938"><span class="mono" style="color: #5CC8DC; flex: 0 0 28px; font-size: 11px">4</span><p class="p" style="font-size: 15px">Link opacity scales with distance, node depth and the section's quiet factor. Pulses travel left to right along links, which gives the field a direction of computation.</p></li>
+</ol>
+</section>
+
+<!-- INTERACTIONS -->
+<section style="margin-top: 72px; border-top: 1px solid #2C3B50; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 0 0 280px"><div class="lbl">Interactions</div><h2 class="h4" style="margin-top: 14px">Every motion has a purpose and a fallback.</h2></div>
+<div style="flex: 1 1 640px; min-width: 0; overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 640px">
+<thead><tr><th class="th">Element</th><th class="th">Behaviour</th><th class="th">Touch / mobile</th><th class="th">Reduced motion</th></tr></thead>
+<tbody>
+<tr><td class="td">Background field</td><td class="td">Drifts, reconfigures on scroll, pulses propagate</td><td class="td">32 nodes, 6 pulses, no pointer effect</td><td class="td">One still frame per state; no loop</td></tr>
+<tr><td class="td">Pointer</td><td class="td">Nodes within 130px yield up to 22px, then ease back</td><td class="td">Disabled</td><td class="td">Disabled</td></tr>
+<tr><td class="td">Navigation</td><td class="td">2px cyan rule marks the active section; text brightens on hover</td><td class="td">Menu sheet, 60px rows</td><td class="td">No transition</td></tr>
+<tr><td class="td">Hero load</td><td class="td">Four fades, 700ms, 80ms apart, once</td><td class="td">Same</td><td class="td">Content shown immediately</td></tr>
+<tr><td class="td">Section reveal <span class="tag" style="margin-left: 6px">proposed</span></td><td class="td">Opacity and 8px rise, 400ms, once, via IntersectionObserver</td><td class="td">Same</td><td class="td">None; content always present without JS</td></tr>
+<tr><td class="td">Research entries</td><td class="td">5% cyan wash, arrow shifts 4px</td><td class="td">Tap target 44px+</td><td class="td">No transition</td></tr>
+<tr><td class="td">Diagrams <span class="tag" style="margin-left: 6px">optional</span></td><td class="td">Hover on a figure may highlight one series or term</td><td class="td">Tap to toggle</td><td class="td">Static</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- PERFORMANCE -->
+<section style="margin-top: 72px; border-top: 1px solid #2C3B50; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 0 0 280px"><div class="lbl">Performance</div><h2 class="h4" style="margin-top: 14px">A budget, designed in.</h2><p class="p" style="margin-top: 12px; font-size: 15px">Numbers below are design limits I set, not measurements. Profile on a mid-range laptop and a mid-range phone before launch.</p></div>
+<div style="flex: 1 1 640px; min-width: 0; overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 640px">
+<thead><tr><th class="th">Constraint</th><th class="th">Desktop</th><th class="th">Mobile</th><th class="th">Why</th></tr></thead>
+<tbody>
+<tr><td class="td">Nodes</td><td class="td m">64</td><td class="td m">32</td><td class="td">Link search is O(N²): about 2,000 distance checks per frame at 64</td></tr>
+<tr><td class="td">Pulses</td><td class="td m">12</td><td class="td m">6</td><td class="td">Cheap, and they carry the sense of activity</td></tr>
+<tr><td class="td">Canvas size</td><td class="td m">viewport, ≤ 1000px tall</td><td class="td m">viewport, ≤ 900px</td><td class="td">Never the full page height; one sticky layer</td></tr>
+<tr><td class="td">Pixel ratio cap</td><td class="td m">1.5</td><td class="td m">1.0</td><td class="td">Thin lines need no more</td></tr>
+<tr><td class="td">Loop</td><td class="td m">one rAF</td><td class="td m">one rAF</td><td class="td">Paused when the tab is hidden or the canvas is off-screen</td></tr>
+<tr><td class="td">Scroll work</td><td class="td m">flag only</td><td class="td m">flag only</td><td class="td">Rect reads happen once per frame, with no writes in between</td></tr>
+<tr><td class="td">Input</td><td class="td m">pointer-events: none</td><td class="td m">none</td><td class="td">Never blocks scrolling or links; aria-hidden</td></tr>
+<tr><td class="td">Dependencies</td><td class="td m">0</td><td class="td m">0</td><td class="td">Canvas 2D only; no WebGL, no animation library</td></tr>
+<tr><td class="td">Target <span class="tag" style="margin-left: 6px">to measure</span></td><td class="td m"><span class="ph">[≤ 2 ms / frame]</span></td><td class="td m"><span class="ph">[≤ 4 ms / frame]</span></td><td class="td">Scripting plus paint for the layer, from a profiler trace</td></tr>
+</tbody></table></div>
+</section>
+
+<!-- IMPLEMENTATION -->
+<section style="margin-top: 72px; border-top: 1px solid #2C3B50; padding-top: 48px; display: flex; flex-wrap: wrap; gap: 32px 64px">
+<div style="flex: 0 0 280px"><div class="lbl">Implementation</div><h2 class="h4" style="margin-top: 14px">React, one component, no libraries.</h2><p class="p" style="margin-top: 12px; font-size: 15px">The engine on this canvas is already framework-agnostic. In the real build it moves into a hook, and section tracking switches from rectangles to IntersectionObserver.</p></div>
+<div style="flex: 1 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<pre class="panel" style="margin: 0; padding: 24px; font-family: 'Geist Mono', monospace; font-size: 12.5px; line-height: 1.85; color: #C3CDDA; overflow-x: auto">&lt;NetworkBackground density={isMobile ? 0.5 : 1} /&gt;     <span style="color: #8793A6">// fixed layer, aria-hidden</span>
+&lt;Section id="research" data-bg="1"&gt;               <span style="color: #8793A6">// sections declare their state</span>
+
+useSectionProgress()   <span style="color: #8793A6">// IntersectionObserver → 0..3</span>
+useReducedMotion()     <span style="color: #8793A6">// matchMedia, live</span>
+useVisibility()        <span style="color: #8793A6">// document + canvas on-screen</span></pre>
+<div style="display: flex; flex-wrap: wrap; gap: 8px"><span class="tag">React 18</span><span class="tag">Vite</span><span class="tag">plain CSS + tokens</span><span class="tag">Canvas 2D</span><span class="tag">GitHub Pages</span></div>
+<p class="p" style="font-size: 15px">Fallbacks: without JavaScript, the page shows the grid texture from CSS alone. With reduced motion, one still frame is drawn per state and redrawn on scroll or resize only.</p>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  state = { p: 0, anim: true, dens: 1 };
+
+  renderVals() {
+    const s = this.state;
+    const names = ['Hero', 'Research', 'Dense content', 'Contact'];
+    const QUIET = [1, 0.72, 0.34, 0.85];
+    const f = Math.min(3, Math.max(0, s.p)), a = Math.floor(f), b = Math.min(3, a + 1);
+    let t = f - a; t = t * t * (3 - 2 * t);
+    const quiet = QUIET[a] + (QUIET[b] - QUIET[a]) * t;
+    const idx = Math.round(f);
+    const on = 'border-color: #5CC8DC; color: #9BE5F1; background: rgba(92,200,220,0.08);';
+    const items = names.map((n, k) => ({
+      label: k + ' · ' + n,
+      on: Math.abs(s.p - k) < 0.25,
+      sty: Math.abs(s.p - k) < 0.25 ? on : '',
+      press: () => this.setState({ p: k })
+    }));
+    return {
+      p: s.p,
+      pText: s.p.toFixed(2),
+      anim: s.anim,
+      dens: s.dens,
+      items: items,
+      cfgIdx: idx,
+      cfgName: names[idx],
+      quiet: quiet.toFixed(2),
+      nodes: Math.max(12, Math.round(64 * s.dens)),
+      reduced: !s.anim,
+      mobile: s.dens < 0.8,
+      motionLabel: s.anim ? 'animated' : 'static',
+      motionSty: !s.anim ? on : '',
+      densSty: s.dens < 0.8 ? on : '',
+      onSlide: (e) => this.setState({ p: Number(e.target.value) }),
+      toggleAnim: () => this.setState({ anim: !s.anim }),
+      toggleDens: () => this.setState({ dens: s.dens < 0.8 ? 1 : 0.5 })
+    };
+  }
+}
+</script>
+</body>
+</html>

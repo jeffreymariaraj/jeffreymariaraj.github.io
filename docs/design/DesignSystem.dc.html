@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Computational Lab design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.mono{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lbl{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8793A6}
+.sec{display:flex;flex-wrap:wrap;gap:32px 64px;padding:56px 0;border-top:1px solid #2C3B50}
+.side{flex:0 0 260px}
+.main{flex:1 1 700px;min-width:0}
+.h{font-size:32px;line-height:1.1;letter-spacing:-.025em;font-weight:500;margin:14px 0 0}
+.note{font-size:15px;line-height:1.6;color:#A3AFC0;margin:14px 0 0}
+.panel{border:1px solid #2C3B50;background:#0C1119}
+.tag{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;color:#A3AFC0;border:1px solid #2C3B50;padding:4px 8px;border-radius:2px;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:2px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;box-sizing:border-box;flex:none}
+.c-pub{background:rgba(92,200,220,.14);color:#9BE5F1;border:1px solid rgba(92,200,220,.55)}
+.c-pub::before{background:#5CC8DC}
+.c-on{color:#9BE5F1;border:1px solid rgba(92,200,220,.45)}
+.c-on::before{border-radius:50%;background:conic-gradient(#5CC8DC 0 50%,transparent 0 100%);border:1px solid #5CC8DC}
+.c-ex{color:#A3AFC0;border:1px dashed #5B6B83}
+.c-ex::before{border-radius:50%;border:1px solid #8793A6}
+.ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:2px;text-decoration:none;font-size:15px;font-weight:500}
+.btn-p{background:#5CC8DC;color:#05161B}
+.btn-p:hover{background:#9BE5F1}
+.btn-g{border:1px solid #2C3B50;color:#E8EDF4}
+.btn-g:hover{border-color:#5CC8DC;color:#9BE5F1}
+a{color:inherit}
+a:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
+.lnk{text-decoration:none;color:#E8EDF4;border-bottom:1px solid #2C3B50;padding-bottom:2px}
+.lnk:hover{color:#9BE5F1;border-color:#5CC8DC}
+.sw{flex:1 1 150px;min-width:150px}
+.row{display:flex;align-items:baseline;gap:24px;padding:18px 0;border-bottom:1px solid #1E2938;flex-wrap:wrap}
+.row .k{flex:0 0 150px}
+.td{padding:12px;border-bottom:1px solid #1E2938;color:#C3CDDA;font-family:'Geist Mono',monospace;font-size:12px;vertical-align:top}
+.th{padding:10px 12px;border-bottom:1px solid #2C3B50;color:#8793A6;font-weight:400;text-align:left;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; padding: 72px 64px 96px; background: #080B10; color: #E8EDF4; font-family: 'Geist', system-ui, sans-serif">
+
+<div class="lbl">Design system · v0.1 · for React + CSS on GitHub Pages</div>
+<h1 style="margin: 20px 0 0; font-size: 88px; line-height: .98; letter-spacing: -.045em; font-weight: 500; max-width: 1000px">Computational Lab<span style="color: #5CC8DC">.</span></h1>
+<p style="margin: 28px 0 0; max-width: 700px; font-size: 19px; line-height: 1.6; color: #A3AFC0">A small set of tokens and parts. Near-black surfaces, one cool accent, a sans for reading and a mono for measuring. The research stays the substance; the network is the signature.</p>
+
+<!-- COLOR -->
+<section class="sec" style="margin-top: 64px">
+<div class="side"><div class="lbl">01</div><h2 class="h">Colour</h2><p class="note">Cyan stays under roughly one-twentieth of any view. Amber means only one thing: this content is a placeholder. Contrast shown against the base surface.</p></div>
+<div class="main">
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div class="sw panel"><div style="height: 72px; background: #06080C"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">ink-0</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#06080C · page edge</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #080B10"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">ink-1</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#080B10 · base</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #0C1119"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">ink-2</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#0C1119 · surface</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #10161F"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">ink-3</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#10161F · raised</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #1E2938"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">line</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#1E2938 · divider</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #2C3B50"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">line-2</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#2C3B50 · border</div></div></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px">
+<div class="sw panel"><div style="height: 72px; background: #E8EDF4"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">text</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#E8EDF4 · 16.8:1</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #C3CDDA"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">text-1</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#C3CDDA · 12.3:1</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #A3AFC0"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">text-2</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#A3AFC0 · 8.9:1</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #8793A6"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">text-3</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#8793A6 · 6.3:1 · min</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #5B6B83"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">mute</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#5B6B83 · 3.6:1 · lines only</div></div></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px">
+<div class="sw panel"><div style="height: 72px; background: #5CC8DC"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">cyan</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#5CC8DC · 10.1:1 · accent</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #9BE5F1"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">cyan-hi</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#9BE5F1 · 14.0:1 · hover</div></div></div>
+<div class="sw panel"><div style="height: 72px; background: #E3B766"></div><div style="padding: 12px"><div class="mono" style="font-size: 11px">amber</div><div class="lbl" style="font-size: 10px; margin-top: 4px">#E3B766 · 10.5:1 · placeholder</div></div></div>
+<div class="sw panel" style="flex: 2 1 320px"><div style="padding: 14px 16px"><div class="mono" style="font-size: 11px">Rules</div><div style="font-size: 14px; line-height: 1.6; color: #A3AFC0; margin-top: 8px">Text never sits below text-3. Borders use line or line-2. State is never hue alone: shape and fill differ too.</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- TYPE -->
+<section class="sec">
+<div class="side"><div class="lbl">02</div><h2 class="h">Typography</h2><p class="note">Geist for reading, Geist Mono for measuring: labels, indices, model names, coordinates. Both load from Google Fonts. System fallbacks hold the metrics.</p></div>
+<div class="main">
+<div class="row"><div class="k lbl">Display</div><div style="font-size: 88px; line-height: .96; letter-spacing: -.045em; font-weight: 500">How little precision</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">clamp(50px, 8.1vw, 118px) · 500 · lh .96 · ls −.045em · hero only</div></div>
+<div class="row"><div class="k lbl">H2</div><div style="font-size: 56px; line-height: 1.04; letter-spacing: -.03em; font-weight: 500">One question, three directions</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">clamp(34px, 4.3vw, 62px) · 500 · lh 1.04 · ls −.03em</div></div>
+<div class="row"><div class="k lbl">H3</div><div style="font-size: 36px; line-height: 1.12; letter-spacing: -.022em; font-weight: 500">Quantization &amp; efficient inference</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">clamp(26px, 2.6vw, 36px) · 500 · lh 1.12</div></div>
+<div class="row"><div class="k lbl">Lead</div><div style="font-size: 19px; line-height: 1.6; color: #C3CDDA; max-width: 560px">I study what is lost, and what survives, when neural networks are made small.</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">19px · 400 · lh 1.6 · text-1</div></div>
+<div class="row"><div class="k lbl">Body</div><div style="font-size: 17px; line-height: 1.65; color: #A3AFC0; max-width: 560px">Each thread asks which parts of a model's precision, activity and capacity are actually load-bearing.</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">17px (15–16 on small) · 400 · lh 1.65 · text-2 · measure ≤ 68ch</div></div>
+<div class="row"><div class="k lbl">Mono label</div><div class="mono" style="color: #C3CDDA">01 — Research direction</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">Geist Mono 12px · 400 · ls .08em · uppercase</div></div>
+<div class="row"><div class="k lbl">Mono note</div><div class="mono" style="font-size: 10px; color: #8793A6">Fig. R.1 · illustration, not a result</div><div class="lbl" style="flex: 1 1 100%; font-size: 10px">Geist Mono 10px · ls .08em · figure captions and coordinates</div></div>
+</div>
+</section>
+
+<!-- SPACE -->
+<section class="sec">
+<div class="side"><div class="lbl">03</div><h2 class="h">Spacing &amp; grid</h2><p class="note">A 4px base. Sections breathe at 120–140px on desktop and 72–80px on mobile. Content sits in a 1312px frame.</p></div>
+<div class="main">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 20px; align-items: flex-end">
+<div><div style="width: 4px; height: 4px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">4</div></div>
+<div><div style="width: 8px; height: 8px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">8</div></div>
+<div><div style="width: 12px; height: 12px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">12</div></div>
+<div><div style="width: 16px; height: 16px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">16</div></div>
+<div><div style="width: 24px; height: 24px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">24</div></div>
+<div><div style="width: 32px; height: 32px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">32</div></div>
+<div><div style="width: 48px; height: 48px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">48</div></div>
+<div><div style="width: 64px; height: 64px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">64</div></div>
+<div><div style="width: 96px; height: 96px; background: #5CC8DC"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">96</div></div>
+<div><div style="width: 140px; height: 96px; background: #5CC8DC; opacity: .5"></div><div class="lbl" style="font-size: 10px; margin-top: 8px">120–140 · section</div></div>
+</div>
+<div style="margin-top: 40px">
+<div class="lbl" style="margin-bottom: 12px">12-column frame · 1312 max · 24 gutter · side padding clamp(20px, 4.4vw, 64px)</div>
+<div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; height: 72px">
+<div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div><div style="background: rgba(92,200,220,0.12); border-left: 1px solid rgba(92,200,220,0.5); border-right: 1px solid rgba(92,200,220,0.5)"></div>
+</div>
+</div>
+<table style="margin-top: 40px; border-collapse: collapse; width: 100%; max-width: 720px">
+<thead><tr><th class="th">Breakpoint</th><th class="th">Width</th><th class="th">Behaviour</th></tr></thead>
+<tbody>
+<tr><td class="td">wide</td><td class="td">≥ 1200</td><td class="td">Full frame, asymmetric hero, figures beside text</td></tr>
+<tr><td class="td">desktop</td><td class="td">721–1199</td><td class="td">Figures wrap under text, nav gaps tighten</td></tr>
+<tr><td class="td">mobile</td><td class="td">≤ 720</td><td class="td">Single column, menu sheet, density 0.5, no pointer effect</td></tr>
+</tbody></table>
+</div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="sec">
+<div class="side"><div class="lbl">04</div><h2 class="h">Components</h2><p class="note">Square corners at 2px. Borders, not shadows. Hover changes colour or position by a few pixels and never layout.</p></div>
+<div class="main">
+
+<div class="lbl" style="margin-bottom: 14px">Navigation item · rest / hover / active</div>
+<div class="panel" style="padding: 28px; display: flex; gap: 48px; flex-wrap: wrap">
+<span class="mono" style="position: relative; display: inline-flex; gap: 8px; padding: 10px 2px; color: #A3AFC0"><span style="color: #8793A6; font-size: 10px">01</span>Research</span>
+<span class="mono" style="position: relative; display: inline-flex; gap: 8px; padding: 10px 2px; color: #E8EDF4"><span style="color: #8793A6; font-size: 10px">02</span>Publications</span>
+<span class="mono" style="position: relative; display: inline-flex; gap: 8px; padding: 10px 2px; color: #E8EDF4"><span style="color: #8793A6; font-size: 10px">03</span>Projects<span style="position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #5CC8DC"></span></span>
+<span class="lbl" style="align-self: center; font-size: 10px">rest · hover (text brightens) · active (2px cyan rule)</span>
+</div>
+
+<div class="lbl" style="margin: 36px 0 14px">Buttons and links</div>
+<div class="panel" style="padding: 28px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+<a class="btn btn-p" href="#top">Research <span aria-hidden="true">→</span></a>
+<a class="btn btn-g" href="#top">Publications</a>
+<a class="btn btn-g" href="#top" style="border-color: #5CC8DC; color: #9BE5F1; outline: 2px solid #5CC8DC; outline-offset: 3px">Focus ring</a>
+<a class="lnk mono" href="#top">Paper ↗</a>
+<span class="lbl" style="font-size: 10px">48px high · primary at most once per view</span>
+</div>
+
+<div class="lbl" style="margin: 36px 0 14px">Status chips · shape and fill carry meaning, not hue alone</div>
+<div class="panel" style="padding: 28px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
+<span class="chip c-pub">Published</span><span class="chip c-on">Ongoing</span><span class="chip c-ex">Exploratory</span>
+<span class="tag">PTQ</span><span class="tag">LIF neurons</span>
+<span class="ph" style="font-size: 15px">[Placeholder text]</span>
+</div>
+<p class="note" style="margin-top: 10px">Filled square, half-filled circle, hollow circle with dashed border. Tags are neutral and never imply status.</p>
+
+<div class="lbl" style="margin: 36px 0 14px">Research entry · rest / hover</div>
+<div style="display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid #2C3B50">
+<div style="flex: 1 1 400px; padding: 24px 16px 24px 0; border-bottom: 1px solid #1E2938; display: flex; gap: 20px; align-items: center"><span class="chip c-on">Ongoing</span><div style="flex: 1"><div style="font-size: 18px; font-weight: 500">Entry title</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 4px">One-line description</div></div><span class="mono" style="color: #8793A6">→</span></div>
+<div style="flex: 1 1 400px; padding: 24px 16px; border-bottom: 1px solid #1E2938; background: rgba(92,200,220,0.05); display: flex; gap: 20px; align-items: center"><span class="chip c-on">Ongoing</span><div style="flex: 1"><div style="font-size: 18px; font-weight: 500">Entry title</div><div style="font-size: 14px; color: #A3AFC0; margin-top: 4px">Hover: 5% cyan wash, arrow +4px</div></div><span class="mono" style="color: #9BE5F1">→</span></div>
+</div>
+
+<div class="lbl" style="margin: 36px 0 14px">Figure frame and data table</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<figure class="panel" style="flex: 1 1 360px; margin: 0"><div class="mono" style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. X · title</span><span style="color: #E3B766">schematic · not data</span></div><div style="height: 96px; display: flex; align-items: center; justify-content: center" class="lbl">figure area</div></figure>
+<div class="panel" style="flex: 1 1 360px; padding: 8px 12px"><table style="border-collapse: collapse; width: 100%"><thead><tr><th class="th">Method</th><th class="th" style="text-align: right">Acc.</th></tr></thead><tbody><tr><td class="td ph">[Baseline]</td><td class="td" style="text-align: right; color: #8793A6">—</td></tr><tr><td class="td" style="font-weight: 500; color: #E8EDF4">Best cell: weight, not colour</td><td class="td" style="text-align: right; color: #E8EDF4; font-weight: 500">0.00</td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+
+<!-- DIAGRAM -->
+<section class="sec">
+<div class="side"><div class="lbl">05</div><h2 class="h">Technical diagrams</h2><p class="note">Hand-built SVG, one stroke weight family. Every illustration says what it is: schematic, illustration or a result. No invented numbers on any axis.</p></div>
+<div class="main">
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="panel" style="flex: 1 1 320px; padding: 24px">
+<svg viewBox="0 0 300 120" role="img" aria-label="Glyph set: node, hub, link, pulse, threshold" style="width: 100%; height: auto; display: block">
+<g fill="none"><path d="M28 30 H92" stroke="#5CC8DC" stroke-opacity=".5"/><path d="M28 60 H92" stroke="#5CC8DC" stroke-opacity=".9" stroke-width="1.6"/><path d="M28 90 H92" stroke="#E3B766" stroke-dasharray="4 4"/></g>
+<circle cx="14" cy="30" r="3" fill="#B8E2EE"/><circle cx="14" cy="60" r="3" fill="#B8E2EE"/><circle cx="14" cy="90" r="3" fill="none" stroke="#B8E2EE"/>
+<circle cx="150" cy="30" r="3" fill="#B8E2EE"/><circle cx="150" cy="30" r="8" fill="none" stroke="#5CC8DC" stroke-opacity=".5"/>
+<path d="M130 60 H168" stroke="#82E8F6" stroke-opacity=".6" stroke-width="1.5"/><circle cx="168" cy="60" r="2.4" fill="#A0F0FC"/>
+<path d="M130 90 H170" stroke="#E3B766" stroke-dasharray="4 4"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" fill="#A3AFC0"><text x="104" y="34">node</text><text x="104" y="64">link</text><text x="104" y="94">edge</text><text x="186" y="34">hub</text><text x="186" y="64">pulse</text><text x="186" y="94">threshold</text></g>
+</svg>
+</div>
+<div class="panel" style="flex: 1 1 320px; padding: 24px"><div class="lbl" style="margin-bottom: 12px">Caption rules</div>
+<div style="display: flex; flex-direction: column; gap: 10px; font-family: 'Geist Mono', monospace; font-size: 12px; color: #C3CDDA"><span>Fig. R.1 · illustration, not a result</span><span>Fig. P.1 · <span class="ph" style="border-bottom-style: dashed">schematic · not data</span></span><span>Fig. 1 · accuracy vs size · values from <span class="ph">[run id]</span></span></div></div>
+</div>
+</div>
+</section>
+
+<!-- MOTION -->
+<section class="sec">
+<div class="side"><div class="lbl">06</div><h2 class="h">Motion</h2><p class="note">One easing curve and four durations. Nothing moves in text-heavy areas except on hover. Every animation has a still equivalent.</p></div>
+<div class="main">
+<table style="border-collapse: collapse; width: 100%">
+<thead><tr><th class="th">Token</th><th class="th">Value</th><th class="th">Used for</th></tr></thead>
+<tbody>
+<tr><td class="td">ease-lab</td><td class="td">cubic-bezier(.2, .6, .2, 1)</td><td class="td">All UI transitions</td></tr>
+<tr><td class="td">dur-fast</td><td class="td">160 ms</td><td class="td">Link, button and nav hover</td></tr>
+<tr><td class="td">dur-base</td><td class="td">200 ms</td><td class="td">Entry hover, arrow shift, nav rule</td></tr>
+<tr><td class="td">dur-enter</td><td class="td">700 ms, stagger 80 ms</td><td class="td">Hero only, once on load</td></tr>
+<tr><td class="td">bg-ease</td><td class="td">1 − e^(−4·dt) on progress, 1 − e^(−5·dt) on nodes</td><td class="td">Background reconfiguration, frame-rate independent</td></tr>
+<tr><td class="td">pulse</td><td class="td">2400 ms, opacity .35 → 1</td><td class="td">Status dot only</td></tr>
+</tbody></table>
+<p class="note">With prefers-reduced-motion, entrance, pulse, hover travel and the background loop are all removed. The background draws one still frame.</p>
+</div>
+</section>
+
+<!-- STATUS -->
+<section class="sec">
+<div class="side"><div class="lbl">07</div><h2 class="h">Content status</h2><p class="note">How to read these artboards. The final site contains no amber.</p></div>
+<div class="main">
+<div style="display: flex; flex-wrap: wrap; gap: 20px">
+<div class="panel" style="flex: 1 1 260px; padding: 24px"><div class="lbl" style="margin-bottom: 12px">Verified</div><div style="font-size: 17px; color: #E8EDF4">Plain text.</div><p class="note">From what you told me: RVCE, class of 2027, an IEEE conference paper on LLM query routing with a DistilBERT classifier, its two co-authors, the vision-quantization study and its constraints.</p></div>
+<div class="panel" style="flex: 1 1 260px; padding: 24px; border-color: rgba(227,183,102,.6)"><div class="lbl" style="margin-bottom: 12px">Placeholder</div><div style="font-size: 17px"><span class="ph">[Amber, dashed underline]</span></div><p class="note">Titles, venues, years, links, results, names, email, anything not confirmed. Replace before launch.</p></div>
+<div class="panel" style="flex: 1 1 260px; padding: 24px"><div class="lbl" style="margin-bottom: 12px">Proposed</div><div style="font-size: 17px; color: #E8EDF4">Plain text, labelled in the caption.</div><p class="note">Design copy and diagrams I wrote: the hero question, the routing pipeline, the repository layout. Edit freely; the pipeline needs checking against the paper.</p></div>
+</div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

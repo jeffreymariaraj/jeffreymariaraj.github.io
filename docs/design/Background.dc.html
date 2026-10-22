@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Background engine</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: 100%; height: var(--bg-h, 900px); overflow: hidden; background: var(--bg-base, #080b10); pointer-events: none">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(120,170,210,0.055) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,170,210,0.055) 1px, transparent 1px); background-size: 96px 96px; background-position: -1px -1px; -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.5) 70%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,0.5) 70%, transparent 100%)"></div>
+<canvas ref="{{setCv}}" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; display: block"></canvas>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"progress":{"editor":"float","default":-1,"min":-1,"max":3,"step":0.05,"section":"Behaviour"},"density":{"editor":"float","default":1,"min":0.3,"max":1.2,"step":0.1,"section":"Behaviour"},"animate":{"editor":"boolean","default":true,"section":"Behaviour"},"interactive":{"editor":"boolean","default":true,"section":"Behaviour"},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    if (!this._setCv) this._setCv = (el) => { this.cv = el; };
+    return { setCv: this._setCv };
+  }
+  componentDidMount() { this.boot(); }
+  componentDidUpdate() { if (this._sync) this._sync(); }
+  componentWillUnmount() { if (this._halt) this._halt(); }
+
+  boot() {
+    const self = this;
+    const cv = this.cv;
+    if (!cv || this._booted) return;
+    this._booted = true;
+    const ctx = cv.getContext('2d');
+    const mqRM = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const mqFine = window.matchMedia ? window.matchMedia('(pointer: fine)') : null;
+    const prop = (k, d) => {
+      const v = self.props ? self.props[k] : undefined;
+      return v === undefined || v === null || v === '' ? d : v;
+    };
+
+    // --- deterministic node field (same layout every load) ---
+    let s = 42;
+    const r = () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+    const ALL = [];
+    for (let i = 0; i < 72; i++) {
+      const u = r(), v = r(), w = r(), z = r();
+      ALL.push({ i, u, v, w, z, layer: Math.floor(u * 6), x: 0, y: 0, ox: 0, oy: 0 });
+    }
+
+    // four configurations of the SAME nodes: 0 hero · 1 research · 2 dense content · 3 contact
+    const lay = (k, n) => {
+      if (k === 0) {
+        if (n.w < 0.22) return [n.u * 0.44, 0.1 + 0.8 * n.v];
+        return [0.46 + 0.52 * (n.layer / 5) + (n.w - 0.5) * 0.05,
+                0.12 + 0.76 * n.v + 0.05 * Math.sin(n.layer * 1.3 + n.v * 6)];
+      }
+      if (k === 1) {
+        if (n.w < 0.2) return [0.52 + 0.46 * n.u, 0.08 + 0.84 * n.v];
+        const C = [[0.82, 0.22], [0.9, 0.52], [0.78, 0.8]][n.i % 3];
+        const a = n.v * 6.283, rr = 0.02 + 0.13 * Math.sqrt(n.u);
+        return [C[0] + rr * Math.cos(a) * 0.8, C[1] + rr * Math.sin(a) * 1.5];
+      }
+      if (k === 2) {
+        return [n.u, 0.84 + (n.v - 0.5) * 0.14 + 0.03 * Math.sin(n.u * 18)];
+      }
+      const sp = 0.06 + 0.8 * Math.pow(Math.abs(n.u - 0.5) * 2, 1.4);
+      return [n.u, 0.5 + (n.v - 0.5) * sp];
+    };
+    const QUIET = [1, 0.72, 0.34, 0.85];
+    const sm = (t) => t * t * (3 - 2 * t);
+    const mix = (a, b, t) => a + (b - a) * t;
+    const kk = (p) => { const f = Math.min(3, Math.max(0, p)); const a = Math.floor(f); const b = Math.min(3, a + 1); return [a, b, sm(f - a)]; };
+    const target = (n, p) => {
+      const q = kk(p), A = lay(q[0], n), B = lay(q[1], n);
+      return [mix(A[0], B[0], q[2]), mix(A[1], B[1], q[2])];
+    };
+    const quietAt = (p) => { const q = kk(p); return mix(QUIET[q[0]], QUIET[q[1]], q[2]); };
+
+    // --- scroll → continuous configuration index ---
+    let dirty = true, tgtP = 0, prog = 0;
+    const scrollProg = () => {
+      const els = document.querySelectorAll('[data-bg]');
+      const vh = window.innerHeight || 800;
+      if (!els.length) {
+        const se = document.scrollingElement || document.documentElement;
+        const mx = se.scrollHeight - vh;
+        return mx > 0 ? 3 * Math.min(1, se.scrollTop / mx) : 0;
+      }
+      const a = [];
+      for (let i = 0; i < els.length; i++) {
+        const b = els[i].getBoundingClientRect();
+        a.push({ k: Number(els[i].getAttribute('data-bg')), m: b.top + Math.min(b.height, vh) / 2 });
+      }
+      const c = vh * 0.5;
+      if (c <= a[0].m) return a[0].k;
+      for (let i = 0; i < a.length - 1; i++) {
+        if (c < a[i + 1].m) return mix(a[i].k, a[i + 1].k, (c - a[i].m) / (a[i + 1].m - a[i].m));
+      }
+      return a[a.length - 1].k;
+    };
+    const wantP = () => {
+      const p = Number(prop('progress', -1));
+      if (p >= 0) return p;
+      if (dirty) { tgtP = scrollProg(); dirty = false; }
+      return tgtP;
+    };
+
+    // --- state ---
+    let W = 0, H = 0, dpr = 1, nodes = [], pulses = [], linkD = 160;
+    let raf = 0, last = 0, visible = true, anim = true, usePtr = false;
+    const ptr = { x: -9999, y: -9999, on: false };
+
+    const build = () => {
+      const N = Math.max(12, Math.round(64 * Number(prop('density', 1))));
+      nodes = ALL.slice(0, N);
+      pulses = [];
+      const np = Math.max(4, Math.round(12 * Number(prop('density', 1))));
+      for (let i = 0; i < np; i++) {
+        const a = nodes[Math.floor(r() * nodes.length)];
+        pulses.push({ a, b: a, t: 1, sp: 0.5 + r() * 0.6 });
+      }
+    };
+    const resize = () => {
+      const w = cv.clientWidth, h = cv.clientHeight;
+      if (!w || !h) return;
+      const d = Number(prop('density', 1));
+      dpr = Math.min(window.devicePixelRatio || 1, d < 0.8 ? 1 : 1.5);
+      W = w; H = h;
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      linkD = Math.max(90, Math.min(W, H) * (d < 0.8 ? 0.3 : 0.22));
+      snap();
+      draw();
+    };
+    const snap = () => {
+      prog = wantP();
+      nodes.forEach((n) => { const t = target(n, prog); n.x = t[0] * W; n.y = t[1] * H; n.ox = 0; n.oy = 0; });
+    };
+
+    const nextHop = (p) => {
+      const b = p.b, c = [];
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        if (n === b) continue;
+        const dx = n.x - b.x, dy = n.y - b.y;
+        if (dx > -10 && dx * dx + dy * dy < linkD * linkD) c.push(n);
+      }
+      if (c.length) { p.a = b; p.b = c[Math.floor(Math.random() * c.length)]; p.t = 0; }
+      else {
+        let n = nodes[Math.floor(Math.random() * nodes.length)];
+        p.a = n; p.b = n; p.t = 1;
+      }
+    };
+
+    const step = (dt, t) => {
+      const ease = anim ? 1 - Math.exp(-dt * 5) : 1;
+      prog += (wantP() - prog) * (anim ? 1 - Math.exp(-dt * 4) : 1);
+      const R = 130;
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i], g = target(n, prog);
+        const dx = anim ? Math.sin(t * 0.23 + n.i * 1.7) * 7 * (0.4 + n.z) : 0;
+        const dy = anim ? Math.cos(t * 0.19 + n.i * 2.3) * 7 * (0.4 + n.z) : 0;
+        let fx = 0, fy = 0;
+        if (usePtr && ptr.on && anim) {
+          const ex = n.x - ptr.x, ey = n.y - ptr.y, d = Math.sqrt(ex * ex + ey * ey);
+          if (d < R && d > 0.1) { const k = (1 - d / R) * 22 * (0.4 + n.z); fx = ex / d * k; fy = ey / d * k; }
+        }
+        n.ox += (fx - n.ox) * Math.min(1, ease * 1.2);
+        n.oy += (fy - n.oy) * Math.min(1, ease * 1.2);
+        const par = (n.z - 0.5) * prog * 36;
+        n.x += (g[0] * W + dx + n.ox - n.x) * ease;
+        n.y += (g[1] * H + dy + n.oy + par - n.y) * ease;
+      }
+      if (anim) {
+        for (let i = 0; i < pulses.length; i++) {
+          const p = pulses[i];
+          p.t += dt * p.sp;
+          if (p.t >= 1) nextHop(p);
+        }
+      }
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      const Q = quietAt(prog), L2 = linkD * linkD;
+      ctx.lineWidth = 1;
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+          if (d2 > L2) continue;
+          const f = 1 - Math.sqrt(d2) / linkD;
+          const al = f * f * 0.5 * Q * (0.4 + 0.6 * Math.min(a.z, b.z));
+          if (al < 0.01) continue;
+          ctx.strokeStyle = 'rgba(92,200,220,' + al.toFixed(3) + ')';
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i], rad = 0.9 + n.z * 1.8;
+        ctx.fillStyle = 'rgba(184,226,238,' + ((0.25 + 0.6 * n.z) * Q).toFixed(3) + ')';
+        ctx.beginPath(); ctx.arc(n.x, n.y, rad, 0, 6.283); ctx.fill();
+        if (n.i % 11 === 0) {
+          ctx.strokeStyle = 'rgba(92,200,220,' + (0.28 * Q).toFixed(3) + ')';
+          ctx.beginPath(); ctx.arc(n.x, n.y, rad + 4.5, 0, 6.283); ctx.stroke();
+        }
+      }
+      if (anim) {
+        const PQ = Math.max(0.45, Q);
+        for (let i = 0; i < pulses.length; i++) {
+          const p = pulses[i];
+          if (p.a === p.b) continue;
+          const t = sm(Math.min(1, p.t)), t0 = sm(Math.max(0, p.t - 0.18));
+          const x = mix(p.a.x, p.b.x, t), y = mix(p.a.y, p.b.y, t);
+          const x0 = mix(p.a.x, p.b.x, t0), y0 = mix(p.a.y, p.b.y, t0);
+          ctx.strokeStyle = 'rgba(130,232,246,' + (0.55 * PQ).toFixed(3) + ')';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x, y); ctx.stroke();
+          ctx.fillStyle = 'rgba(160,240,252,' + (0.95 * PQ).toFixed(3) + ')';
+          ctx.beginPath(); ctx.arc(x, y, 2.1, 0, 6.283); ctx.fill();
+        }
+        ctx.lineWidth = 1;
+      }
+    };
+
+    const frame = (now) => {
+      raf = 0;
+      if (!anim || !visible || document.hidden) return;
+      const dt = Math.min(0.05, last ? (now - last) / 1000 : 0.016);
+      last = now;
+      step(dt, now / 1000);
+      draw();
+      raf = requestAnimationFrame(frame);
+    };
+    const sync = () => {
+      const nowAnim = !(mqRM && mqRM.matches) && String(prop('animate', true)) !== 'false';
+      usePtr = !!(mqFine && mqFine.matches) && String(prop('interactive', true)) !== 'false';
+      const want = Math.max(12, Math.round(64 * Number(prop('density', 1))));
+      if (want !== nodes.length) { build(); resize(); }
+      anim = nowAnim;
+      if (anim) {
+        if (!raf && visible && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); }
+      } else {
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        snap(); draw();   // genuinely static fallback: one still frame, no loop
+      }
+    };
+
+    const onScroll = () => { dirty = true; if (!anim) { snap(); draw(); } };
+    const onMove = (e) => {
+      if (e.pointerType === 'touch') return;
+      const b = cv.getBoundingClientRect();
+      ptr.x = e.clientX - b.left; ptr.y = e.clientY - b.top; ptr.on = true;
+    };
+    const onLeave = () => { ptr.on = false; };
+    const onVis = () => { sync(); };
+
+    build();
+    resize();
+    sync();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('pointermove', onMove, { passive: true });
+    document.addEventListener('pointerleave', onLeave);
+    document.addEventListener('visibilitychange', onVis);
+    let ro = null, io = null;
+    if (window.ResizeObserver) { ro = new ResizeObserver(resize); ro.observe(cv); }
+    if (window.IntersectionObserver) {
+      io = new IntersectionObserver((es) => { visible = es[0].isIntersecting; sync(); });
+      io.observe(cv);
+    }
+    if (mqRM && mqRM.addEventListener) mqRM.addEventListener('change', sync);
+
+    this._sync = sync;
+    this._halt = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0; anim = false;
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerleave', onLeave);
+      document.removeEventListener('visibilitychange', onVis);
+      if (ro) ro.disconnect();
+      if (io) io.disconnect();
+      if (mqRM && mqRM.removeEventListener) mqRM.removeEventListener('change', sync);
+      this._booted = false;
+    };
+  }
+}
+</script>
+</body>
+</html>

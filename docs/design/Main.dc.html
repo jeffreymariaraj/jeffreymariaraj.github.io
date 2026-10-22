@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Researcher portfolio — desktop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.mono{font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.lbl{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#8793A6}
+.wrap{max-width:1312px;margin:0 auto;padding:0 clamp(20px,4.4vw,64px);box-sizing:border-box}
+.h2{font-size:clamp(34px,4.3vw,62px);line-height:1.04;letter-spacing:-.03em;font-weight:500;margin:0}
+.h3{font-size:clamp(26px,2.6vw,36px);line-height:1.12;letter-spacing:-.022em;font-weight:500;margin:0}
+.p{font-size:17px;line-height:1.65;color:#A3AFC0;margin:0;text-wrap:pretty}
+.tag{font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.06em;color:#A3AFC0;border:1px solid #2C3B50;padding:4px 8px;border-radius:2px;white-space:nowrap}
+.chip{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono',ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:2px;white-space:nowrap}
+.chip::before{content:"";width:7px;height:7px;box-sizing:border-box;flex:none}
+.c-pub{background:rgba(92,200,220,.14);color:#9BE5F1;border:1px solid rgba(92,200,220,.55)}
+.c-pub::before{background:#5CC8DC}
+.c-on{color:#9BE5F1;border:1px solid rgba(92,200,220,.45)}
+.c-on::before{border-radius:50%;background:conic-gradient(#5CC8DC 0 50%,transparent 0 100%);border:1px solid #5CC8DC}
+.c-ex{color:#A3AFC0;border:1px dashed #5B6B83}
+.c-ex::before{border-radius:50%;border:1px solid #8793A6}
+.ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
+.lnk{text-decoration:none;color:#E8EDF4;border-bottom:1px solid #2C3B50;padding-bottom:2px;transition:color .16s cubic-bezier(.2,.6,.2,1),border-color .16s cubic-bezier(.2,.6,.2,1)}
+.lnk:hover{color:#9BE5F1;border-color:#5CC8DC}
+.nv{position:relative;display:inline-flex;gap:8px;align-items:baseline;padding:10px 2px;text-decoration:none;transition:color .16s cubic-bezier(.2,.6,.2,1)}
+.nv:hover{color:#E8EDF4 !important}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:2px;text-decoration:none;font-size:15px;font-weight:500;transition:background .16s cubic-bezier(.2,.6,.2,1),border-color .16s cubic-bezier(.2,.6,.2,1),color .16s}
+.btn-p{background:#5CC8DC;color:#05161B}
+.btn-p:hover{background:#9BE5F1}
+.btn-g{border:1px solid #2C3B50;color:#E8EDF4}
+.btn-g:hover{border-color:#5CC8DC;color:#9BE5F1}
+.entry{transition:background .2s cubic-bezier(.2,.6,.2,1)}
+.entry:hover{background:rgba(92,200,220,.05)}
+.entry:hover .go{transform:translateX(4px);color:#9BE5F1}
+.go{display:inline-block;transition:transform .2s cubic-bezier(.2,.6,.2,1),color .2s;color:#8793A6}
+.crow{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:22px 0;border-top:1px solid #1E2938;text-decoration:none;transition:padding .2s cubic-bezier(.2,.6,.2,1)}
+.crow:hover{padding-left:12px}
+.crow:hover .go{transform:translateX(4px);color:#9BE5F1}
+@keyframes fi{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+.fi{animation:fi .7s cubic-bezier(.2,.6,.2,1) both}
+.pd{animation:pulse 2.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.fi,.pd{animation:none}.entry,.crow,.go,.btn,.lnk{transition:none}}
+@media (max-width:720px){.hide-s{display:none !important}}
+</style>
+</helmet>
+<div id="top" style="position: relative; background: #080B10; color: #E8EDF4; font-family: 'Geist', system-ui, sans-serif; overflow-x: clip">
+
+<div aria-hidden="true" style="position: sticky; top: 0; height: 0; z-index: 0; pointer-events: none; --bg-h: min(100vh, 1000px); --bg-base: transparent">
+<dc-import name="Background" density="1" progress="-1" hint-size="100%,900px"></dc-import>
+</div>
+
+<div style="position: relative; z-index: 1">
+
+<!-- A · NAVIGATION -->
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(8,11,16,0.8); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #1E2938">
+<div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px">
+<a href="#top" aria-label="Home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+<svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" style="flex: none"><path d="M5 19 L13 6 L21 19 M5 19 H21" fill="none" stroke="#5CC8DC" stroke-width="1.2"/><circle cx="5" cy="19" r="2.4" fill="#080B10" stroke="#5CC8DC" stroke-width="1.2"/><circle cx="13" cy="6" r="2.4" fill="#5CC8DC"/><circle cx="21" cy="19" r="2.4" fill="#080B10" stroke="#5CC8DC" stroke-width="1.2"/></svg>
+<span class="mono" style="color: #E8EDF4; letter-spacing: .1em">Jeff <span class="ph">[Surname]</span></span>
+</a>
+<nav aria-label="Primary" style="display: flex; gap: clamp(16px, 2.6vw, 40px); flex-wrap: wrap; justify-content: flex-end">
+<sc-for list="{{navItems}}" as="item" hint-placeholder-count="5">
+<a class="nv mono" href="{{item.href}}" style="color: {{item.color}}; font-size: 12px">
+<span style="color: #8793A6; font-size: 10px">{{item.n}}</span><span>{{item.label}}</span>
+<span aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: #5CC8DC; opacity: {{item.bar}}; transition: opacity .2s cubic-bezier(.2,.6,.2,1)"></span>
+</a>
+</sc-for>
+</nav>
+</div>
+</header>
+
+<!-- B · HERO -->
+<section id="hero" data-bg="0" style="position: relative; min-height: 860px; display: flex; flex-direction: column">
+<div aria-hidden="true" class="hide-s" style="position: absolute; right: 20px; top: 60px; bottom: 150px; width: 10px; background-image: repeating-linear-gradient(to bottom, #2C3B50 0 1px, transparent 1px 12px), repeating-linear-gradient(to bottom, #5B6B83 0 1px, transparent 1px 60px); background-size: 6px 100%, 10px 100%; background-repeat: no-repeat; background-position: right top, right top; opacity: .8"></div>
+<div class="wrap" style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 72px; padding-bottom: 40px">
+<div class="fi mono" style="display: flex; align-items: center; gap: 12px; color: #A3AFC0; margin-bottom: 36px; flex-wrap: wrap">
+<span class="pd" aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #5CC8DC; flex: none"></span>
+<span>Student researcher</span><span style="color: #5B6B83">/</span><span>RVCE Bengaluru</span><span style="color: #5B6B83">/</span><span>Class of 2027</span>
+</div>
+<h1 class="fi" style="animation-delay: 80ms; margin: 0; max-width: 940px; font-size: clamp(50px, 8.1vw, 118px); line-height: .96; letter-spacing: -.045em; font-weight: 500">How little <br>precision can <br>a network <br>afford<span style="color: #5CC8DC">?</span></h1>
+<p class="fi p" style="animation-delay: 180ms; max-width: 540px; margin-top: 40px; font-size: 19px; color: #C3CDDA">I study what is lost, and what survives, when neural networks are made small: low-bit quantization, spiking computation and distillation, under the compute limits that real deployment imposes.</p>
+<div class="fi" style="animation-delay: 260ms; display: flex; gap: 14px; flex-wrap: wrap; margin-top: 40px; align-items: center">
+<a class="btn btn-p" href="#research">Research <span aria-hidden="true">→</span></a>
+<a class="btn btn-g" href="#publications">Publications</a>
+<a class="btn btn-g" href="#contact">GitHub <span aria-hidden="true" class="mono" style="font-size: 11px">↗</span></a>
+</div>
+</div>
+<div class="wrap" style="padding-bottom: 36px; width: 100%">
+<div style="display: flex; flex-wrap: wrap; gap: 14px 48px; justify-content: space-between; align-items: flex-end; border-top: 1px solid #1E2938; padding-top: 18px">
+<div style="display: flex; flex-wrap: wrap; gap: 14px 40px">
+<div><div class="lbl" style="font-size: 10px">Focus</div><div class="mono" style="color: #C3CDDA; margin-top: 6px">Quantization · SNNs · Distillation</div></div>
+<div><div class="lbl" style="font-size: 10px">Status</div><div class="mono" style="color: #C3CDDA; margin-top: 6px"><span style="color: #5CC8DC">●</span> Ongoing: vision-model quantization study</div></div>
+<div><div class="lbl" style="font-size: 10px">Position</div><div class="mono" style="color: #C3CDDA; margin-top: 6px">12.92°N 77.50°E</div></div>
+</div>
+<div class="mono hide-s" style="color: #8793A6; font-size: 10px; text-align: right; line-height: 1.7">Fig. 00 · signal propagation (live)<br>N = 64 nodes · k-nearest links · canvas 2D</div>
+</div>
+</div>
+</section>
+
+<!-- C · RESEARCH FOCUS -->
+<section id="research" data-bg="1" style="padding: 140px 0 120px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-end; justify-content: space-between; margin-bottom: 72px">
+<div style="flex: 1 1 520px; max-width: 760px">
+<div class="lbl" style="margin-bottom: 24px">01 — Research direction</div>
+<h2 class="h2">One question, approached from three directions.</h2>
+</div>
+<p class="p" style="flex: 1 1 320px; max-width: 420px">Each thread asks which parts of a model's precision, activity and capacity are actually load-bearing, and what breaks first when they are removed.</p>
+</div>
+
+<div style="border-top: 1px solid #2C3B50">
+
+<!-- R.1 -->
+<article class="entry" style="display: flex; flex-wrap: wrap; gap: 32px 56px; padding: 48px 0; border-bottom: 1px solid #1E2938; align-items: center">
+<div class="mono" style="flex: 0 0 72px; color: #5CC8DC">R.1</div>
+<div style="flex: 1 1 340px; max-width: 520px">
+<div style="margin-bottom: 20px"><span class="chip c-on">Ongoing</span></div>
+<h3 class="h3">Quantization &amp; efficient inference</h3>
+<p class="p" style="margin-top: 16px">Low-bit weights and activations for vision models: post-training versus quantization-aware training, and where accuracy loss concentrates across CNNs, MobileNets and transformers.</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px"><span class="tag">PTQ</span><span class="tag">QAT</span><span class="tag">low-bit inference</span><span class="tag">ViT / Swin / MobileNet</span></div>
+</div>
+<figure style="flex: 1 1 340px; max-width: 480px; margin: 0">
+<svg viewBox="0 0 420 210" role="img" aria-label="Schematic: a continuous response curve and its staircase approximation on a b-bit grid" style="width: 100%; height: auto; display: block">
+<g stroke="#2C3B50" stroke-width="1" stroke-dasharray="2 4"><path d="M0 22H420M0 48H420M0 74H420M0 100H420M0 126H420M0 152H420M0 178H420"/></g>
+<path d="M0 128 L6 137 L12 146 L18 153 L24 159 L30 164 L36 166 L42 167 L48 166 L54 163 L60 160 L66 155 L72 149 L78 143 L84 137 L90 131 L96 125 L102 120 L108 116 L114 112 L120 108 L126 105 L132 101 L138 98 L144 94 L150 89 L156 84 L162 78 L168 71 L174 64 L180 58 L186 51 L192 45 L198 39 L204 35 L210 32 L216 31 L222 32 L228 35 L234 39 L240 45 L246 53 L252 61 L258 71 L264 80 L270 89 L276 98 L282 107 L288 114 L294 120 L300 125 L306 129 L312 132 L318 135 L324 137 L330 138 L336 140 L342 141 L348 143 L354 145 L360 147 L366 150 L372 152 L378 153 L384 155 L390 155 L396 154 L402 152 L408 148 L414 143 L420 136" fill="none" stroke="#8793A6" stroke-width="1.2"/>
+<path d="M0 126 L8 126 L8 152 L34 152 L34 178 L52 178 L52 152 L82 152 L82 126 L114 126 L114 100 L154 100 L154 74 L178 74 L178 48 L206 48 L206 22 L230 22 L230 48 L252 48 L252 74 L270 74 L270 100 L288 100 L288 126 L334 126 L334 152 L418 152 L418 126 L420 126" fill="none" stroke="#5CC8DC" stroke-width="1.8" stroke-linejoin="round"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6"><text x="0" y="200" fill="#8793A6">— continuous response</text><text x="160" y="200" fill="#5CC8DC">— b-bit grid (schematic)</text></g>
+</svg>
+<figcaption class="mono" style="font-size: 10px; color: #8793A6; margin-top: 10px">Fig. R.1 · illustration, not a result</figcaption>
+</figure>
+</article>
+
+<!-- R.2 -->
+<article class="entry" style="display: flex; flex-wrap: wrap; gap: 32px 56px; padding: 48px 0; border-bottom: 1px solid #1E2938; align-items: center">
+<div class="mono" style="flex: 0 0 72px; color: #5CC8DC">R.2</div>
+<div style="flex: 1 1 340px; max-width: 520px">
+<div style="margin-bottom: 20px"><span class="chip c-ex">Exploratory</span></div>
+<h3 class="h3">Spiking networks &amp; neuromorphic computing</h3>
+<p class="p" style="margin-top: 16px">Event-driven computation in place of dense activations. I am interested in how spiking networks are trained, and in whether the energy they promise survives an honest accounting against accuracy.</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px"><span class="tag">SNN</span><span class="tag">LIF neurons</span><span class="tag">event-driven</span></div>
+</div>
+<figure style="flex: 1 1 340px; max-width: 480px; margin: 0">
+<svg viewBox="0 0 420 210" role="img" aria-label="Schematic: spike raster above a leaky integrate-and-fire membrane potential trace crossing a threshold" style="width: 100%; height: auto; display: block">
+<g transform="translate(0,6)" stroke="#5CC8DC" stroke-width="1.4" stroke-linecap="round" fill="none"><path d="M14 0 v8 M32 0 v8 M58 0 v8 M92 0 v8 M107 0 v8 M123 0 v8 M163 0 v8 M194 0 v8 M211 0 v8 M236 0 v8 M268 0 v8 M283 0 v8 M313 0 v8 M333 0 v8 M348 0 v8 M364 0 v8 M391 0 v8 M418 0 v8"/><path d="M11 12 v8 M33 12 v8 M70 12 v8 M103 12 v8 M124 12 v8 M170 12 v8 M208 12 v8 M231 12 v8 M281 12 v8 M308 12 v8 M348 12 v8 M388 12 v8"/><path d="M5 24 v8 M56 24 v8 M85 24 v8 M125 24 v8 M153 24 v8 M187 24 v8 M231 24 v8 M283 24 v8 M318 24 v8 M378 24 v8 M411 24 v8"/><path d="M9 36 v8 M47 36 v8 M116 36 v8 M184 36 v8 M228 36 v8 M283 36 v8 M321 36 v8 M388 36 v8"/><path d="M5 48 v8 M82 48 v8 M133 48 v8 M202 48 v8 M274 48 v8 M339 48 v8 M397 48 v8"/></g>
+<g transform="translate(0,78) scale(1,0.55)"><path d="M0 50 H420" stroke="#E3B766" stroke-width="1" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/><path d="M0 150 C11 150 21 55 24 30 L24 150 C34 150 43 55 46 30 L46 150 C56 150 65 55 68 30 L68 150 C81 150 93 55 96 30 L96 150 C137 150 177 55 188 30 L188 150 C201 150 213 55 216 30 L216 150 C226 150 235 55 238 30 L238 150 C247 150 256 55 258 30 L258 150 C272 150 284 55 288 30 L288 150 C328 150 367 55 378 30 L378 150 C391 150 403 55 406 30 L406 150 C412 150 416 120 420 100" fill="none" stroke="#A3AFC0" stroke-width="1.4" vector-effect="non-scaling-stroke"/></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6"><text x="0" y="200" fill="#8793A6">spike raster · membrane V(t)</text><text x="300" y="104" fill="#E3B766">threshold</text></g>
+</svg>
+<figcaption class="mono" style="font-size: 10px; color: #8793A6; margin-top: 10px">Fig. R.2 · illustration, not a result</figcaption>
+</figure>
+</article>
+
+<!-- R.3 -->
+<article class="entry" style="display: flex; flex-wrap: wrap; gap: 32px 56px; padding: 48px 0; border-bottom: 1px solid #1E2938; align-items: center">
+<div class="mono" style="flex: 0 0 72px; color: #5CC8DC">R.3</div>
+<div style="flex: 1 1 340px; max-width: 520px">
+<div style="margin-bottom: 20px"><span class="chip c-ex">Exploratory</span></div>
+<h3 class="h3">Distillation &amp; model compression</h3>
+<p class="p" style="margin-top: 16px">Transferring behaviour from large models into small ones, and treating distillation, pruning and quantization as parts of one compression budget under resource constraints.</p>
+<div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px"><span class="tag">knowledge distillation</span><span class="tag">compression</span><span class="tag">constrained ML</span></div>
+</div>
+<figure style="flex: 1 1 340px; max-width: 480px; margin: 0">
+<svg viewBox="0 0 420 210" role="img" aria-label="Schematic: a large teacher network emits a soft output distribution that a small student network learns to match" style="width: 100%; height: auto; display: block">
+<rect x="6" y="14" width="104" height="168" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
+<g fill="#5B6B83"><circle cx="26" cy="36" r="3.2"/><circle cx="26" cy="62" r="3.2"/><circle cx="26" cy="88" r="3.2"/><circle cx="26" cy="114" r="3.2"/><circle cx="26" cy="140" r="3.2"/><circle cx="26" cy="166" r="3.2"/><circle cx="58" cy="36" r="3.2"/><circle cx="58" cy="62" r="3.2"/><circle cx="58" cy="88" r="3.2"/><circle cx="58" cy="114" r="3.2"/><circle cx="58" cy="140" r="3.2"/><circle cx="58" cy="166" r="3.2"/><circle cx="90" cy="36" r="3.2"/><circle cx="90" cy="62" r="3.2"/><circle cx="90" cy="88" r="3.2"/><circle cx="90" cy="114" r="3.2"/><circle cx="90" cy="140" r="3.2"/><circle cx="90" cy="166" r="3.2"/></g>
+<g fill="#8793A6"><rect x="140" y="108" width="9" height="24"/><rect x="153" y="62" width="9" height="70"/><rect x="166" y="94" width="9" height="38"/><rect x="179" y="120" width="9" height="12"/><rect x="192" y="125" width="9" height="7"/></g>
+<path d="M140 132 H201" stroke="#5B6B83"/>
+<path d="M214 100 H266" stroke="#5CC8DC" stroke-dasharray="4 4" fill="none"/><path d="M262 95 L270 100 L262 105" fill="none" stroke="#5CC8DC"/>
+<g fill="#5CC8DC"><rect x="280" y="104" width="9" height="28"/><rect x="293" y="68" width="9" height="64"/><rect x="306" y="96" width="9" height="36"/><rect x="319" y="118" width="9" height="14"/><rect x="332" y="125" width="9" height="7"/></g>
+<path d="M280 132 H341" stroke="#5B6B83"/>
+<rect x="356" y="62" width="58" height="84" fill="none" stroke="#5CC8DC" stroke-dasharray="3 4"/>
+<g fill="#5CC8DC"><circle cx="372" cy="86" r="3.2"/><circle cx="372" cy="104" r="3.2"/><circle cx="372" cy="122" r="3.2"/><circle cx="398" cy="86" r="3.2"/><circle cx="398" cy="104" r="3.2"/><circle cx="398" cy="122" r="3.2"/></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6"><text x="6" y="8" fill="#8793A6">teacher</text><text x="356" y="56" fill="#5CC8DC">student</text><text x="146" y="152" fill="#8793A6">soft targets</text><text x="214" y="92" fill="#5CC8DC">match</text></g>
+</svg>
+<figcaption class="mono" style="font-size: 10px; color: #8793A6; margin-top: 10px">Fig. R.3 · illustration, not a result</figcaption>
+</figure>
+</article>
+</div>
+</div>
+</section>
+
+<!-- D · FEATURED RESEARCH -->
+<section id="publications" data-bg="2" style="padding: 120px 0">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-end; justify-content: space-between; margin-bottom: 64px">
+<div style="flex: 1 1 520px; max-width: 760px">
+<div class="lbl" style="margin-bottom: 24px">02 — Publications &amp; ongoing work</div>
+<h2 class="h2">Published, ongoing and exploratory work, kept visibly apart.</h2>
+</div>
+<div style="flex: 1 1 300px; max-width: 360px; display: flex; flex-direction: column; gap: 10px" aria-label="Status key">
+<div style="display: flex; gap: 12px; align-items: center"><span class="chip c-pub" style="min-width: 118px">Published</span><span class="mono" style="font-size: 10px; color: #8793A6">peer-reviewed, citable</span></div>
+<div style="display: flex; gap: 12px; align-items: center"><span class="chip c-on" style="min-width: 118px">Ongoing</span><span class="mono" style="font-size: 10px; color: #8793A6">active, not yet reported</span></div>
+<div style="display: flex; gap: 12px; align-items: center"><span class="chip c-ex" style="min-width: 118px">Exploratory</span><span class="mono" style="font-size: 10px; color: #8793A6">early, may not continue</span></div>
+</div>
+</div>
+
+<!-- featured publication -->
+<article style="display: flex; flex-wrap: wrap; border: 1px solid #2C3B50; background: rgba(12,17,25,0.9)">
+<div style="flex: 1 1 520px; padding: clamp(24px, 3.2vw, 48px); display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap"><span class="chip c-pub">Published</span><span class="mono" style="color: #A3AFC0">IEEE conference · <span class="ph">[Conference name, Year]</span></span></div>
+<h3 style="margin: 0; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.12; letter-spacing: -.025em; font-weight: 500"><span class="ph">[Verified paper title]</span></h3>
+<div style="font-size: 16px; line-height: 1.6; color: #C3CDDA">Authors: <span class="ph">[confirm order]</span> Maurya Pradeep Gowda, Ronan Lobo, Jeff <span class="ph">[Surname]</span></div>
+<p class="p" style="max-width: 640px">Topic on record: routing incoming queries between large language models using a fine-tuned DistilBERT classifier. <span class="ph">[Two to three sentence abstract summary: problem, method, headline result with its numbers, once verified.]</span></p>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; margin-top: 8px">
+<a class="lnk mono" href="#publications">Paper <span class="ph">[DOI / IEEE Xplore]</span> ↗</a>
+<a class="lnk mono" href="#projects">Code <span class="ph">[GitHub repo]</span> ↗</a>
+<a class="lnk mono" href="#publications">BibTeX</a>
+</div>
+</div>
+<div style="flex: 1 1 380px; max-width: 520px; padding: clamp(24px, 3vw, 40px); border-left: 1px solid #1E2938; display: flex; flex-direction: column; gap: 20px; background: rgba(16,22,31,0.8)">
+<div class="mono" style="font-size: 10px; color: #8793A6">Evidence slot · placeholder</div>
+<div style="overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 320px; font-family: 'Geist Mono', monospace; font-size: 12px">
+<thead><tr style="color: #8793A6; text-align: left"><th style="font-weight: 400; padding: 8px 0; border-bottom: 1px solid #2C3B50">Method</th><th style="font-weight: 400; padding: 8px 8px; border-bottom: 1px solid #2C3B50; text-align: right">Acc.</th><th style="font-weight: 400; padding: 8px 8px; border-bottom: 1px solid #2C3B50; text-align: right">Params</th><th style="font-weight: 400; padding: 8px 0; border-bottom: 1px solid #2C3B50; text-align: right">Latency</th></tr></thead>
+<tbody style="color: #C3CDDA"><tr><td class="ph" style="padding: 10px 0; border-bottom: 1px solid #1E2938">[Baseline]</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 0; border-bottom: 1px solid #1E2938; color: #8793A6">—</td></tr><tr><td class="ph" style="padding: 10px 0; border-bottom: 1px solid #1E2938">[Router]</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 0; border-bottom: 1px solid #1E2938; color: #8793A6">—</td></tr></tbody>
+</table></div>
+<div>
+<svg viewBox="0 0 320 150" role="img" aria-label="Empty accuracy versus model size plot, placeholder" style="width: 100%; height: auto; display: block">
+<rect x="36" y="8" width="276" height="112" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
+<path d="M36 120 V8 M36 120 H312" stroke="#5B6B83"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" fill="#8793A6" letter-spacing="0.5"><text x="36" y="142">model size →</text><text x="2" y="14">acc.</text><text x="116" y="70" fill="#E3B766">[plot goes here]</text></g>
+</svg>
+<div class="mono" style="font-size: 10px; color: #8793A6; margin-top: 6px">Fig. 1 · accuracy vs. model size · no values shown</div>
+</div>
+</div>
+</article>
+
+<!-- ledger -->
+<div style="margin-top: 72px">
+<div class="lbl" style="margin-bottom: 16px">Research ledger</div>
+<div style="border-top: 1px solid #2C3B50">
+<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
+<span class="chip c-on" style="flex: none">Ongoing</span>
+<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em">Contradictions in vision-model quantization</div><div class="p" style="font-size: 15px; margin-top: 6px">Mining conflicting published claims on PTQ and QAT; the research question is to emerge from one that survives scrutiny.</div></div>
+<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Student team · Colab-class compute<br>Target: <span class="ph">[journal / venue]</span></div>
+<span class="go mono" aria-hidden="true">→</span>
+</a>
+<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
+<span class="chip c-ex" style="flex: none">Exploratory</span>
+<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em"><span class="ph">[Spiking-network experiment title]</span></div><div class="p" style="font-size: 15px; margin-top: 6px"><span class="ph">[One line: the question and the setup. Remove this entry if it is not yet real work.]</span></div></div>
+<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Started <span class="ph">[month year]</span><br>Code <span class="ph">[repo]</span></div>
+<span class="go mono" aria-hidden="true">→</span>
+</a>
+<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
+<span class="chip c-ex" style="flex: none">Exploratory</span>
+<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em"><span class="ph">[Distillation experiment title]</span></div><div class="p" style="font-size: 15px; margin-top: 6px"><span class="ph">[One line: teacher, student, constraint. Remove if not yet real work.]</span></div></div>
+<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Started <span class="ph">[month year]</span><br>Code <span class="ph">[repo]</span></div>
+<span class="go mono" aria-hidden="true">→</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- E · PROJECTS -->
+<section id="projects" data-bg="2" style="padding: 120px 0 100px">
+<div class="wrap">
+<div style="margin-bottom: 72px; max-width: 760px">
+<div class="lbl" style="margin-bottom: 24px">03 — Selected projects</div>
+<h2 class="h2">Each project is a small research artefact.</h2>
+</div>
+
+<!-- P1 -->
+<article style="display: flex; flex-wrap: wrap; gap: 40px 64px; padding: 56px 0; border-top: 1px solid #2C3B50; align-items: center">
+<div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.1</span><span class="chip c-on">Ongoing</span></div>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">Contradiction mining in vision-model quantization</h3>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Published results on quantizing vision models do not always agree. Which disagreements are real, and which come from differences in protocol?</p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">Collect conflicting claims across papers, keep only contradictions that survive scrutiny, and let the research question emerge from one. Public checkpoints, PyTorch and timm, Colab-class GPUs.</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">PyTorch</span><span class="tag">timm</span><span class="tag">torchvision</span><span class="tag">PTQ / QAT</span></div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a><a class="lnk mono" href="#projects">Notes <span class="ph">[doc]</span> ↗</a></div>
+</div>
+<figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.1 · conflicting claims</span><span style="color: #E3B766">schematic · not data</span></div>
+<svg viewBox="0 0 540 260" role="img" aria-label="Schematic: two accuracy-versus-bit-width curves agree at high precision and diverge at low bit-widths, leaving an unexplained gap" style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
+<defs><pattern id="hatchA" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8" stroke="#5CC8DC" stroke-opacity=".35" stroke-width="1"/></pattern></defs>
+<path d="M50 30 V220 H510" fill="none" stroke="#5B6B83"/>
+<g stroke="#2C3B50" stroke-dasharray="2 4"><path d="M165 30V220M280 30V220M395 30V220M510 30V220"/></g>
+<path d="M280 62 C340 72 420 104 510 150 L510 214 C420 190 340 120 280 88 Z" fill="url(#hatchA)"/>
+<path d="M50 50 C130 50 210 54 280 62 C340 72 420 104 510 150" fill="none" stroke="#5CC8DC" stroke-width="1.8"/>
+<path d="M50 52 C130 54 210 66 280 88 C340 120 420 190 510 214" fill="none" stroke="#A3AFC0" stroke-width="1.6" stroke-dasharray="6 4"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="46" y="240" text-anchor="middle">8</text><text x="165" y="240" text-anchor="middle">6</text><text x="280" y="240" text-anchor="middle">4</text><text x="395" y="240" text-anchor="middle">3</text><text x="510" y="240" text-anchor="middle">2</text><text x="50" y="20">accuracy</text><text x="330" y="256">bit-width →</text><text x="400" y="118" fill="#5CC8DC">claim A</text><text x="420" y="198" fill="#C3CDDA">claim B</text><text x="395" y="160" fill="#9BE5F1" text-anchor="middle">gap = ?</text></g>
+</svg>
+</figure>
+</article>
+
+<!-- P2 -->
+<article style="display: flex; flex-wrap: wrap-reverse; gap: 40px 64px; padding: 56px 0; border-top: 1px solid #1E2938; align-items: center">
+<figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.2 · dense vs. event-driven</span><span style="color: #E3B766">schematic · not data</span></div>
+<svg viewBox="0 0 540 260" role="img" aria-label="Schematic: a dense activation grid, fully active, beside an event-driven grid where only a few cells fire" style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
+<defs><pattern id="cellsD" width="28" height="28" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="22" height="22" fill="#5CC8DC" fill-opacity=".34"/></pattern><pattern id="cellsS" width="28" height="28" patternUnits="userSpaceOnUse"><rect x="3.5" y="3.5" width="21" height="21" fill="none" stroke="#2C3B50"/></pattern></defs>
+<rect x="20" y="40" width="224" height="168" fill="url(#cellsD)"/>
+<rect x="296" y="40" width="224" height="168" fill="url(#cellsS)"/>
+<g fill="#5CC8DC"><rect x="303" y="47" width="22" height="22"/><rect x="415" y="75" width="22" height="22"/><rect x="359" y="103" width="22" height="22"/><rect x="471" y="103" width="22" height="22"/><rect x="331" y="131" width="22" height="22"/><rect x="443" y="159" width="22" height="22"/><rect x="387" y="187" width="22" height="22" opacity="0"/><rect x="303" y="159" width="22" height="22"/></g>
+<path d="M258 124 H282" stroke="#5B6B83"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="20" y="28">dense: every unit, every step</text><text x="296" y="28" fill="#5CC8DC">event-driven: spikes only</text><text x="20" y="236">activations computed</text><text x="296" y="236">activations computed</text><text x="20" y="252" fill="#C3CDDA">many</text><text x="296" y="252" fill="#C3CDDA">few, if the model stays accurate</text></g>
+</svg>
+</figure>
+<div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.2</span><span class="chip c-ex">Exploratory</span></div>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500"><span class="ph">[SNN project title]</span></h3>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px"><span class="ph">[One sentence: the question you are investigating in spiking networks.]</span></p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px"><span class="ph">[Two sentences: model, training method, what is measured.]</span></p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag ph">[framework]</span><span class="tag ph">[dataset]</span></div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a><a class="lnk mono" href="#projects">Write-up <span class="ph">[doc]</span> ↗</a></div>
+</div>
+</article>
+
+<!-- P3 -->
+<article style="display: flex; flex-wrap: wrap; gap: 40px 64px; padding: 56px 0; border-top: 1px solid #1E2938; border-bottom: 1px solid #1E2938; align-items: center">
+<div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.3</span><span class="chip c-pub">Published</span></div>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">LLM query routing with a DistilBERT classifier</h3>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Not every query needs the largest model. Can a small classifier decide, quickly and cheaply, where each query should go?</p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">A fine-tuned DistilBERT classifier routes incoming queries between language models. Evaluated against <span class="ph">[baselines]</span> on <span class="ph">[dataset / metric]</span>.</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">DistilBERT</span><span class="tag">text classification</span><span class="tag">LLM routing</span></div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#publications">Paper ↗</a><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a></div>
+</div>
+<figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.3 · routing pipeline</span><span style="color: #E3B766">proposed diagram · confirm against paper</span></div>
+<div style="padding: 36px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px">
+<div style="border: 1px solid #2C3B50; padding: 14px 16px; text-align: center; font-size: 14px; color: #C3CDDA; min-width: 92px">Query</div>
+<span class="mono" aria-hidden="true" style="color: #5CC8DC">→</span>
+<div style="border: 1px solid #5CC8DC; padding: 14px 16px; text-align: center; font-size: 14px; background: rgba(92,200,220,0.08); min-width: 150px">DistilBERT<br><span class="mono" style="font-size: 10px; color: #9BE5F1">fine-tuned classifier</span></div>
+<span class="mono" aria-hidden="true" style="color: #5CC8DC">→</span>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="border: 1px solid #2C3B50; padding: 10px 14px; font-size: 13px; color: #C3CDDA">Smaller, cheaper model</div>
+<div style="border: 1px dashed #5B6B83; padding: 10px 14px; font-size: 13px; color: #C3CDDA">Larger, more capable model</div>
+</div>
+</div>
+</figure>
+</article>
+</div>
+</section>
+
+<!-- F · METHOD -->
+<section id="method" data-bg="2" style="padding: 100px 0 120px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-end; justify-content: space-between; margin-bottom: 64px">
+<div style="flex: 1 1 520px; max-width: 760px">
+<div class="lbl" style="margin-bottom: 24px">04 — Method</div>
+<h2 class="h2">Evidence before claims.</h2>
+</div>
+<p class="p" style="flex: 1 1 320px; max-width: 440px">Accuracy alone is a thin result. I try to report what changed, by how much, across how many runs, and where the method fails.</p>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; border-top: 1px solid #2C3B50">
+<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.1</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Hypothesis</div><p class="p" style="font-size: 15px">A falsifiable statement of what should change, and by how much.</p></li>
+<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.2</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Controlled setup</div><p class="p" style="font-size: 15px">One variable at a time. Fixed seeds, public checkpoints, stated compute limits.</p></li>
+<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.3</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Quantitative evaluation</div><p class="p" style="font-size: 15px">Accuracy against size and latency, with variance across runs.</p></li>
+<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.4</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Failure analysis</div><p class="p" style="font-size: 15px">Which inputs, layers or settings break, and why, not only how often.</p></li>
+<li style="flex: 1 1 220px; padding: 28px 0 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.5</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Reproducible release</div><p class="p" style="font-size: 15px">Code, configs and logs sufficient to regenerate each table.</p></li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; margin-top: 56px; align-items: flex-start">
+<p class="p" style="flex: 1 1 320px; max-width: 460px">What a finished experiment should leave behind, as a repository layout I intend to hold my own work to:</p>
+<pre class="mono" style="flex: 1 1 360px; max-width: 560px; margin: 0; padding: 20px 24px; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92); font-size: 12px; line-height: 1.9; letter-spacing: .02em; text-transform: none; color: #C3CDDA; overflow-x: auto"><span style="color: #8793A6">results/</span>
+  config.yaml      <span style="color: #8793A6"># every hyperparameter</span>
+  seeds.txt        <span style="color: #8793A6"># runs reported, not best-of</span>
+  table_1.csv      <span style="color: #8793A6"># raw numbers behind each figure</span>
+  failures.md      <span style="color: #8793A6"># cases the method gets wrong</span></pre>
+</div>
+<div class="mono" style="font-size: 10px; color: #8793A6; margin-top: 14px">Proposed structure · not yet a published repo</div>
+</div>
+</section>
+
+<!-- CV -->
+<section id="cv" data-bg="2" style="padding: 40px 0 100px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: center; justify-content: space-between; border-top: 1px solid #2C3B50; border-bottom: 1px solid #1E2938; padding: 36px 0">
+<div style="flex: 1 1 420px">
+<div class="lbl" style="margin-bottom: 14px">05 — Curriculum vitae</div>
+<div style="font-size: 22px; line-height: 1.35; letter-spacing: -.015em">B.E. Computer Science &amp; Engineering, RV College of Engineering, Bengaluru. Expected 2027.</div>
+</div>
+<a class="btn btn-g" href="#cv" style="flex: none">Download CV <span class="mono ph" style="font-size: 11px">[PDF · updated date]</span> <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+</section>
+
+<!-- G · CONTACT -->
+<section id="contact" data-bg="3" style="padding: 100px 0 0; min-height: 780px; display: flex; flex-direction: column">
+<div class="wrap" style="flex: 1; width: 100%">
+<div class="lbl" style="margin-bottom: 24px">06 — Contact</div>
+<h2 style="margin: 0; max-width: 920px; font-size: clamp(40px, 6.2vw, 92px); line-height: 1; letter-spacing: -.04em; font-weight: 500">If this overlaps with what you work on, I would like to compare notes.</h2>
+<p class="p" style="max-width: 520px; margin-top: 32px">I am looking for research collaboration in efficient and resource-constrained machine learning, and happy to share code, logs and open questions.</p>
+<div style="margin-top: 64px; max-width: 900px">
+<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">GitHub</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">github.com/<span class="ph">[username]</span></span><span class="go mono" aria-hidden="true">↗</span></a>
+<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">LinkedIn</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">linkedin.com/in/<span class="ph">[username]</span></span><span class="go mono" aria-hidden="true">↗</span></a>
+<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">Email</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em"><span class="ph">[email address]</span></span><span class="go mono" aria-hidden="true">→</span></a>
+<a class="crow" href="#cv" style="border-bottom: 1px solid #1E2938"><span class="mono" style="color: #8793A6; flex: 0 0 110px">CV</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">Download as PDF</span><span class="go mono" aria-hidden="true">↓</span></a>
+</div>
+</div>
+<footer class="wrap" style="width: 100%; padding-top: 80px; padding-bottom: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; border-top: 1px solid #1E2938; padding-top: 18px">
+<span class="mono" style="font-size: 10px; color: #8793A6">© 2026 Jeff <span class="ph">[Surname]</span> · RVCE Bengaluru</span>
+<span class="mono" style="font-size: 10px; color: #8793A6">Static site · React + CSS + Canvas 2D · GitHub Pages</span>
+<a class="lnk mono" href="#top" style="font-size: 10px; color: #A3AFC0">Back to top ↑</a>
+</div>
+<div class="mono" style="font-size: 10px; color: #8793A6; margin-top: 14px"><span class="ph">Amber dashed text</span> = placeholder to be replaced with verified content</div>
+</footer>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8400}}'>
+class Component extends DCLogic {
+  state = { active: 'research' };
+
+  renderVals() {
+    const a = this.state.active;
+    const items = [['research', 'Research', '01'], ['publications', 'Publications', '02'], ['projects', 'Projects', '03'], ['cv', 'CV', '05'], ['contact', 'Contact', '06']].map((x) => ({
+      label: x[1], n: x[2], href: '#' + x[0], bar: a === x[0] ? '1' : '0', color: a === x[0] ? '#E8EDF4' : '#A3AFC0'
+    }));
+    return { navItems: items };
+  }
+
+  componentDidMount() {
+    // scroll-spy: one passive listener, rAF-throttled, reads only (no layout writes)
+    const map = [['research', 'research'], ['publications', 'publications'], ['projects', 'projects'], ['method', 'projects'], ['cv', 'cv'], ['contact', 'contact']];
+    let queued = false;
+    this._spy = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        let cur = null;
+        for (let i = 0; i < map.length; i++) {
+          const el = document.getElementById(map[i][0]);
+          if (el && el.getBoundingClientRect().top <= 140) cur = map[i][1];
+        }
+        if (cur && cur !== this.state.active) this.setState({ active: cur });
+      });
+    };
+    window.addEventListener('scroll', this._spy, { passive: true });
+  }
+
+  componentWillUnmount() {
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+  }
+}
+</script>
+</body>
+</html>
