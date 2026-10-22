@@ -1,0 +1,135 @@
+.hero-section {
+  position: relative;
+  min-height: 860px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .hero-section {
+    min-height: 780px;
+    padding-top: 0;
+  }
+}
+
+.hero-vline {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  bottom: 150px;
+  width: 10px;
+  background-image: repeating-linear-gradient(to bottom, var(--line-2) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(to bottom, var(--mute) 0 1px, transparent 1px 60px);
+  background-size:
+    6px 100%,
+    10px 100%;
+  background-repeat: no-repeat;
+  background-position:
+    right top,
+    right top;
+  opacity: 0.8;
+}
+
+.hero-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 72px;
+  padding-bottom: 40px;
+}
+
+@media (max-width: 720px) {
+  .hero-main {
+    padding-top: 56px;
+    padding-bottom: 24px;
+  }
+}
+
+.hero-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-2);
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.hero-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex: none;
+}
+
+.hero-status-sep {
+  color: var(--mute);
+}
+
+.hero-headline {
+  margin: 0;
+  max-width: 940px;
+  font-size: clamp(50px, 8.1vw, 118px);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+}
+
+.hero-lead {
+  max-width: 540px;
+  margin-top: 40px;
+  font-size: 19px;
+  color: var(--text-1);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-ctas .btn {
+    justify-content: space-between;
+  }
+}
+
+.hero-bottom {
+  padding-bottom: 36px;
+  width: 100%;
+}
+
+.hero-bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 48px;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.hero-meta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 40px;
+}
+
+.hero-meta-value {
+  color: var(--text-1);
+  margin-top: 6px;
+}
+
+.hero-figure-note {
+  color: var(--text-3);
+  font-size: 10px;
+  text-align: right;
+  line-height: 1.7;
+}

@@ -25,3 +25,6 @@ test-results/
 
 # TypeScript build cache
 *.tsbuildinfo
+
+# local dev-only screenshot helper (not part of the app)
+.tmp-screenshot.mjs
