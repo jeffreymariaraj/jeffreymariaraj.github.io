@@ -127,8 +127,13 @@
 /* Links                                                             */
 /* ---------------------------------------------------------------- */
 .lnk {
-  display: inline-flex;
-  align-items: center;
+  /* inline-block, not inline-flex: a flex formatting context trims
+     the whitespace at each anonymous flex-item boundary, which
+     silently eats the spaces around an inline <Rich> placeholder.
+     inline-block keeps ordinary inline whitespace rules inside while
+     still accepting min-height for a 44px touch target. */
+  display: inline-block;
+  min-height: 44px;
   text-decoration: none;
   color: var(--text);
   border-bottom: 1px solid var(--line-2);

@@ -1,6 +1,8 @@
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { ResearchFocus } from './components/ResearchFocus';
+import { Publications } from './components/Publications';
+import { Projects } from './components/Projects';
 import { BackgroundLayer } from './background/BackgroundLayer';
 
 /**
@@ -23,8 +25,8 @@ function App() {
         <main id="main">
           <Hero />
           <ResearchFocus />
-          <section id="publications" data-bg="2" />
-          <section id="projects" data-bg="2" />
+          <Publications />
+          <Projects />
           <section id="method" data-bg="2" />
           <section id="cv" data-bg="2" />
           <section id="contact" data-bg="3" />

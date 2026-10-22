@@ -1,0 +1,55 @@
+.routing-pipeline {
+  padding: 36px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+@media (max-width: 480px) {
+  .routing-pipeline {
+    flex-direction: column;
+    padding: 20px 16px;
+  }
+  .routing-pipeline .routing-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.routing-box {
+  border: 1px solid var(--line-2);
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-1);
+  min-width: 92px;
+}
+
+.routing-box-classifier {
+  border-color: var(--cyan);
+  background: rgba(92, 200, 220, 0.08);
+  min-width: 150px;
+}
+
+.routing-arrow {
+  color: var(--cyan);
+}
+
+.routing-outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.routing-output {
+  border: 1px solid var(--line-2);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text-1);
+}
+
+.routing-output-dashed {
+  border-style: dashed;
+  border-color: var(--mute);
+}
