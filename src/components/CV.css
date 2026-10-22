@@ -21,3 +21,21 @@
   flex: 1 1 280px;
   max-width: 380px;
 }
+
+.cv-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+  align-items: flex-start;
+}
+
+@media (max-width: 720px) {
+  .cv-links {
+    width: 100%;
+  }
+  .cv-links .btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

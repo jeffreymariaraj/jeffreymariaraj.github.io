@@ -1,0 +1,113 @@
+.cv-viewer-panel {
+  flex: 1 1 560px;
+  min-width: 0;
+  border: 1px solid var(--line-2);
+  background: rgba(12, 17, 25, 0.94);
+}
+
+.cv-viewer-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 8px 12px 8px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cv-viewer-filename {
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+.cv-viewer-toolbar {
+  display: flex;
+  gap: 4px;
+}
+
+.cv-viewer-btn {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  border-radius: var(--radius);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.cv-viewer-btn:hover:not(:disabled) {
+  border-color: var(--cyan);
+  color: var(--cyan-hi);
+}
+
+.cv-viewer-btn:disabled {
+  color: var(--text-3);
+  cursor: default;
+  opacity: 0.5;
+}
+
+@media (max-width: 720px) {
+  .cv-viewer-btn {
+    border: 0;
+  }
+  .cv-viewer-toolbar {
+    gap: 2px;
+  }
+}
+
+.cv-viewer-scroll {
+  height: 720px;
+  overflow: auto;
+  background: var(--ink-3);
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .cv-viewer-scroll {
+    height: 460px;
+    padding: 14px;
+  }
+}
+
+.cv-viewer-canvas {
+  display: block;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* Skeleton page: a ghost mockup of text lines on a white sheet,
+   shown while pdf.js is loading (or hasn't been triggered yet). */
+.cv-skeleton-page {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1.414;
+  background: #ffffff;
+  padding: 9%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cv-skeleton-bar {
+  background: #d7dce4;
+}
+
+.cv-viewer-error {
+  max-width: 440px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.cv-viewer-error a {
+  display: inline-block;
+  margin-top: 12px;
+}

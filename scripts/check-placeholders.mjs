@@ -6,7 +6,7 @@
  * This script never fails the build (CLAUDE.md requirement) — it only
  * reports. Run with `npm run check:placeholders`.
  */
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -64,14 +64,42 @@ for (let i = 0; i < lines.length; i++) {
   }
 }
 
+// Beyond content.ts's text placeholders, two real files stand in for
+// supplied assets: the hero portrait and the CV PDF. Report whichever
+// of these is still missing — unlike the ph() scan above, these are
+// binary files Node can just check for directly.
+const assetChecks = [
+  {
+    label: 'Portrait photo',
+    path: path.join(__dirname, '..', 'src', 'assets', 'portrait.webp'),
+  },
+  {
+    label: 'CV PDF',
+    path: path.join(__dirname, '..', 'public', 'cv', 'CV.pdf'),
+  },
+];
+
+const assetLines = assetChecks.map(({ label, path: p }) => {
+  if (existsSync(p)) {
+    const { size } = statSync(p);
+    return `  [resolved]    ${label.padEnd(16)} ${path.relative(path.join(__dirname, '..'), p)} (${(size / 1024).toFixed(1)} KB)`;
+  }
+  return `  [unresolved]  ${label.padEnd(16)} ${path.relative(path.join(__dirname, '..'), p)} — not supplied yet`;
+});
+
 if (found.length === 0) {
-  console.log('No placeholders found. The site is ready for launch content-wise.');
-  process.exit(0);
+  console.log('No text placeholders found in content.ts.\n');
+} else {
+  console.log(`${found.length} placeholder${found.length === 1 ? '' : 's'} remaining in content.ts:\n`);
+  for (const f of found) {
+    console.log(`  content.ts:${f.line}  [${f.path}]  ${f.text}`);
+  }
+  console.log('\nEdit these in src/content/content.ts, then re-run this script until it reports none.\n');
 }
 
-console.log(`${found.length} placeholder${found.length === 1 ? '' : 's'} remaining in content.ts:\n`);
-for (const f of found) {
-  console.log(`  content.ts:${f.line}  [${f.path}]  ${f.text}`);
-}
-console.log('\nEdit these in src/content/content.ts, then re-run this script until it reports none.');
+console.log('Supplied assets:');
+for (const line of assetLines) console.log(line);
+console.log(
+  '\nNote: the CV\'s "Last updated" date is still a ph() placeholder above even once CV.pdf is supplied — update it by hand.'
+);
 process.exit(0);

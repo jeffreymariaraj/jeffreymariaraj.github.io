@@ -1,12 +1,18 @@
 import { content } from '../content/content';
 import { Rich } from './Rich';
+import { CvViewer } from './CvViewer';
 import './CV.css';
 
 /**
- * Step 1 (content & structure) stub: the left column (label, heading,
- * updated date, download/open links) is wired to the new content
- * shape and already works without JS. The right-column PDF viewer
- * panel (`CvViewer`, pdf.js) arrives in Step 3.
+ * CV section: left column (label, heading, updated date, download +
+ * open-in-new-tab — both plain links that work without JS) and the
+ * pdf.js-backed viewer panel.
+ *
+ * Judgement call: Mobile.dc.html moves "Open in new tab" to *after*
+ * the viewer panel on narrow screens; it stays grouped with Download
+ * here on every width, matching the desktop artboard's left column.
+ * Splitting it out as a reorderable third flex item for one cosmetic
+ * sequencing difference wasn't worth the layout complexity.
  */
 export function CV() {
   const { cv } = content;
@@ -25,7 +31,7 @@ export function CV() {
             <p className="p" style={{ marginTop: 20 }}>
               <Rich value={cv.intro} />
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 18, marginTop: 32, alignItems: 'flex-start' }}>
+            <div className="cv-links">
               <a className="btn btn-p" href={cv.pdfHref} download={cv.pdfFilename}>
                 {cv.downloadLabel} <span aria-hidden="true">↓</span>
               </a>
@@ -34,22 +40,8 @@ export function CV() {
               </a>
             </div>
           </div>
-          <div
-            style={{
-              flex: '1 1 560px',
-              minWidth: 0,
-              border: '1px solid var(--line-2)',
-              background: 'rgba(12,17,25,0.94)',
-              minHeight: 300,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <span className="mono" style={{ fontSize: 11, color: 'var(--text-3)' }}>
-              CV viewer — Step 3
-            </span>
-          </div>
+
+          <CvViewer />
         </div>
       </div>
     </section>
