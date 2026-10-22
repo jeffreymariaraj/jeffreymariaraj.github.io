@@ -36,7 +36,12 @@ export function Nav() {
   return (
     <header className="site-header">
       <div className="wrap nav-row">
-        <a href="#top" aria-label="Home" className="nav-logo">
+        {/* No aria-label override: the visible "Jeff [Surname]" text
+            already gives this link its accessible name. An aria-label
+            like "Home" here would fail WCAG 2.5.3 (Label in Name) —
+            it wouldn't contain the visible text, breaking voice
+            control users who say what they see. */}
+        <a href="#top" className="nav-logo">
           <LogoMark />
           <span className="mono nav-logo-name">
             <Rich value={content.nav.logoName} />

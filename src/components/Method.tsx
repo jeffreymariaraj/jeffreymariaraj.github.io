@@ -29,7 +29,12 @@ export function Method() {
 
         <div className="method-repo">
           <p className="p method-repo-intro">{method.repoIntro}</p>
-          <pre className="mono method-repo-tree">
+          <pre
+            className="mono method-repo-tree"
+            tabIndex={0}
+            role="region"
+            aria-label="Proposed repository layout, scrolls horizontally on narrow screens"
+          >
             {method.repoTree.map((entry, i) => {
               const isRoot = i === 0;
               return (

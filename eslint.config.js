@@ -28,6 +28,13 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      // axe-core's scrollable-region-focusable rule requires
+      // tabIndex={0} on a horizontally-scrollable role="region" (the
+      // benchmark table, the repo-tree code block) so keyboard users
+      // can actually reach and scroll it. jsx-a11y's default role
+      // allowlist for this doesn't include "region" even though WCAG
+      // 2.1.1 requires exactly this pattern — allow it explicitly.
+      'jsx-a11y/no-noninteractive-tabindex': ['error', { roles: ['region'] }],
     },
   },
   {

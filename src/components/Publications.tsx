@@ -59,7 +59,7 @@ export function Publications() {
               <span>{featured.evidenceLabel}</span>
               <span className="hide-l">{featured.evidenceSwipeHint}</span>
             </div>
-            <div className="tbl-scroll">
+            <div className="tbl-scroll" tabIndex={0} role="region" aria-label="Benchmark table, scrolls horizontally on narrow screens">
               <table className="tbl">
                 <thead>
                   <tr>
