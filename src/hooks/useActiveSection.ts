@@ -1,0 +1,56 @@
+import { useEffect, useState } from 'react';
+
+/**
+ * Scroll-spy for the sticky header: which nav item should carry the
+ * 2px cyan active rule right now. Ported from the `componentDidMount`
+ * scroll-spy in Main.dc.html — a single passive, rAF-throttled scroll
+ * listener that reads (never writes) layout once per frame.
+ *
+ * The Method section has no nav entry of its own (see DESIGN.md), so
+ * it reports its nearest nav neighbour, Projects, exactly as the
+ * design's own spy does.
+ */
+const SECTION_TO_NAV: [sectionId: string, navId: string][] = [
+  ['research', 'research'],
+  ['publications', 'publications'],
+  ['projects', 'projects'],
+  ['method', 'projects'],
+  ['cv', 'cv'],
+  ['contact', 'contact'],
+];
+
+const ACTIVE_LINE = 140;
+
+export function useActiveSection(): string | null {
+  const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    let queued = false;
+
+    const spy = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        let current: string | null = null;
+        for (const [sectionId, navId] of SECTION_TO_NAV) {
+          const el = document.getElementById(sectionId);
+          if (el && el.getBoundingClientRect().top <= ACTIVE_LINE) {
+            current = navId;
+          }
+        }
+        setActive((prev) => (current !== prev ? current : prev));
+      });
+    };
+
+    spy();
+    window.addEventListener('scroll', spy, { passive: true });
+    window.addEventListener('resize', spy, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', spy);
+      window.removeEventListener('resize', spy);
+    };
+  }, []);
+
+  return active;
+}

@@ -25,6 +25,11 @@ a {
   color: inherit;
 }
 
+.page {
+  position: relative;
+  overflow-x: clip;
+}
+
 img,
 svg {
   max-width: 100%;

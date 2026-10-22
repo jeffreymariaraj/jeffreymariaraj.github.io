@@ -1,0 +1,130 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(8, 11, 16, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 68px;
+}
+
+@media (max-width: 720px) {
+  .nav-row {
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 8px;
+  }
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.nav-logo-mark {
+  flex: none;
+}
+
+.nav-logo-name {
+  color: var(--text);
+  letter-spacing: 0.1em;
+}
+
+.nav-desktop {
+  display: flex;
+  gap: clamp(16px, 2.6vw, 40px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-item {
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.nav-item[data-active='true'] {
+  color: var(--text);
+}
+
+.nav-item-n {
+  color: var(--text-3);
+  font-size: 10px;
+}
+
+.nav-item-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--cyan);
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease);
+}
+
+.nav-item[data-active='true'] .nav-item-rule {
+  opacity: 1;
+}
+
+.nav-menu-btn {
+  display: none;
+  min-width: 76px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--text);
+  border: 0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+@media (max-width: 720px) {
+  .nav-desktop {
+    display: none;
+  }
+  .nav-menu-btn {
+    display: inline-flex;
+  }
+}
+
+.nav-sheet {
+  background: var(--ink-3);
+  border-top: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.nav-sheet-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 20px;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.nav-sheet-row-n {
+  color: var(--text-3);
+  font-size: 10px;
+  margin-right: 14px;
+}
+
+.nav-sheet-row-arrow {
+  color: var(--cyan);
+}
