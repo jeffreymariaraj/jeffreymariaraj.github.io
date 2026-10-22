@@ -1,0 +1,319 @@
+/* ---------------------------------------------------------------- */
+/* Text primitives                                                   */
+/* ---------------------------------------------------------------- */
+.mono {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lbl {
+  font-family: 'Geist Mono', ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.wrap {
+  max-width: var(--frame);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+}
+
+.h2 {
+  font-size: clamp(34px, 4.3vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.h3 {
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin: 0;
+  max-width: 68ch;
+}
+
+@media (max-width: 480px) {
+  .p {
+    font-size: 15.5px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Tag — neutral, mono, never implies status                         */
+/* ---------------------------------------------------------------- */
+.tag {
+  font-family: 'Geist Mono', ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  border: 1px solid var(--line-2);
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------- */
+/* Chip — status. Shape + fill carry meaning, never hue alone.       */
+/* ---------------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Geist Mono', ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  white-space: nowrap;
+}
+
+.chip::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  box-sizing: border-box;
+  flex: none;
+}
+
+/* Published — filled square */
+.c-pub {
+  background: rgba(92, 200, 220, 0.14);
+  color: var(--cyan-hi);
+  border: 1px solid rgba(92, 200, 220, 0.55);
+}
+.c-pub::before {
+  background: var(--cyan);
+}
+
+/* Ongoing — half-filled circle */
+.c-on {
+  color: var(--cyan-hi);
+  border: 1px solid rgba(92, 200, 220, 0.45);
+}
+.c-on::before {
+  border-radius: 50%;
+  background: conic-gradient(var(--cyan) 0 50%, transparent 0 100%);
+  border: 1px solid var(--cyan);
+}
+
+/* Exploratory — hollow circle, dashed border */
+.c-ex {
+  color: var(--text-2);
+  border: 1px dashed var(--mute);
+}
+.c-ex::before {
+  border-radius: 50%;
+  border: 1px solid var(--text-3);
+}
+
+/* ---------------------------------------------------------------- */
+/* Links                                                             */
+/* ---------------------------------------------------------------- */
+.lnk {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 2px;
+  transition:
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+.lnk:hover {
+  color: var(--cyan-hi);
+  border-color: var(--cyan);
+}
+
+.nv {
+  position: relative;
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 10px 2px;
+  min-height: 44px;
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+.nv:hover {
+  color: var(--text) !important;
+}
+
+/* ---------------------------------------------------------------- */
+/* Buttons                                                            */
+/* ---------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+.btn-p {
+  background: var(--cyan);
+  color: var(--on-cyan);
+  border: none;
+}
+.btn-p:hover {
+  background: var(--cyan-hi);
+}
+.btn-g {
+  border: 1px solid var(--line-2);
+  color: var(--text);
+  background: transparent;
+}
+.btn-g:hover {
+  border-color: var(--cyan);
+  color: var(--cyan-hi);
+}
+
+@media (max-width: 720px) {
+  .btn {
+    height: 52px;
+    min-height: 52px;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Entry (ledger / research rows) — 5% cyan wash on hover, no shift   */
+/* ---------------------------------------------------------------- */
+.entry {
+  transition: background var(--dur-base) var(--ease);
+}
+.entry:hover {
+  background: rgba(92, 200, 220, 0.05);
+}
+.entry:hover .go {
+  transform: translateX(4px);
+  color: var(--cyan-hi);
+}
+
+.go {
+  display: inline-block;
+  transition:
+    transform var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease);
+  color: var(--text-3);
+}
+
+.crow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 22px 0;
+  min-height: 44px;
+  border-top: 1px solid var(--line);
+  text-decoration: none;
+  transition: padding var(--dur-base) var(--ease);
+}
+.crow:hover {
+  padding-left: 12px;
+}
+.crow:hover .go {
+  transform: translateX(4px);
+  color: var(--cyan-hi);
+}
+
+/* ---------------------------------------------------------------- */
+/* Figure panel + data table                                         */
+/* ---------------------------------------------------------------- */
+.panel {
+  border: 1px solid var(--line-2);
+  background: rgba(12, 17, 25, 0.92);
+}
+
+.fig-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--text-3);
+  flex-wrap: wrap;
+}
+
+.tbl {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+}
+.tbl th {
+  font-weight: 400;
+  text-align: left;
+  color: var(--text-3);
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+.tbl th:last-child,
+.tbl td:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+.tbl td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-1);
+}
+.tbl .dash {
+  color: var(--text-3);
+  text-align: right;
+}
+.tbl .best {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* mobile: horizontal scroll with sticky first column */
+.tbl-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 480px) {
+  .tbl {
+    min-width: 420px;
+  }
+  .tbl th:first-child,
+  .tbl td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--ink-2);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Misc utility                                                       */
+/* ---------------------------------------------------------------- */
+@media (max-width: 720px) {
+  .hide-s {
+    display: none !important;
+  }
+}

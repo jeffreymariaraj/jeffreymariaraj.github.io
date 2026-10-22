@@ -1,0 +1,29 @@
+:root {
+  /* surfaces */
+  --ink-0: #06080C; /* page edge */
+  --ink-1: #080B10; /* base */
+  --ink-2: #0C1119; /* panels/figures */
+  --ink-3: #10161F; /* raised */
+  --line: #1E2938; /* dividers */
+  --line-2: #2C3B50; /* borders */
+  --mute: #5B6B83; /* decorative lines/separators ONLY (3.6:1, never text) */
+  /* text (contrast vs --ink-1) */
+  --text: #E8EDF4; /* 16.8:1 */
+  --text-1: #C3CDDA; /* 12.3:1 */
+  --text-2: #A3AFC0; /* 8.9:1 body */
+  --text-3: #8793A6; /* 6.3:1 minimum for any text */
+  /* accent */
+  --cyan: #5CC8DC; /* 10.1:1; under ~5% of any view */
+  --cyan-hi: #9BE5F1; /* hover, 14.0:1 */
+  --on-cyan: #05161B; /* text on cyan buttons, 9.5:1 */
+  --amber: #E3B766; /* PLACEHOLDER content only; absent from final site */
+  /* motion */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --dur-fast: 160ms;
+  --dur-base: 200ms;
+  --dur-enter: 700ms;
+  /* layout */
+  --frame: 1312px;
+  --gutter: clamp(20px, 4.4vw, 64px);
+  --radius: 2px;
+}

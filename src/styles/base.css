@@ -1,0 +1,145 @@
+/* ---------------------------------------------------------------- */
+/* Reset                                                             */
+/* ---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--ink-1);
+  color: var(--text);
+  font-family: 'Geist Variable', 'Geist', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ---------------------------------------------------------------- */
+/* Focus ring — visible, 2px cyan, 3px offset, everywhere            */
+/* ---------------------------------------------------------------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Skip link                                                         */
+/* ---------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: -60px;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: var(--cyan);
+  color: var(--on-cyan);
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: top var(--dur-base) var(--ease);
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------- */
+/* Placeholder content — amber, dashed underline                     */
+/* ---------------------------------------------------------------- */
+.ph {
+  color: var(--amber);
+  border-bottom: 1px dashed rgba(227, 183, 102, 0.65);
+}
+
+/* ---------------------------------------------------------------- */
+/* Motion: hero fade-ups + status pulse, removed under               */
+/* prefers-reduced-motion                                            */
+/* ---------------------------------------------------------------- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.fi {
+  animation: fade-in-up var(--dur-enter) var(--ease) both;
+}
+
+.pd {
+  animation: status-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fi,
+  .pd {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* visually-hidden utility (screen-reader-only text) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
