@@ -1,0 +1,113 @@
+.portrait-figure {
+  margin: 0;
+  position: relative;
+  width: 100%;
+}
+
+.portrait-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ink-2);
+}
+
+.portrait-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Light cool grade, no duotone: a touch less saturation, a hair
+     brighter, matching the "natural photo with a light cool grade"
+     spec. The cyan wash below does the rest. */
+  filter: saturate(0.92) brightness(1.03) contrast(1.02);
+}
+
+.portrait-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cyan);
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Placeholder state: dashed amber frame, no photo yet. */
+.portrait-placeholder {
+  border: 1px dashed rgba(227, 183, 102, 0.7);
+  background: rgba(12, 17, 25, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.portrait-placeholder-label {
+  font-family: 'Geist Mono', ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+/* Corner ticks — 1px cyan, 14px, sitting just outside the frame. */
+.portrait-tick {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.portrait-tick-tl {
+  left: -7px;
+  top: -7px;
+  border-top: 1.5px solid var(--cyan);
+  border-left: 1.5px solid var(--cyan);
+}
+.portrait-tick-tr {
+  right: -7px;
+  top: -7px;
+  border-top: 1.5px solid var(--cyan);
+  border-right: 1.5px solid var(--cyan);
+}
+.portrait-tick-bl {
+  left: -7px;
+  bottom: -7px;
+  border-bottom: 1.5px solid var(--cyan);
+  border-left: 1.5px solid var(--cyan);
+}
+.portrait-tick-br {
+  right: -7px;
+  bottom: -7px;
+  border-bottom: 1.5px solid var(--cyan);
+  border-right: 1.5px solid var(--cyan);
+}
+
+.portrait-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 10px;
+  color: var(--text-3);
+}
+
+/* Mobile: full-width, inset 7px so the corner ticks stay on screen. */
+@media (max-width: 720px) {
+  .portrait-figure {
+    /* The artboard's mobile hero pads its section by a flat 20px and
+       insets the portrait by 7px from THAT (so it bleeds 13px from
+       the true edge). Our shared .wrap uses --gutter (a clamp, not a
+       flat 20px) for the same padding, so "margin: 0 7px" here would
+       inset from the wrap's gutter instead — too far in at any width
+       above 390px. Counteracting the gutter with a calc keeps the
+       inset at a true 7px from the viewport edge, matching intent
+       regardless of --gutter's current value. */
+    width: auto;
+    margin: 0 calc(7px - var(--gutter));
+  }
+  .portrait-caption {
+    margin-top: 12px;
+  }
+}

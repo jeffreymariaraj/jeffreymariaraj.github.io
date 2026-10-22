@@ -7,8 +7,8 @@
 
 @media (max-width: 720px) {
   .hero-section {
-    min-height: 780px;
-    padding-top: 0;
+    min-height: auto;
+    padding-bottom: 8px;
   }
 }
 
@@ -41,9 +41,34 @@
 
 @media (max-width: 720px) {
   .hero-main {
-    padding-top: 56px;
-    padding-bottom: 24px;
+    padding-top: 32px;
+    padding-bottom: 0;
   }
+}
+
+/* The content row: portrait + identity block. A flex child with
+   margin: 0 auto (from .wrap) shrinks to its content's width unless
+   told otherwise — width: 100% is required here, not decorative,
+   or the identity column drops below the portrait at any width. */
+.hero-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 440px) 1fr;
+    gap: 48px clamp(40px, 6vw, 96px);
+    align-items: center;
+  }
+}
+
+.hero-identity-col {
+  min-width: 0;
 }
 
 .hero-status {
@@ -51,7 +76,7 @@
   align-items: center;
   gap: 12px;
   color: var(--text-2);
-  margin-bottom: 36px;
+  margin-bottom: 32px;
   flex-wrap: wrap;
 }
 
@@ -67,19 +92,61 @@
   color: var(--mute);
 }
 
-.hero-headline {
+.hero-name {
   margin: 0;
-  max-width: 940px;
-  font-size: clamp(50px, 8.1vw, 118px);
+  font-size: clamp(52px, 7.4vw, 108px);
   line-height: 0.96;
   letter-spacing: -0.045em;
   font-weight: 500;
 }
 
-.hero-lead {
-  max-width: 540px;
-  margin-top: 40px;
-  font-size: 19px;
+.hero-identity {
+  margin: 40px 0 0;
+  border-top: 1px solid var(--line-2);
+  max-width: 560px;
+}
+
+@media (max-width: 720px) {
+  .hero-identity {
+    margin-top: 28px;
+  }
+}
+
+.hero-identity-row {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.hero-identity-label {
+  flex: 0 0 96px;
+  font-size: 11px;
+}
+
+.hero-identity-value {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .hero-identity-row {
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 0;
+  }
+  .hero-identity-value {
+    font-size: 17px;
+  }
+}
+
+.hero-statement {
+  max-width: 520px;
+  margin-top: 28px;
+  font-size: 17px;
   color: var(--text-1);
 }
 
@@ -87,7 +154,7 @@
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin-top: 32px;
   align-items: center;
 }
 
