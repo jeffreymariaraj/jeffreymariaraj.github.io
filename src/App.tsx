@@ -3,12 +3,15 @@ import { Hero } from './components/Hero';
 import { ResearchFocus } from './components/ResearchFocus';
 import { Publications } from './components/Publications';
 import { Projects } from './components/Projects';
+import { Method } from './components/Method';
+import { CV } from './components/CV';
+import { Contact } from './components/Contact';
+import { Footer } from './components/Footer';
 import { BackgroundLayer } from './background/BackgroundLayer';
 
 /**
  * Page shell: skip link, sticky header, the network background layer,
- * and every section wrapper with its id and data-bg state. Section
- * content fills in across later stages.
+ * and every page section in order.
  */
 function App() {
   return (
@@ -27,10 +30,12 @@ function App() {
           <ResearchFocus />
           <Publications />
           <Projects />
-          <section id="method" data-bg="2" />
-          <section id="cv" data-bg="2" />
-          <section id="contact" data-bg="3" />
+          <Method />
+          <CV />
+          <Contact />
         </main>
+
+        <Footer />
       </div>
     </div>
   );

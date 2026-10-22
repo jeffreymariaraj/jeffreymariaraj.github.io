@@ -369,7 +369,11 @@ export const content = {
     copyright: ['© 2026 Jeff ', ph('[Surname]'), ' · RVCE Bengaluru'] as Rich,
     stack: 'Static site · React + CSS + Canvas 2D · GitHub Pages',
     backToTop: 'Back to top ↑',
-    phNote: ['Amber dashed text', ' = placeholder to be replaced with verified content'] as Rich,
+    // Not a `ph()` placeholder itself — this is the legend explaining
+    // the convention, so `phSample` renders with the `.ph` look
+    // directly rather than being listed by check:placeholders.
+    phSample: 'Amber dashed text',
+    phNoteRest: ' = placeholder to be replaced with verified content',
   },
 };
 

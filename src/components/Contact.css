@@ -1,0 +1,52 @@
+.contact-section {
+  padding: 100px 0 0;
+  min-height: 780px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 720px) {
+  .contact-section {
+    padding: 56px 0 0;
+    min-height: 640px;
+  }
+}
+
+.contact-inner {
+  flex: 1;
+  width: 100%;
+}
+
+.contact-heading {
+  margin: 0;
+  max-width: 920px;
+  font-size: clamp(40px, 6.2vw, 92px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+}
+
+.contact-lead {
+  max-width: 520px;
+  margin-top: 32px;
+}
+
+.contact-rows {
+  margin-top: 64px;
+  max-width: 900px;
+}
+
+.contact-row-label {
+  color: var(--text-3);
+  flex: 0 0 110px;
+}
+
+.contact-row-value {
+  flex: 1 1 260px;
+  font-size: clamp(20px, 2.2vw, 30px);
+  letter-spacing: -0.01em;
+}
+
+.contact-row:last-child {
+  border-bottom: 1px solid var(--line);
+}
