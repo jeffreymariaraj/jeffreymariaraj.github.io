@@ -56,6 +56,7 @@
 
 .pub-featured-main {
   flex: 1 1 520px;
+  min-width: 0;
   padding: clamp(24px, 3.2vw, 48px);
   display: flex;
   flex-direction: column;
@@ -100,6 +101,14 @@
 
 .pub-evidence {
   flex: 1 1 380px;
+  /* Without this, the flex item's automatic min-width equals its
+     content's min-content size — which includes the table's hard
+     min-width two levels down — and refuses to shrink below it even
+     though .tbl-scroll's own overflow-x:auto is there to contain
+     exactly that overflow. min-width: 0 lets the shrink happen so
+     the table scrolls inside its own box instead of pushing this
+     whole panel wider than the viewport. */
+  min-width: 0;
   max-width: 520px;
   padding: clamp(24px, 3vw, 40px);
   border-left: 1px solid var(--line);
@@ -116,7 +125,10 @@
   }
 }
 
-.pub-evidence-label {
+.pub-evidence-label-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
   font-size: 10px;
   color: var(--text-3);
 }

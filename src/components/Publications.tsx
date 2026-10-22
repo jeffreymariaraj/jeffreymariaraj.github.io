@@ -55,7 +55,10 @@ export function Publications() {
           </div>
 
           <aside className="pub-evidence">
-            <div className="mono pub-evidence-label">{featured.evidenceLabel}</div>
+            <div className="mono pub-evidence-label-row">
+              <span>{featured.evidenceLabel}</span>
+              <span className="hide-l">{featured.evidenceSwipeHint}</span>
+            </div>
             <div className="tbl-scroll">
               <table className="tbl">
                 <thead>

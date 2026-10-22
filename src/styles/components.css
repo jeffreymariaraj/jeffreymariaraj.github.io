@@ -322,3 +322,15 @@
     display: none !important;
   }
 }
+
+/* Inverse of .hide-s: visible only at the narrow width where it's
+   needed (e.g. a "swipe →" hint beside a table that only scrolls
+   horizontally there). */
+.hide-l {
+  display: none;
+}
+@media (max-width: 480px) {
+  .hide-l {
+    display: inline;
+  }
+}

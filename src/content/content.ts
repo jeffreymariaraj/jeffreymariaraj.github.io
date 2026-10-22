@@ -198,6 +198,7 @@ export const content = {
         { label: ['BibTeX'] as Rich, href: '#publications' },
       ] as Link[],
       evidenceLabel: 'Evidence slot · placeholder',
+      evidenceSwipeHint: 'swipe →',
       table: {
         headers: ['Method', 'Acc.', 'Params', 'Latency'],
         rows: [
@@ -217,7 +218,7 @@ export const content = {
         description: [
           'Mining conflicting published claims on PTQ and QAT; the research question is to emerge from one that survives scrutiny.',
         ] as Rich,
-        meta: ['Student team · Colab-class compute', 'Target: ', ph('[journal / venue]')] as Rich,
+        meta: ['Student team · Colab-class compute', ' · Target: ', ph('[journal / venue]')] as Rich,
         href: '#projects',
       },
       {
