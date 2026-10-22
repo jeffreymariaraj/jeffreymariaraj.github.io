@@ -1,9 +1,10 @@
 import { Nav } from './components/Nav';
+import { BackgroundLayer } from './background/BackgroundLayer';
 
 /**
- * Page shell for Stage 2: skip link, sticky header, and every section
- * wrapper with its id and data-bg state. Section content lands in
- * later stages; NetworkBackground lands in Stage 3.
+ * Page shell: skip link, sticky header, the network background layer,
+ * and every section wrapper with its id and data-bg state. Section
+ * content fills in across later stages.
  */
 function App() {
   return (
@@ -12,18 +13,7 @@ function App() {
         Skip to content
       </a>
 
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'sticky',
-          top: 0,
-          height: 0,
-          zIndex: 0,
-          pointerEvents: 'none',
-        }}
-      >
-        {/* NetworkBackground mounts here in Stage 3 */}
-      </div>
+      <BackgroundLayer />
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Nav />
