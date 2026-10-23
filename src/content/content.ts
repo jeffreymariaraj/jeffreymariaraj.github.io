@@ -364,11 +364,7 @@ export const content = {
   cv: {
     eyebrow: '01 — Curriculum vitae',
     heading: 'Read it here, or take it with you.',
-    intro: [
-      'Education, research experience, publications and technical skills. Last updated ',
-      ph('[date]'),
-      '.',
-    ] as Rich,
+    intro: 'Education, research experience, publications and technical skills. Last updated October 2026.',
     downloadLabel: 'Download PDF',
     openNewTabLabel: 'Open in new tab',
     pdfHref: '/cv/CV.pdf',

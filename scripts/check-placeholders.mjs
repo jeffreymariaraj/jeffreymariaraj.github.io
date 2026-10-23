@@ -99,7 +99,4 @@ if (found.length === 0) {
 
 console.log('Supplied assets:');
 for (const line of assetLines) console.log(line);
-console.log(
-  '\nNote: the CV\'s "Last updated" date is still a ph() placeholder above even once CV.pdf is supplied — update it by hand.'
-);
 process.exit(0);

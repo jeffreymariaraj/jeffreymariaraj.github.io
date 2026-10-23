@@ -1,5 +1,4 @@
 import { content } from '../content/content';
-import { Rich } from './Rich';
 import { CvViewer } from './CvViewer';
 import './CV.css';
 
@@ -29,7 +28,7 @@ export function CV() {
               {cv.heading}
             </h2>
             <p className="p" style={{ marginTop: 20 }}>
-              <Rich value={cv.intro} />
+              {cv.intro}
             </p>
             <div className="cv-links">
               <a className="btn btn-p" href={cv.pdfHref} download={cv.pdfFilename}>
