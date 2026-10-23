@@ -36,17 +36,37 @@
   max-width: 900px;
 }
 
+/* Overrides .crow's default align-items:baseline/flex-wrap:wrap — the
+   icon tile needs vertical centering and the row never wraps to a
+   second line, even at narrow widths (the value text wraps itself
+   via overflow-wrap instead). .crow is only ever used here, so these
+   live as plain element selectors rather than needing !important. */
+.contact-row {
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
 .contact-row-label {
   color: var(--text-3);
-  flex: 0 0 110px;
+  flex: 0 0 90px;
 }
 
 .contact-row-value {
-  flex: 1 1 260px;
-  font-size: clamp(20px, 2.2vw, 30px);
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: clamp(18px, 2vw, 28px);
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
 }
 
 .contact-row:last-child {
   border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 720px) {
+  .contact-row {
+    gap: 14px;
+    font-size: 17px;
+  }
 }

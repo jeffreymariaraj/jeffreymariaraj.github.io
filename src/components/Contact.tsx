@@ -1,5 +1,6 @@
 import { content } from '../content/content';
 import { Rich } from './Rich';
+import { CONTACT_ICONS } from './icons/ContactIcons';
 import './Contact.css';
 
 export function Contact() {
@@ -17,6 +18,7 @@ export function Contact() {
         <div className="contact-rows">
           {contact.rows.map((row) => {
             const isExternal = row.href.startsWith('http');
+            const Icon = CONTACT_ICONS[row.tileIcon];
             return (
               <a
                 key={row.label}
@@ -24,6 +26,9 @@ export function Contact() {
                 href={row.href}
                 {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
+                <span className="tile" aria-hidden="true">
+                  <Icon />
+                </span>
                 <span className="mono contact-row-label">{row.label}</span>
                 <span className="contact-row-value">
                   <Rich value={row.value} />
