@@ -115,13 +115,13 @@ export interface ContactRow {
 
 export const content = {
   meta: {
-    title: 'Jeff Mariaraj — research portfolio',
+    title: 'Jeffrey Mariaraj — research portfolio',
     description:
-      'Jeff Mariaraj — student researcher at RVCE Bengaluru working on quantization, spiking networks and distillation for efficient, resource-constrained machine learning.',
+      'Jeffrey Mariaraj — student researcher at RVCE Bengaluru working on quantization, spiking networks and distillation for efficient, resource-constrained machine learning.',
   },
 
   nav: {
-    logoName: 'Jeff Mariaraj',
+    logoName: 'Jeffrey Mariaraj',
     items: [
       { id: 'cv', n: '01', label: 'CV' },
       { id: 'research', n: '02', label: 'Research' },
@@ -136,10 +136,10 @@ export const content = {
       role: 'Student researcher',
       domain: 'Efficient & resource-constrained ML',
     },
-    nameFirst: 'Jeff',
+    nameFirst: 'Jeffrey',
     nameSurname: 'Mariaraj',
     portrait: {
-      alt: 'Portrait of Jeff Mariaraj',
+      alt: 'Portrait of Jeffrey Mariaraj',
       captionLabel: 'Fig. 00 · portrait',
       position: '12.92°N 77.50°E',
       placeholderLabel: ['[Your photo]', 'face shot · 4:5 · cool grade'],
@@ -403,8 +403,8 @@ export const content = {
       },
       {
         label: 'Email',
-        value: [ph('[email address]')] as Rich,
-        href: '#contact',
+        value: ['r.jeffreymariaraj@gmail.com'] as Rich,
+        href: 'mailto:r.jeffreymariaraj@gmail.com',
         icon: '→',
         tileIcon: 'mail',
       },
@@ -419,14 +419,9 @@ export const content = {
   },
 
   footer: {
-    copyright: '© 2026 Jeff Mariaraj · RVCE Bengaluru',
+    copyright: '© 2026 Jeffrey Mariaraj · RVCE Bengaluru',
     stack: 'Static site · React + CSS + Canvas 2D · GitHub Pages',
     backToTop: 'Back to top ↑',
-    // Not a `ph()` placeholder itself — this is the legend explaining
-    // the convention, so `phSample` renders with the `.ph` look
-    // directly rather than being listed by check:placeholders.
-    phSample: 'Amber dashed text',
-    phNoteRest: ' = placeholder to be replaced with verified content',
   },
 };
 

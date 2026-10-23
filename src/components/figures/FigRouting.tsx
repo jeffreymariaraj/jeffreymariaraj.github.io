@@ -40,9 +40,9 @@ export function FigRouting({ ariaLabel }: { ariaLabel: string }) {
             y="166"
             textAnchor="middle"
             fontFamily="Geist Mono, monospace"
-            fontSize="10"
+            fontSize="9"
             fill="var(--cyan-hi)"
-            letterSpacing=".5"
+            letterSpacing=".3"
           >
             classifier · ~15 ms
           </text>
@@ -78,7 +78,10 @@ export function FigRouting({ ariaLabel }: { ariaLabel: string }) {
         <g fontFamily="Geist Mono, monospace" fontSize="10" letterSpacing=".5" fill="var(--text-3)">
           <text x="268" y="116" textAnchor="start" fill="var(--text-1)">simple · ~85%</text>
           <text x="268" y="186" textAnchor="start" fill="var(--text-1)">complex · ~15%</text>
-          <text x="372" y="154" fill="var(--cyan-hi)">escalate if out of depth</text>
+          <text x="372" fill="var(--cyan-hi)">
+            <tspan x="372" y="148">escalate if</tspan>
+            <tspan x="372" y="161">out of depth</tspan>
+          </text>
           <text x="16" y="284">per-query cost in the paper's model: deep 10 units · light 0.1 unit</text>
         </g>
       </svg>

@@ -19,10 +19,6 @@ export function Footer() {
           {footer.backToTop}
         </a>
       </div>
-      <div className="mono site-footer-ph-note">
-        <span className="ph">{footer.phSample}</span>
-        {footer.phNoteRest}
-      </div>
     </footer>
   );
 }
