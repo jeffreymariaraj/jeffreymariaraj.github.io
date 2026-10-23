@@ -26,6 +26,8 @@ body{margin:0}
 .c-pub::before{background:#5CC8DC}
 .c-on{color:#9BE5F1;border:1px solid rgba(92,200,220,.45)}
 .c-on::before{border-radius:50%;background:conic-gradient(#5CC8DC 0 50%,transparent 0 100%);border:1px solid #5CC8DC}
+.c-done{color:#C3CDDA;border:1px solid #5B6B83}
+.c-done::before{border:1px solid #A3AFC0}
 .c-ex{color:#A3AFC0;border:1px dashed #5B6B83}
 .c-ex::before{border-radius:50%;border:1px solid #8793A6}
 .ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
@@ -149,11 +151,11 @@ a:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
 
 <div class="lbl" style="margin: 36px 0 14px">Status chips · shape and fill carry meaning, not hue alone</div>
 <div class="panel" style="padding: 28px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center">
-<span class="chip c-pub">Published</span><span class="chip c-on">Ongoing</span><span class="chip c-ex">Exploratory</span>
+<span class="chip c-pub">Published</span><span class="chip c-on">Ongoing</span><span class="chip c-done">Completed</span><span class="chip c-ex">Exploratory</span>
 <span class="tag">PTQ</span><span class="tag">LIF neurons</span>
 <span class="ph" style="font-size: 15px">[Placeholder text]</span>
 </div>
-<p class="note" style="margin-top: 10px">Filled square, half-filled circle, hollow circle with dashed border. Tags are neutral and never imply status.</p>
+<p class="note" style="margin-top: 10px">Filled square (published), half-filled circle (ongoing), hollow square (completed), hollow circle with dashed border (exploratory, in reserve). Tags are neutral and never imply status.</p>
 
 <div class="lbl" style="margin: 36px 0 14px">Research entry · rest / hover</div>
 <div style="display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid #2C3B50">

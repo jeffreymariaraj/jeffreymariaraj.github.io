@@ -26,6 +26,10 @@ body{margin:0}
 .c-on::before{border-radius:50%;background:conic-gradient(#5CC8DC 0 50%,transparent 0 100%);border:1px solid #5CC8DC}
 .c-ex{color:#A3AFC0;border:1px dashed #5B6B83}
 .c-ex::before{border-radius:50%;border:1px solid #8793A6}
+.c-done{color:#C3CDDA;border:1px solid #5B6B83}
+.c-done::before{border:1px solid #A3AFC0}
+.tile{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none;border:1px solid #2C3B50;border-radius:2px;color:#5CC8DC;background:rgba(12,17,25,.9);transition:border-color .16s cubic-bezier(.2,.6,.2,1),color .16s}
+.crow:hover .tile{border-color:#5CC8DC;color:#9BE5F1}
 .ph{color:#E3B766;border-bottom:1px dashed rgba(227,183,102,.65)}
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3px}
@@ -66,7 +70,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px">
 <a href="#top" aria-label="Home" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
 <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" style="flex: none"><path d="M5 19 L13 6 L21 19 M5 19 H21" fill="none" stroke="#5CC8DC" stroke-width="1.2"/><circle cx="5" cy="19" r="2.4" fill="#080B10" stroke="#5CC8DC" stroke-width="1.2"/><circle cx="13" cy="6" r="2.4" fill="#5CC8DC"/><circle cx="21" cy="19" r="2.4" fill="#080B10" stroke="#5CC8DC" stroke-width="1.2"/></svg>
-<span class="mono" style="color: #E8EDF4; letter-spacing: .1em">Jeff <span class="ph">[Surname]</span></span>
+<span class="mono" style="color: #E8EDF4; letter-spacing: .1em">Jeff Mariaraj</span>
 </a>
 <nav aria-label="Primary" style="display: flex; gap: clamp(16px, 2.6vw, 40px); flex-wrap: wrap; justify-content: flex-end">
 <sc-for list="{{navItems}}" as="item" hint-placeholder-count="5">
@@ -98,7 +102,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <span class="pd" aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #5CC8DC; flex: none"></span>
 <span>Student researcher</span><span style="color: #5B6B83">/</span><span>Efficient &amp; resource-constrained ML</span>
 </div>
-<h1 class="fi" style="animation-delay: 80ms; margin: 0; font-size: clamp(52px, 7.4vw, 108px); line-height: .96; letter-spacing: -.045em; font-weight: 500">Jeff <br><span class="ph">[Surname]</span></h1>
+<h1 class="fi" style="animation-delay: 80ms; margin: 0; font-size: clamp(52px, 7.4vw, 108px); line-height: .96; letter-spacing: -.045em; font-weight: 500">Jeff <br>Mariaraj</h1>
 <dl class="fi" style="animation-delay: 160ms; margin: 40px 0 0; border-top: 1px solid #2C3B50; max-width: 560px">
 <div style="display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid #1E2938; align-items: baseline"><dt class="lbl" style="flex: 0 0 96px; font-size: 11px">Studying</dt><dd style="margin: 0; font-size: 18px; line-height: 1.4; color: #E8EDF4">B.E. Computer Science &amp; Engineering, RV College of Engineering, Bengaluru · 2027</dd></div>
 <div style="display: flex; gap: 20px; padding: 16px 0; border-bottom: 1px solid #1E2938; align-items: baseline"><dt class="lbl" style="flex: 0 0 96px; font-size: 11px">Next</dt><dd style="margin: 0; font-size: 18px; line-height: 1.4; color: #E8EDF4">Incoming SDE at Deutsche Bank</dd></div>
@@ -109,7 +113,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <a class="btn btn-p" href="#cv">View CV <span aria-hidden="true">↓</span></a>
 <a class="btn btn-g" href="#research">Research</a>
 <a class="btn btn-g" href="#publications">Publications</a>
-<a class="btn btn-g" href="#contact">GitHub <span aria-hidden="true" class="mono" style="font-size: 11px">↗</span></a>
+<a class="btn btn-g" href="https://github.com/jeffreymariaraj" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true" class="mono" style="font-size: 11px">↗</span></a>
 </div>
 </div>
 </div>
@@ -253,65 +257,71 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-end; justify-content: space-between; margin-bottom: 64px">
 <div style="flex: 1 1 520px; max-width: 760px">
 <div class="lbl" style="margin-bottom: 24px">03 — Publications &amp; ongoing work</div>
-<h2 class="h2">Published, ongoing and exploratory work, kept visibly apart.</h2>
+<h2 class="h2">Published and ongoing work, kept visibly apart.</h2>
 </div>
 <div style="flex: 1 1 300px; max-width: 360px; display: flex; flex-direction: column; gap: 10px" aria-label="Status key">
 <div style="display: flex; gap: 12px; align-items: center"><span class="chip c-pub" style="min-width: 118px">Published</span><span class="mono" style="font-size: 10px; color: #8793A6">peer-reviewed, citable</span></div>
 <div style="display: flex; gap: 12px; align-items: center"><span class="chip c-on" style="min-width: 118px">Ongoing</span><span class="mono" style="font-size: 10px; color: #8793A6">active, not yet reported</span></div>
-<div style="display: flex; gap: 12px; align-items: center"><span class="chip c-ex" style="min-width: 118px">Exploratory</span><span class="mono" style="font-size: 10px; color: #8793A6">early, may not continue</span></div>
+<div style="display: flex; gap: 12px; align-items: center"><span class="chip c-done" style="min-width: 118px">Completed</span><span class="mono" style="font-size: 10px; color: #8793A6">finished, outcome documented</span></div>
 </div>
 </div>
 
 <!-- featured publication -->
 <article style="display: flex; flex-wrap: wrap; border: 1px solid #2C3B50; background: rgba(12,17,25,0.9)">
-<div style="flex: 1 1 520px; padding: clamp(24px, 3.2vw, 48px); display: flex; flex-direction: column; gap: 24px">
-<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap"><span class="chip c-pub">Published</span><span class="mono" style="color: #A3AFC0">IEEE conference · <span class="ph">[Conference name, Year]</span></span></div>
-<h3 style="margin: 0; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.12; letter-spacing: -.025em; font-weight: 500"><span class="ph">[Verified paper title]</span></h3>
-<div style="font-size: 16px; line-height: 1.6; color: #C3CDDA">Authors: <span class="ph">[confirm order]</span> Maurya Pradeep Gowda, Ronan Lobo, Jeff <span class="ph">[Surname]</span></div>
-<p class="p" style="max-width: 640px">Topic on record: routing incoming queries between large language models using a fine-tuned DistilBERT classifier. <span class="ph">[Two to three sentence abstract summary: problem, method, headline result with its numbers, once verified.]</span></p>
-<div style="display: flex; gap: 28px; flex-wrap: wrap; margin-top: 8px">
-<a class="lnk mono" href="#publications">Paper <span class="ph">[DOI / IEEE Xplore]</span> ↗</a>
-<a class="lnk mono" href="#projects">Code <span class="ph">[GitHub repo]</span> ↗</a>
-<a class="lnk mono" href="#publications">BibTeX</a>
+<div style="flex: 1 1 520px; min-width: 0; padding: clamp(24px, 3.2vw, 48px); display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap"><span class="chip c-pub">Published</span><span class="mono" style="color: #A3AFC0">IEEE · CSITSS 2025</span></div>
+<h3 style="margin: 0; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.14; letter-spacing: -.025em; font-weight: 500">Smart Meta-controller: Energy Efficient Dynamic Routing for Large Language Model Inference Systems</h3>
+<div style="font-size: 16px; line-height: 1.6; color: #C3CDDA">R. Jeffrey Mariaraj, Ronan Lobo, Maurya P. Gowda</div>
+<div class="mono" style="font-size: 10px; color: #8793A6; line-height: 1.8; text-transform: none; letter-spacing: .04em">2025 9th International Conference on Computational System and Information Technology for Sustainable Solutions (CSITSS)<br>DOI 10.1109/CSITSS67709.2025.11295492</div>
+<p class="p" style="max-width: 640px">Most queries do not need the largest model. We built a two-stage router: a fine-tuned DistilBERT classifier makes a fast first call on whether a prompt is simple or complex, and an escalation protocol lets the lightweight agent hand a prompt up to the deep agent when it detects it is out of its depth. In the paper's evaluation, routing cut estimated cost by 84% under a simulated cost model and energy per query by 62%, with task completion held at 99.1%.</p>
+<div style="display: flex; gap: 28px; flex-wrap: wrap">
+<a class="lnk mono" href="https://doi.org/10.1109/CSITSS67709.2025.11295492" target="_blank" rel="noopener noreferrer">Paper (DOI) ↗</a>
+<a class="lnk mono" href="https://github.com/mauryapg13/smart-meta-controller" target="_blank" rel="noopener noreferrer">Code ↗</a>
+</div>
+<div style="margin-top: 14px; border-top: 1px solid #1E2938; padding-top: 22px">
+<div class="mono" style="font-size: 10px; color: #8793A6; margin-bottom: 12px">Table 1 · choice of classifier backbone (paper, Table II)</div>
+<div style="overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 440px; font-family: 'Geist Mono', monospace; font-size: 12px">
+<thead><tr style="color: #8793A6; text-align: left"><th style="font-weight: 400; padding: 8px 0; border-bottom: 1px solid #2C3B50">Model</th><th style="font-weight: 400; padding: 8px; border-bottom: 1px solid #2C3B50; text-align: right">Accuracy</th><th style="font-weight: 400; padding: 8px; border-bottom: 1px solid #2C3B50; text-align: right">Inference time</th><th style="font-weight: 400; padding: 8px 0 8px 8px; border-bottom: 1px solid #2C3B50; text-align: right">Size</th></tr></thead>
+<tbody style="color: #C3CDDA">
+<tr><td style="padding: 10px 0; border-bottom: 1px solid #1E2938">BERT-base</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">89.8%</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">baseline</td><td style="text-align: right; padding: 10px 0 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">baseline</td></tr>
+<tr style="color: #E8EDF4; font-weight: 500"><td style="padding: 10px 0; border-bottom: 1px solid #1E2938">DistilBERT <span style="color: #9BE5F1; font-weight: 400">· selected</span></td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">88.6%</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">−47.0%</td><td style="text-align: right; padding: 10px 0 10px 8px; border-bottom: 1px solid #1E2938">−40.0%</td></tr>
+<tr><td style="padding: 10px 0; border-bottom: 1px solid #1E2938">DynaBERT</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">89.1%</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">−32.0%</td><td style="text-align: right; padding: 10px 0 10px 8px; border-bottom: 1px solid #1E2938">−25.0%</td></tr>
+<tr><td style="padding: 10px 0; border-bottom: 1px solid #1E2938">RoBERTa-base</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">89.4%</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938">0.0%</td><td style="text-align: right; padding: 10px 0 10px 8px; border-bottom: 1px solid #1E2938">0.0%</td></tr>
+</tbody></table></div>
+<p class="mono" style="font-size: 10px; color: #8793A6; margin: 10px 0 0; text-transform: none; letter-spacing: .04em; line-height: 1.7">All four fine-tuned under identical settings on the query-classification task. Time and size are relative to BERT-base.</p>
 </div>
 </div>
-<div style="flex: 1 1 380px; max-width: 520px; padding: clamp(24px, 3vw, 40px); border-left: 1px solid #1E2938; display: flex; flex-direction: column; gap: 20px; background: rgba(16,22,31,0.8)">
-<div class="mono" style="font-size: 10px; color: #8793A6">Evidence slot · placeholder</div>
-<div style="overflow-x: auto"><table style="border-collapse: collapse; width: 100%; min-width: 320px; font-family: 'Geist Mono', monospace; font-size: 12px">
-<thead><tr style="color: #8793A6; text-align: left"><th style="font-weight: 400; padding: 8px 0; border-bottom: 1px solid #2C3B50">Method</th><th style="font-weight: 400; padding: 8px 8px; border-bottom: 1px solid #2C3B50; text-align: right">Acc.</th><th style="font-weight: 400; padding: 8px 8px; border-bottom: 1px solid #2C3B50; text-align: right">Params</th><th style="font-weight: 400; padding: 8px 0; border-bottom: 1px solid #2C3B50; text-align: right">Latency</th></tr></thead>
-<tbody style="color: #C3CDDA"><tr><td class="ph" style="padding: 10px 0; border-bottom: 1px solid #1E2938">[Baseline]</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 0; border-bottom: 1px solid #1E2938; color: #8793A6">—</td></tr><tr><td class="ph" style="padding: 10px 0; border-bottom: 1px solid #1E2938">[Router]</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 8px; border-bottom: 1px solid #1E2938; color: #8793A6">—</td><td style="text-align: right; padding: 10px 0; border-bottom: 1px solid #1E2938; color: #8793A6">—</td></tr></tbody>
-</table></div>
-<div>
-<svg viewBox="0 0 320 150" role="img" aria-label="Empty accuracy versus model size plot, placeholder" style="width: 100%; height: auto; display: block">
-<rect x="36" y="8" width="276" height="112" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
-<path d="M36 120 V8 M36 120 H312" stroke="#5B6B83"/>
-<g font-family="Geist Mono, monospace" font-size="10.5" fill="#8793A6" letter-spacing="0.5"><text x="36" y="142">model size →</text><text x="2" y="14">acc.</text><text x="116" y="70" fill="#E3B766">[plot goes here]</text></g>
+
+<div style="flex: 1 1 380px; max-width: 540px; border-left: 1px solid #1E2938; background: rgba(16,22,31,0.8); display: flex; flex-direction: column">
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 20px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. 1 · where 100 queries go</span><span style="color: #A3AFC0">reported split</span></div>
+<div style="padding: 24px 28px 8px">
+<svg viewBox="0 0 340 400" role="img" aria-label="A ten by ten grid of 100 queries: 85 routed to the light agent shown as dots, 15 escalated to the deep agent shown as ringed dots. Below, a cost bar comparison: 10,000,000 units if every query goes to the deep agent against 1,585,000 units with the meta-controller, an 84.15 percent saving under the paper's simulated cost model." style="width: 100%; height: auto; display: block">
+<defs><pattern id="qdots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="3.2" fill="#5CC8DC" fill-opacity=".85"/></pattern></defs>
+<rect x="50" y="10" width="240" height="240" fill="url(#qdots)"/>
+<g fill="none" stroke="#9BE5F1" stroke-width="1.5"><circle cx="134" cy="22" r="7.2"/><circle cx="206" cy="22" r="7.2"/><circle cx="158" cy="46" r="7.2"/><circle cx="62" cy="70" r="7.2"/><circle cx="86" cy="94" r="7.2"/><circle cx="110" cy="94" r="7.2"/><circle cx="182" cy="118" r="7.2"/><circle cx="230" cy="118" r="7.2"/><circle cx="278" cy="142" r="7.2"/><circle cx="230" cy="166" r="7.2"/><circle cx="278" cy="190" r="7.2"/><circle cx="134" cy="214" r="7.2"/><circle cx="254" cy="214" r="7.2"/><circle cx="158" cy="238" r="7.2"/><circle cx="278" cy="238" r="7.2"/></g>
+<circle cx="56" cy="278" r="3.2" fill="#5CC8DC"/><circle cx="190" cy="278" r="3.2" fill="#5CC8DC"/><circle cx="190" cy="278" r="7.2" fill="none" stroke="#9BE5F1" stroke-width="1.5"/>
+<rect x="50" y="316" width="240" height="12" fill="#A3AFC0" fill-opacity=".22" stroke="#8793A6"/>
+<rect x="50" y="368" width="38.04" height="12" fill="#5CC8DC"/>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.5"><text x="68" y="282" fill="#C3CDDA">light agent · 85</text><text x="204" y="282" fill="#C3CDDA">deep agent · 15</text><text x="50" y="308" fill="#8793A6">every query to the deep agent</text><text x="290" y="346" text-anchor="end" fill="#C3CDDA">10,000,000 units</text><text x="50" y="360" fill="#8793A6">with the meta-controller</text><text x="98" y="378" fill="#C3CDDA">1,585,000 units</text><text x="290" y="396" text-anchor="end" fill="#9BE5F1" font-size="13">−84.15%</text></g>
 </svg>
-<div class="mono" style="font-size: 10px; color: #8793A6; margin-top: 6px">Fig. 1 · accuracy vs. model size · no values shown</div>
 </div>
+<dl style="margin: 0; display: flex; flex-wrap: wrap; border-top: 1px solid #1E2938">
+<div style="flex: 1 1 33%; padding: 18px 20px; min-width: 110px"><dt style="font-size: 30px; letter-spacing: -.03em; font-weight: 500; color: #E8EDF4; order: 1">97%</dt><dd class="mono" style="margin: 6px 0 0; font-size: 10px; color: #8793A6; line-height: 1.6">classifier accuracy, curated test set, ~15 ms</dd></div>
+<div style="flex: 1 1 33%; padding: 18px 20px; min-width: 110px; border-left: 1px solid #1E2938"><dt style="font-size: 30px; letter-spacing: -.03em; font-weight: 500; color: #E8EDF4">−62%</dt><dd class="mono" style="margin: 6px 0 0; font-size: 10px; color: #8793A6; line-height: 1.6">energy per query</dd></div>
+<div style="flex: 1 1 33%; padding: 18px 20px; min-width: 110px; border-left: 1px solid #1E2938"><dt style="font-size: 30px; letter-spacing: -.03em; font-weight: 500; color: #E8EDF4">−68%</dt><dd class="mono" style="margin: 6px 0 0; font-size: 10px; color: #8793A6; line-height: 1.6">computational load</dd></div>
+</dl>
+<p class="mono" style="margin: 0; padding: 12px 20px 16px; border-top: 1px solid #1E2938; font-size: 10px; color: #8793A6; text-transform: none; letter-spacing: .04em; line-height: 1.7">As reported in the paper. Cost bars use its simulated cost model (deep = 10 units, light = 0.1 unit, 85% of queries to the light agent).</p>
 </div>
 </article>
 
 <!-- ledger -->
 <div style="margin-top: 72px">
 <div class="lbl" style="margin-bottom: 16px">Research ledger</div>
-<div style="border-top: 1px solid #2C3B50">
-<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
+<div style="border-top: 1px solid #2C3B50; border-bottom: 1px solid #1E2938">
+<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 32px 0; text-decoration: none; color: inherit">
 <span class="chip c-on" style="flex: none">Ongoing</span>
-<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em">Contradictions in vision-model quantization</div><div class="p" style="font-size: 15px; margin-top: 6px">Mining conflicting published claims on PTQ and QAT; the research question is to emerge from one that survives scrutiny.</div></div>
-<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Student team · Colab-class compute<br>Target: <span class="ph">[journal / venue]</span></div>
-<span class="go mono" aria-hidden="true">→</span>
-</a>
-<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
-<span class="chip c-ex" style="flex: none">Exploratory</span>
-<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em"><span class="ph">[Spiking-network experiment title]</span></div><div class="p" style="font-size: 15px; margin-top: 6px"><span class="ph">[One line: the question and the setup. Remove this entry if it is not yet real work.]</span></div></div>
-<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Started <span class="ph">[month year]</span><br>Code <span class="ph">[repo]</span></div>
-<span class="go mono" aria-hidden="true">→</span>
-</a>
-<a class="entry" href="#projects" style="display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; padding: 28px 0; border-bottom: 1px solid #1E2938; text-decoration: none; color: inherit">
-<span class="chip c-ex" style="flex: none">Exploratory</span>
-<div style="flex: 1 1 360px"><div style="font-size: 20px; font-weight: 500; letter-spacing: -.01em"><span class="ph">[Distillation experiment title]</span></div><div class="p" style="font-size: 15px; margin-top: 6px"><span class="ph">[One line: teacher, student, constraint. Remove if not yet real work.]</span></div></div>
-<div class="mono" style="flex: 0 0 200px; font-size: 11px; color: #8793A6">Started <span class="ph">[month year]</span><br>Code <span class="ph">[repo]</span></div>
+<div style="flex: 1 1 420px; max-width: 760px"><div style="font-size: 22px; font-weight: 500; letter-spacing: -.015em">XyloTron Vision Model Quantization</div><div class="p" style="font-size: 15px; margin-top: 8px">An offline, edge-deployable species classifier for wood identification. We are quantizing the XyloTron vision model and fine-tuning it for XyloPhone, a camera-based device that runs without a network connection, so identification works where connectivity does not. Carried out by two students in collaboration with Prabu Ravindran and Dr. Wiedenhoeft of the Department of Botany, University of Wisconsin–Madison.</div></div>
+<div class="mono" style="flex: 0 0 220px; font-size: 11px; color: #8793A6; line-height: 1.8">Two-person student team<br>Prototype stage · no results reported yet</div>
 <span class="go mono" aria-hidden="true">→</span>
 </a>
 </div>
@@ -331,22 +341,59 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <article style="display: flex; flex-wrap: wrap; gap: 40px 64px; padding: 56px 0; border-top: 1px solid #2C3B50; align-items: center">
 <div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
 <div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.1</span><span class="chip c-on">Ongoing</span></div>
-<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">Contradiction mining in vision-model quantization</h3>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Published results on quantizing vision models do not always agree. Which disagreements are real, and which come from differences in protocol?</p></div>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">Collect conflicting claims across papers, keep only contradictions that survive scrutiny, and let the research question emerge from one. Public checkpoints, PyTorch and timm, Colab-class GPUs.</p></div>
-<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">PyTorch</span><span class="tag">timm</span><span class="tag">torchvision</span><span class="tag">PTQ / QAT</span></div>
-<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a><a class="lnk mono" href="#projects">Notes <span class="ph">[doc]</span> ↗</a></div>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">XyloTron quantization for offline wood identification</h3>
+<div class="mono" style="font-size: 11px; color: #8793A6; line-height: 1.8; text-transform: none; letter-spacing: .04em">With Prabu Ravindran and Dr. Wiedenhoeft · Department of Botany, University of Wisconsin–Madison</div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">XyloTron identifies wood species from macroscopic images. Field identification often happens without a network or a workstation, so the model has to be small and fast enough to run entirely on the device.</p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">We are quantizing the XyloTron vision model and fine-tuning it to recover accuracy, targeting XyloPhone, an offline camera device. A companion mobile application that runs the same model is in development. Two students carry out the work.</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">Quantization</span><span class="tag">Fine-tuning</span><span class="tag">Edge inference</span><span class="tag">Wood identification</span><span class="tag">Mobile</span></div>
+<div class="mono" style="font-size: 11px; color: #8793A6">No results reported yet.</div>
 </div>
 <figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
-<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.1 · conflicting claims</span><span style="color: #E3B766">schematic · not data</span></div>
-<svg viewBox="0 0 540 260" role="img" aria-label="Schematic: two accuracy-versus-bit-width curves agree at high precision and diverge at low bit-widths, leaving an unexplained gap" style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
-<defs><pattern id="hatchA" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V8" stroke="#5CC8DC" stroke-opacity=".35" stroke-width="1"/></pattern></defs>
-<path d="M50 30 V220 H510" fill="none" stroke="#5B6B83"/>
-<g stroke="#2C3B50" stroke-dasharray="2 4"><path d="M165 30V220M280 30V220M395 30V220M510 30V220"/></g>
-<path d="M280 62 C340 72 420 104 510 150 L510 214 C420 190 340 120 280 88 Z" fill="url(#hatchA)"/>
-<path d="M50 50 C130 50 210 54 280 62 C340 72 420 104 510 150" fill="none" stroke="#5CC8DC" stroke-width="1.8"/>
-<path d="M50 52 C130 54 210 66 280 88 C340 120 420 190 510 214" fill="none" stroke="#A3AFC0" stroke-width="1.6" stroke-dasharray="6 4"/>
-<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="46" y="240" text-anchor="middle">8</text><text x="165" y="240" text-anchor="middle">6</text><text x="280" y="240" text-anchor="middle">4</text><text x="395" y="240" text-anchor="middle">3</text><text x="510" y="240" text-anchor="middle">2</text><text x="50" y="20">accuracy</text><text x="330" y="256">bit-width →</text><text x="400" y="118" fill="#5CC8DC">claim A</text><text x="420" y="198" fill="#C3CDDA">claim B</text><text x="395" y="160" fill="#9BE5F1" text-anchor="middle">gap = ?</text></g>
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.1 · from wood section to int8</span><span style="color: #E3B766">schematic · not data</span></div>
+<svg viewBox="0 0 540 300" role="img" aria-label="Schematic: a stylised wood cross-section with growth rings and pores on the left. An arrow leads to two panels on the right: smooth floating-point weight curves above, and the same curves snapped to coarse integer levels below." style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
+<defs>
+<filter id="grain" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.018 0.026" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/></filter>
+<clipPath id="woodclip"><rect x="0" y="0" width="230" height="190"/></clipPath>
+<marker id="xarr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#5CC8DC" stroke-width="1.2"/></marker>
+</defs>
+<g transform="translate(20 40)">
+<g clip-path="url(#woodclip)">
+<rect width="230" height="190" fill="#10161F"/>
+<g filter="url(#grain)" fill="none" stroke="#5CC8DC" transform="translate(0 0)">
+<ellipse cx="115" cy="95" rx="10" ry="8" stroke-opacity=".9" stroke-width="1.4"/>
+<ellipse cx="115" cy="95" rx="24" ry="19" stroke-opacity=".5"/>
+<ellipse cx="115" cy="95" rx="38" ry="30" stroke-opacity=".8" stroke-width="1.4"/>
+<ellipse cx="115" cy="95" rx="52" ry="41" stroke-opacity=".45"/>
+<ellipse cx="115" cy="95" rx="66" ry="52" stroke-opacity=".75" stroke-width="1.4"/>
+<ellipse cx="115" cy="95" rx="80" ry="63" stroke-opacity=".4"/>
+<ellipse cx="115" cy="95" rx="94" ry="74" stroke-opacity=".7" stroke-width="1.4"/>
+<ellipse cx="115" cy="95" rx="108" ry="85" stroke-opacity=".35"/>
+<ellipse cx="115" cy="95" rx="122" ry="96" stroke-opacity=".6" stroke-width="1.4"/>
+<ellipse cx="115" cy="95" rx="136" ry="107" stroke-opacity=".3"/>
+<g stroke="#9BE5F1" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="0.1 9" stroke-opacity=".9"><ellipse cx="115" cy="95" rx="31" ry="24.5"/><ellipse cx="115" cy="95" rx="59" ry="46.5"/><ellipse cx="115" cy="95" rx="87" ry="68.5"/><ellipse cx="115" cy="95" rx="115" ry="90.5"/></g>
+</g>
+<g stroke="#5CC8DC" stroke-opacity=".16"><path d="M115 95 L230 20M115 95 L230 150M115 95 L0 40M115 95 L0 160M115 95 L60 190M115 95 L180 0"/></g>
+</g>
+<rect width="230" height="190" fill="none" stroke="#2C3B50"/>
+</g>
+<path d="M266 135 H296" stroke="#5CC8DC" stroke-width="1.2" marker-end="url(#xarr)"/>
+<g transform="translate(310 40)">
+<g fill="none" stroke="#5CC8DC" stroke-width="1.3" stroke-opacity=".9" vector-effect="non-scaling-stroke">
+<path d="M0 16 L5 18 L10 19 L15 21 L20 22 L25 22 L30 22 L35 21 L40 20 L45 19 L50 17 L55 15 L60 14 L65 12 L70 11 L75 10 L80 10 L85 10 L90 11 L95 12 L100 14 L105 16 L110 17 L115 19 L120 20 L125 21 L130 22 L135 22 L140 21 L145 21 L150 19 L155 18 L160 16 L165 14 L170 12" transform="scale(1 .75)"/>
+<path d="M0 37 L5 38 L10 39 L15 39 L20 39 L25 38 L30 37 L35 35 L40 33 L45 32 L50 30 L55 29 L60 28 L65 27 L70 27 L75 28 L80 28 L85 30 L90 31 L95 33 L100 35 L105 37 L110 38 L115 39 L120 39 L125 39 L130 38 L135 37 L140 36 L145 34 L150 32 L155 30 L160 29 L165 28 L170 27" transform="scale(1 .75)"/>
+<path d="M0 56 L5 56 L10 55 L15 55 L20 53 L25 52 L30 50 L35 48 L40 46 L45 45 L50 44 L55 44 L60 44 L65 45 L70 46 L75 47 L80 49 L85 51 L90 53 L95 54 L100 55 L105 56 L110 56 L115 56 L120 55 L125 54 L130 52 L135 50 L140 48 L145 47 L150 46 L155 45 L160 44 L165 44 L170 45" transform="scale(1 .75)"/>
+</g>
+<rect x="0" y="0" width="170" height="70" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
+</g>
+<g transform="translate(310 160)">
+<g fill="none" stroke="#9BE5F1" stroke-width="1.3" vector-effect="non-scaling-stroke">
+<path d="M0 18.0 H10 H20 V22.5 H30 H40 H50 V18.0 H60 V13.5 H70 H80 V9.0 H90 H100 V13.5 H110 H120 V18.0 H130 V22.5 H140 H150 H160 V18.0 H170 V13.5 H170" transform="scale(1 .75)"/>
+<path d="M0 36.0 H10 H20 V40.5 H30 V36.0 H40 H50 V31.5 H60 V27.0 H70 H80 H90 V31.5 H100 H110 V36.0 H120 V40.5 H130 H140 V36.0 H150 H160 V31.5 H170 V27.0 H170" transform="scale(1 .75)"/>
+<path d="M0 54.0 H10 H20 H30 V49.5 H40 H50 V45.0 H60 H70 H80 V49.5 H90 H100 V54.0 H110 H120 H130 H140 V49.5 H150 V45.0 H160 H170 H170" transform="scale(1 .75)"/>
+</g>
+<rect x="0" y="0" width="170" height="70" fill="none" stroke="#2C3B50" stroke-dasharray="3 4"/>
+</g>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="20" y="28">wood cross-section</text><text x="310" y="28">weights · float32</text><text x="310" y="148" fill="#9BE5F1">weights · int8 levels</text><text x="20" y="252">growth rings · pores</text><text x="20" y="268" fill="#C3CDDA">what the model learns to read</text><text x="310" y="252">quantize, then fine-tune</text><text x="310" y="268" fill="#C3CDDA">to recover accuracy on-device</text></g>
 </svg>
 </figure>
 </article>
@@ -354,23 +401,36 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <!-- P2 -->
 <article style="display: flex; flex-wrap: wrap-reverse; gap: 40px 64px; padding: 56px 0; border-top: 1px solid #1E2938; align-items: center">
 <figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
-<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.2 · dense vs. event-driven</span><span style="color: #E3B766">schematic · not data</span></div>
-<svg viewBox="0 0 540 260" role="img" aria-label="Schematic: a dense activation grid, fully active, beside an event-driven grid where only a few cells fire" style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
-<defs><pattern id="cellsD" width="28" height="28" patternUnits="userSpaceOnUse"><rect x="3" y="3" width="22" height="22" fill="#5CC8DC" fill-opacity=".34"/></pattern><pattern id="cellsS" width="28" height="28" patternUnits="userSpaceOnUse"><rect x="3.5" y="3.5" width="21" height="21" fill="none" stroke="#2C3B50"/></pattern></defs>
-<rect x="20" y="40" width="224" height="168" fill="url(#cellsD)"/>
-<rect x="296" y="40" width="224" height="168" fill="url(#cellsS)"/>
-<g fill="#5CC8DC"><rect x="303" y="47" width="22" height="22"/><rect x="415" y="75" width="22" height="22"/><rect x="359" y="103" width="22" height="22"/><rect x="471" y="103" width="22" height="22"/><rect x="331" y="131" width="22" height="22"/><rect x="443" y="159" width="22" height="22"/><rect x="387" y="187" width="22" height="22" opacity="0"/><rect x="303" y="159" width="22" height="22"/></g>
-<path d="M258 124 H282" stroke="#5B6B83"/>
-<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="20" y="28">dense: every unit, every step</text><text x="296" y="28" fill="#5CC8DC">event-driven: spikes only</text><text x="20" y="236">activations computed</text><text x="296" y="236">activations computed</text><text x="20" y="252" fill="#C3CDDA">many</text><text x="296" y="252" fill="#C3CDDA">few, if the model stays accurate</text></g>
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.2 · fragment + linker + fragment</span><span style="color: #E3B766">schematic · not data</span></div>
+<svg viewBox="0 0 540 300" role="img" aria-label="Schematic: two aromatic ring fragments joined by a short linker chain, with a molecular-weight window of 150 to 500 daltons marked below" style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
+<g fill="none" stroke="#C3CDDA" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" transform="translate(20 0)">
+<path d="M146 130 L128 161.2 L92 161.2 L74 130 L92 98.8 L128 98.8 Z"/>
+<path d="M136.7 132.4L125.4 151.9 M94.6 151.9L83.3 132.4 M98.8 105.7L121.2 105.7" stroke-width="1.2"/>
+<path d="M298 144 L280 175.2 L244 175.2 L226 144 L244 112.8 L280 112.8 Z"/>
+<path d="M288.7 146.4L277.4 165.9 M246.6 165.9L235.3 146.4 M250.8 119.7L273.2 119.7" stroke-width="1.2"/>
+<path d="M146 130 L168 142 L190 132 L212 143 L226 144" stroke="#5CC8DC" stroke-width="2"/>
+<circle cx="244" cy="175.2" r="9" fill="#10161F" stroke="none"/>
+</g>
+<g font-family="Geist Mono, monospace" font-size="11" fill="#9BE5F1" text-anchor="middle" transform="translate(20 0)"><text x="244" y="179">N</text></g>
+<g fill="none" stroke="#5B6B83" stroke-width="1" transform="translate(20 0)"><path d="M74 84 V76 H146 V84"/><path d="M146 84 V76" stroke="none"/><path d="M158 120 V112 H214 V120" stroke="#5CC8DC" stroke-opacity=".6"/><path d="M226 84 V76 H298 V84"/></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="94" y="66" text-anchor="middle">fragment</text><text x="204" y="104" text-anchor="middle" fill="#5CC8DC">linker</text><text x="282" y="66" text-anchor="middle">fragment</text></g>
+<g>
+<path d="M40 232 H500" stroke="#5B6B83"/>
+<rect x="155" y="224" width="268" height="16" fill="#5CC8DC" fill-opacity=".2" stroke="#5CC8DC" stroke-opacity=".7"/>
+<g stroke="#5B6B83"><path d="M40 228V236M155 228V236M423 228V236M500 228V236"/></g>
+<g font-family="Geist Mono, monospace" font-size="10.5" letter-spacing="0.6" fill="#8793A6"><text x="40" y="256">0</text><text x="155" y="256" text-anchor="middle" fill="#C3CDDA">150</text><text x="423" y="256" text-anchor="middle" fill="#C3CDDA">500</text><text x="500" y="256" text-anchor="end">Da</text><text x="289" y="216" text-anchor="middle" fill="#9BE5F1">kept: molecular-weight window</text><text x="40" y="284">then reported: MW · LogP · TPSA · H-bond donors / acceptors</text></g>
+</g>
 </svg>
 </figure>
 <div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
-<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.2</span><span class="chip c-ex">Exploratory</span></div>
-<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500"><span class="ph">[SNN project title]</span></h3>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px"><span class="ph">[One sentence: the question you are investigating in spiking networks.]</span></p></div>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px"><span class="ph">[Two sentences: model, training method, what is measured.]</span></p></div>
-<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag ph">[framework]</span><span class="tag ph">[dataset]</span></div>
-<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a><a class="lnk mono" href="#projects">Write-up <span class="ph">[doc]</span> ↗</a></div>
+<div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.2</span><span class="chip c-done">Completed</span></div>
+<h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">Drug-like molecule generator</h3>
+<div class="mono" style="font-size: 11px; color: #8793A6; line-height: 1.8; text-transform: none; letter-spacing: .04em">Internship · Agilisium Consulting, Agilisium Labs (R&amp;D division)</div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Exploring chemical space means combining known building blocks, and doing it by hand is slow. Candidate libraries need validity and basic drug-likeness checks built in.</p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">A Streamlit application that assembles molecules combinatorially from a curated set of heteroaromatic fragments and linkers, validates each structure with RDKit, keeps those within a 150–500 Da molecular-weight window, and reports MW, LogP, TPSA and hydrogen-bond donors and acceptors. Results appear as a table and 2D structure grid, with CSV export.</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">RDKit</span><span class="tag">pandas</span><span class="tag">Cheminformatics</span></div>
+<div class="mono" style="font-size: 11px; color: #8793A6">Rule-based MVP · no benchmark results reported.</div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="https://github.com/jeffreymariaraj/drug-like-molecule-generator" target="_blank" rel="noopener noreferrer">Code ↗</a></div>
 </div>
 </article>
 
@@ -379,73 +439,55 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 <div style="flex: 1 1 360px; max-width: 520px; display: flex; flex-direction: column; gap: 22px">
 <div style="display: flex; gap: 16px; align-items: center"><span class="mono" style="color: #5CC8DC">P.3</span><span class="chip c-pub">Published</span></div>
 <h3 style="margin: 0; font-size: clamp(28px, 3vw, 44px); line-height: 1.08; letter-spacing: -.028em; font-weight: 500">LLM query routing with a DistilBERT classifier</h3>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Not every query needs the largest model. Can a small classifier decide, quickly and cheaply, where each query should go?</p></div>
-<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">A fine-tuned DistilBERT classifier routes incoming queries between language models. Evaluated against <span class="ph">[baselines]</span> on <span class="ph">[dataset / metric]</span>.</p></div>
-<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">DistilBERT</span><span class="tag">text classification</span><span class="tag">LLM routing</span></div>
-<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="#publications">Paper ↗</a><a class="lnk mono" href="#projects">Code <span class="ph">[repo]</span> ↗</a></div>
+<div class="mono" style="font-size: 11px; color: #8793A6; line-height: 1.8; text-transform: none; letter-spacing: .04em">IEEE CSITSS 2025 · with Ronan Lobo and Maurya P. Gowda · same work as the publication above</div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Problem</div><p class="p" style="font-size: 16px">Most queries do not need the largest model, yet serving all of them with it costs energy and latency. Can a small classifier decide, quickly and cheaply, where each query should go?</p></div>
+<div><div class="lbl" style="font-size: 10px; margin-bottom: 6px">Approach</div><p class="p" style="font-size: 16px">A fine-tuned DistilBERT classifier, chosen over BERT, DynaBERT and RoBERTa for its speed and size, routes each query to a lightweight or a deep agent. An escalation protocol lets the lightweight agent pass a prompt up when it is out of its depth. The paper reports 97% classifier accuracy at about 15 ms, with 68% lower computational load and 62% less energy per query.</p></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="tag">DistilBERT</span><span class="tag">LLM routing</span><span class="tag">Energy efficiency</span><span class="tag">Python</span></div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap"><a class="lnk mono" href="https://doi.org/10.1109/CSITSS67709.2025.11295492" target="_blank" rel="noopener noreferrer">Paper (DOI) ↗</a><a class="lnk mono" href="https://github.com/mauryapg13/smart-meta-controller" target="_blank" rel="noopener noreferrer">Code ↗</a></div>
 </div>
 <figure style="flex: 1 1 400px; max-width: 640px; margin: 0; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92)">
-<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.3 · routing pipeline</span><span style="color: #E3B766">proposed diagram · confirm against paper</span></div>
-<div style="padding: 36px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px">
-<div style="border: 1px solid #2C3B50; padding: 14px 16px; text-align: center; font-size: 14px; color: #C3CDDA; min-width: 92px">Query</div>
-<span class="mono" aria-hidden="true" style="color: #5CC8DC">→</span>
-<div style="border: 1px solid #5CC8DC; padding: 14px 16px; text-align: center; font-size: 14px; background: rgba(92,200,220,0.08); min-width: 150px">DistilBERT<br><span class="mono" style="font-size: 10px; color: #9BE5F1">fine-tuned classifier</span></div>
-<span class="mono" aria-hidden="true" style="color: #5CC8DC">→</span>
-<div style="display: flex; flex-direction: column; gap: 10px">
-<div style="border: 1px solid #2C3B50; padding: 10px 14px; font-size: 13px; color: #C3CDDA">Smaller, cheaper model</div>
-<div style="border: 1px dashed #5B6B83; padding: 10px 14px; font-size: 13px; color: #C3CDDA">Larger, more capable model</div>
-</div>
-</div>
+<div class="mono" style="display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; border-bottom: 1px solid #1E2938; font-size: 10px; color: #8793A6"><span>Fig. P.3 · two-stage routing</span><span style="color: #E3B766">schematic · not data</span></div>
+<svg viewBox="0 0 600 300" role="img" aria-label="Pipeline diagram: a query enters a DistilBERT classifier. Simple queries, about 85 percent, go to a light agent; complex queries, about 15 percent, go to a deep agent. A dashed escalation path leads from the light agent to the deep agent. Both agents return a response." style="width: 100%; height: auto; display: block; padding: 8px 12px 6px; box-sizing: border-box">
+<defs><marker id="parr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#5CC8DC" stroke-width="1.2"/></marker><marker id="parg" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#8793A6" stroke-width="1.2"/></marker></defs>
+<g fill="none" stroke-width="1.3">
+<path d="M82 150 H112" stroke="#8793A6" marker-end="url(#parg)"/>
+<path d="M232 150 H262 V76 H292" stroke="#5CC8DC" marker-end="url(#parr)"/>
+<path d="M232 150 H262 V224 H292" stroke="#5CC8DC" marker-end="url(#parr)"/>
+<path d="M432 76 H462 V138 H482" stroke="#8793A6" marker-end="url(#parg)"/>
+<path d="M432 224 H462 V162 H482" stroke="#8793A6" marker-end="url(#parg)"/>
+<path d="M362 106 V194" stroke="#9BE5F1" stroke-dasharray="4 4" marker-end="url(#parr)"/>
+</g>
+<g font-family="Geist, system-ui, sans-serif" font-size="13" fill="#C3CDDA">
+<rect x="16" y="128" width="66" height="44" fill="#10161F" stroke="#2C3B50"/><text x="49" y="155" text-anchor="middle">Query</text>
+<rect x="112" y="116" width="120" height="68" fill="rgba(92,200,220,.08)" stroke="#5CC8DC"/><text x="172" y="145" text-anchor="middle" fill="#E8EDF4">DistilBERT</text><text x="172" y="166" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#9BE5F1" letter-spacing=".5">classifier · ~15 ms</text>
+<rect x="292" y="46" width="140" height="60" fill="#10161F" stroke="#2C3B50"/><text x="362" y="72" text-anchor="middle">Light agent</text><text x="362" y="92" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#8793A6" letter-spacing=".5">cheap · fast</text>
+<rect x="292" y="194" width="140" height="60" fill="#10161F" stroke="#5B6B83" stroke-dasharray="5 3"/><text x="362" y="220" text-anchor="middle">Deep agent</text><text x="362" y="240" text-anchor="middle" font-family="Geist Mono, monospace" font-size="10" fill="#8793A6" letter-spacing=".5">capable · costly</text>
+<rect x="482" y="126" width="102" height="48" fill="#10161F" stroke="#2C3B50"/><text x="533" y="155" text-anchor="middle">Response</text>
+</g>
+<g font-family="Geist Mono, monospace" font-size="10" letter-spacing=".5" fill="#8793A6"><text x="268" y="116" text-anchor="start" fill="#C3CDDA">simple · ~85%</text><text x="268" y="186" text-anchor="start" fill="#C3CDDA">complex · ~15%</text><text x="372" y="154" fill="#9BE5F1">escalate if out of depth</text><text x="16" y="284">per-query cost in the paper's model: deep 10 units · light 0.1 unit</text></g>
+</svg>
 </figure>
 </article>
-</div>
-</section>
-
-<!-- F · METHOD -->
-<section id="method" data-bg="2" style="padding: 100px 0 120px">
-<div class="wrap">
-<div style="display: flex; flex-wrap: wrap; gap: 32px 80px; align-items: flex-end; justify-content: space-between; margin-bottom: 64px">
-<div style="flex: 1 1 520px; max-width: 760px">
-<div class="lbl" style="margin-bottom: 24px">05 — Method</div>
-<h2 class="h2">Evidence before claims.</h2>
-</div>
-<p class="p" style="flex: 1 1 320px; max-width: 440px">Accuracy alone is a thin result. I try to report what changed, by how much, across how many runs, and where the method fails.</p>
-</div>
-<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; border-top: 1px solid #2C3B50">
-<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.1</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Hypothesis</div><p class="p" style="font-size: 15px">A falsifiable statement of what should change, and by how much.</p></li>
-<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.2</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Controlled setup</div><p class="p" style="font-size: 15px">One variable at a time. Fixed seeds, public checkpoints, stated compute limits.</p></li>
-<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.3</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Quantitative evaluation</div><p class="p" style="font-size: 15px">Accuracy against size and latency, with variance across runs.</p></li>
-<li style="flex: 1 1 220px; padding: 28px 24px 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.4</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Failure analysis</div><p class="p" style="font-size: 15px">Which inputs, layers or settings break, and why, not only how often.</p></li>
-<li style="flex: 1 1 220px; padding: 28px 0 28px 0; border-bottom: 1px solid #1E2938"><div class="mono" style="color: #5CC8DC; font-size: 11px">M.5</div><div style="font-size: 20px; font-weight: 500; margin: 12px 0 8px; letter-spacing: -.01em">Reproducible release</div><p class="p" style="font-size: 15px">Code, configs and logs sufficient to regenerate each table.</p></li>
-</ol>
-<div style="display: flex; flex-wrap: wrap; gap: 24px 64px; margin-top: 56px; align-items: flex-start">
-<p class="p" style="flex: 1 1 320px; max-width: 460px">What a finished experiment should leave behind, as a repository layout I intend to hold my own work to:</p>
-<pre class="mono" style="flex: 1 1 360px; max-width: 560px; margin: 0; padding: 20px 24px; border: 1px solid #2C3B50; background: rgba(12,17,25,0.92); font-size: 12px; line-height: 1.9; letter-spacing: .02em; text-transform: none; color: #C3CDDA; overflow-x: auto"><span style="color: #8793A6">results/</span>
-  config.yaml      <span style="color: #8793A6"># every hyperparameter</span>
-  seeds.txt        <span style="color: #8793A6"># runs reported, not best-of</span>
-  table_1.csv      <span style="color: #8793A6"># raw numbers behind each figure</span>
-  failures.md      <span style="color: #8793A6"># cases the method gets wrong</span></pre>
-</div>
-<div class="mono" style="font-size: 10px; color: #8793A6; margin-top: 14px">Proposed structure · not yet a published repo</div>
 </div>
 </section>
 
 <!-- G · CONTACT -->
 <section id="contact" data-bg="3" style="padding: 100px 0 0; min-height: 780px; display: flex; flex-direction: column">
 <div class="wrap" style="flex: 1; width: 100%">
-<div class="lbl" style="margin-bottom: 24px">06 — Contact</div>
+<div class="lbl" style="margin-bottom: 24px">05 — Contact</div>
 <h2 style="margin: 0; max-width: 920px; font-size: clamp(40px, 6.2vw, 92px); line-height: 1; letter-spacing: -.04em; font-weight: 500">If this overlaps with what you work on, I would like to compare notes.</h2>
 <p class="p" style="max-width: 520px; margin-top: 32px">I am looking for research collaboration in efficient and resource-constrained machine learning, and happy to share code, logs and open questions.</p>
 <div style="margin-top: 64px; max-width: 900px">
-<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">GitHub</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">github.com/<span class="ph">[username]</span></span><span class="go mono" aria-hidden="true">↗</span></a>
-<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">LinkedIn</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">linkedin.com/in/<span class="ph">[username]</span></span><span class="go mono" aria-hidden="true">↗</span></a>
-<a class="crow" href="#contact"><span class="mono" style="color: #8793A6; flex: 0 0 110px">Email</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em"><span class="ph">[email address]</span></span><span class="go mono" aria-hidden="true">→</span></a>
-<a class="crow" href="#cv" style="border-bottom: 1px solid #1E2938"><span class="mono" style="color: #8793A6; flex: 0 0 110px">CV</span><span style="flex: 1 1 260px; font-size: clamp(20px, 2.2vw, 30px); letter-spacing: -.01em">Download as PDF</span><span class="go mono" aria-hidden="true">↓</span></a>
+<a class="crow" href="https://www.linkedin.com/in/jeffrey-mariaraj" target="_blank" rel="noopener noreferrer" style="align-items: center; flex-wrap: nowrap; gap: 20px; "><span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.75 9.75h3.8v1.6h.06c.53-1 1.82-2 3.75-2 4 0 4.74 2.64 4.74 6.07V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.32-1.96 2.69V21h-4z"/></svg></span><span class="mono" style="color: #8793A6; flex: 0 0 90px">LinkedIn</span><span style="flex: 1 1 auto; min-width: 0; font-size: clamp(18px, 2vw, 28px); letter-spacing: -.01em; overflow-wrap: anywhere">linkedin.com/in/jeffrey-mariaraj</span><span class="go mono" aria-hidden="true">↗</span></a>
+<a class="crow" href="https://x.com/ffsj3ff" target="_blank" rel="noopener noreferrer" style="align-items: center; flex-wrap: nowrap; gap: 20px; "><span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span><span class="mono" style="color: #8793A6; flex: 0 0 90px">X</span><span style="flex: 1 1 auto; min-width: 0; font-size: clamp(18px, 2vw, 28px); letter-spacing: -.01em; overflow-wrap: anywhere">x.com/ffsj3ff</span><span class="go mono" aria-hidden="true">↗</span></a>
+<a class="crow" href="https://github.com/jeffreymariaraj" target="_blank" rel="noopener noreferrer" style="align-items: center; flex-wrap: nowrap; gap: 20px; "><span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></span><span class="mono" style="color: #8793A6; flex: 0 0 90px">GitHub</span><span style="flex: 1 1 auto; min-width: 0; font-size: clamp(18px, 2vw, 28px); letter-spacing: -.01em; overflow-wrap: anywhere">github.com/jeffreymariaraj</span><span class="go mono" aria-hidden="true">↗</span></a>
+<a class="crow" href="#contact"  style="align-items: center; flex-wrap: nowrap; gap: 20px; "><span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3.5 6.5 12 13l8.5-6.5"/></g></svg></span><span class="mono" style="color: #8793A6; flex: 0 0 90px">Email</span><span style="flex: 1 1 auto; min-width: 0; font-size: clamp(18px, 2vw, 28px); letter-spacing: -.01em; overflow-wrap: anywhere"><span class="ph">[email address]</span></span><span class="go mono" aria-hidden="true">→</span></a>
+<a class="crow" href="#cv"  style="align-items: center; flex-wrap: nowrap; gap: 20px; border-bottom: 1px solid #1E2938;"><span class="tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 15.5h6"/></g></svg></span><span class="mono" style="color: #8793A6; flex: 0 0 90px">CV</span><span style="flex: 1 1 auto; min-width: 0; font-size: clamp(18px, 2vw, 28px); letter-spacing: -.01em; overflow-wrap: anywhere">Download as PDF</span><span class="go mono" aria-hidden="true">↓</span></a>
 </div>
 </div>
 <footer class="wrap" style="width: 100%; padding-top: 80px; padding-bottom: 32px">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; border-top: 1px solid #1E2938; padding-top: 18px">
-<span class="mono" style="font-size: 10px; color: #8793A6">© 2026 Jeff <span class="ph">[Surname]</span> · RVCE Bengaluru</span>
+<span class="mono" style="font-size: 10px; color: #8793A6">© 2026 Jeff Mariaraj · RVCE Bengaluru</span>
 <span class="mono" style="font-size: 10px; color: #8793A6">Static site · React + CSS + Canvas 2D · GitHub Pages</span>
 <a class="lnk mono" href="#top" style="font-size: 10px; color: #A3AFC0">Back to top ↑</a>
 </div>
@@ -456,13 +498,13 @@ a:focus-visible,button:focus-visible{outline:2px solid #5CC8DC;outline-offset:3p
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8400}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8600}}'>
 class Component extends DCLogic {
   state = { active: 'cv' };
 
   renderVals() {
     const a = this.state.active;
-    const items = [['cv', 'CV', '01'], ['research', 'Research', '02'], ['publications', 'Publications', '03'], ['projects', 'Projects', '04'], ['contact', 'Contact', '06']].map((x) => ({
+    const items = [['cv', 'CV', '01'], ['research', 'Research', '02'], ['publications', 'Publications', '03'], ['projects', 'Projects', '04'], ['contact', 'Contact', '05']].map((x) => ({
       label: x[1], n: x[2], href: '#' + x[0], bar: a === x[0] ? '1' : '0', color: a === x[0] ? '#E8EDF4' : '#A3AFC0'
     }));
     return { navItems: items };
@@ -470,7 +512,7 @@ class Component extends DCLogic {
 
   componentDidMount() {
     // scroll-spy: one passive listener, rAF-throttled, reads only (no layout writes)
-    const map = [['cv', 'cv'], ['research', 'research'], ['publications', 'publications'], ['projects', 'projects'], ['method', 'projects'], ['contact', 'contact']];
+    const map = [['cv', 'cv'], ['research', 'research'], ['publications', 'publications'], ['projects', 'projects'], ['contact', 'contact']];
     let queued = false;
     this._spy = () => {
       if (queued) return;

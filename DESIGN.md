@@ -49,12 +49,11 @@ Spacing scale (px): 4, 8, 12, 16, 24, 32, 48, 64, 96. Sections: 120–140px vert
 | `hero` | — | 0 | identity hero: portrait left (4:5, ~33vw, max 440px) with cyan corner ticks and caption; right: status line, name (display type), 3-row definition list (Studying / Next / Research), one-sentence statement, 4 buttons (View CV primary, Research, Publications, GitHub); bottom annotation bar |
 | `cv` | 01 CV | 1 | left: label, heading, updated date, **Download PDF** (primary) + "Open in new tab"; right: PDF viewer panel (toolbar with page counter, prev/next, zoom −/+; 720px-high scroll area on `--ink-3` with the white page; footer note) |
 | `research` | 02 Research | 1 | heading is the question "How little precision can a network afford?" (cyan "?"); three rows R.1–R.3, each with chip, text, tags, small SVG figure |
-| `publications` | 03 Publications | 2 | status key; featured publication panel + evidence slot; research ledger |
-| `projects` | 04 Projects | 2 | P.1 ongoing, P.2 exploratory (placeholder), P.3 published; figure panels; P.2 text/figure order flips on desktop |
-| `method` | (under Projects) | 2 | label 05; five steps M.1–M.5 + proposed `results/` layout |
-| `contact` | 06 Contact | 3 | large closing statement, four link rows, footer |
+| `publications` | 03 Publications | 2 | status key; featured publication panel (text, Table 1, Fig. 1 "where 100 queries go" with cost bars, three headline stats); research ledger with a single ongoing entry (XyloTron) |
+| `projects` | 04 Projects | 2 | P.1 XyloTron (ongoing), P.2 drug-like molecule generator (completed), P.3 query routing (published); each has a figure panel with an SVG schematic; P.2 text/figure order flips on desktop |
+| `contact` | 05 Contact | 3 | large closing statement, five link rows with 44px icon tiles (LinkedIn, X, GitHub, Email, CV), footer |
 
-Nav order follows the page: CV 01, Research 02, Publications 03, Projects 04, Contact 06 (05 is the Method section label). Sticky header, 68px high, blurred dark background, 1px bottom border. Active section = 2px cyan rule under the item (scroll-spy). Mobile (≤720px): "Menu" button (48px) opens a sheet with 60px rows.
+Nav order follows the page: CV 01, Research 02, Publications 03, Projects 04, Contact 05. There is no Method section. Sticky header, 68px high, blurred dark background, 1px bottom border. Active section = 2px cyan rule under the item (scroll-spy). Mobile (≤720px): "Menu" button (48px) opens a sheet with 60px rows.
 
 ## Portrait
 Natural photo with a light cool grade; no duotone. 1px-weight cyan corner ticks outside the frame, 14px. Caption bar: "Fig. 00 · portrait" left, coordinates right. Placeholder state = dashed amber frame with the label. Mobile: full-width (inset 7px so ticks stay on screen), above the name.
@@ -66,7 +65,7 @@ Natural photo with a light cool grade; no duotone. 1px-weight cyan corner ticks 
 - The page stays white (no inversion). Panel footer note from the design is design commentary and is **not** shipped.
 
 ## Components
-- **Chip** (status): Published = filled square, cyan tint fill + border; Ongoing = half-filled circle, cyan border; Exploratory = hollow circle, dashed grey border. Mono 11px uppercase.
+- **Chip** (status): Published = filled square, cyan tint fill + border; Ongoing = half-filled circle, cyan border; Completed = hollow square, solid grey border; Exploratory = hollow circle, dashed grey border (kept in the system, unused on the page for now). Mono 11px uppercase.
 - **Tag**: mono 11px, 1px `--line-2` border, neutral.
 - **Placeholder** `.ph`: amber text, dashed amber underline.
 - **Button**: 48px high (52px mobile), 2px radius. Primary = cyan fill; ghost = 1px `--line-2`, cyan border on hover.
@@ -96,3 +95,8 @@ Hero only: four fade-ups (700ms, 80ms stagger, once). Status dot pulse 2.4s. Hov
 
 ## Content status
 Verified = plain text. Placeholder = amber `.ph`. Proposed = plain text noted in the figure caption. The shipped site has no amber; every `.ph` must be resolved or removed (`npm run check:placeholders`).
+
+## Revision 3 additions
+- **Contact icon tile** `.tile`: 44×44, 1px `--line-2` border, 2px radius, cyan glyph (22px, `currentColor`) on `--ink-2`; border and glyph brighten on row hover. Glyph SVGs are in the artboards (LinkedIn, X, GitHub, mail, document). They are decorative (`aria-hidden`); the row text carries the name.
+- **Figures** added: Fig. 1 queries dot-matrix + cost bars (publication), Fig. P.1 wood section with `feTurbulence` grain → float32 curves → int8 staircase, Fig. P.2 fragment–linker–fragment molecule with the 150–500 Da window, Fig. P.3 two-stage routing diagram (SVG). Copy the SVG markup from the artboards; mobile has its own larger-text variants.
+- External links (DOI, repos, LinkedIn, X, GitHub) open in a new tab with `rel="noopener noreferrer"`.
