@@ -64,10 +64,23 @@
   font-weight: 500;
 }
 
+.project-entry-meta {
+  font-size: 11px;
+  color: var(--text-3);
+  line-height: 1.8;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
 .project-entry-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.project-entry-note {
+  font-size: 11px;
+  color: var(--text-3);
 }
 
 .project-entry-tags {
