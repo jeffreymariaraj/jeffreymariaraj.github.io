@@ -88,6 +88,14 @@
   color: var(--text-1);
 }
 
+.pub-featured-venue-full {
+  font-size: 10px;
+  color: var(--text-3);
+  line-height: 1.8;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
 .pub-featured-abstract {
   max-width: 640px;
 }
@@ -99,22 +107,61 @@
   margin-top: 8px;
 }
 
+.pub-table-block {
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+
+.pub-table-caption-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+.pub-table-note {
+  font-size: 10px;
+  color: var(--text-3);
+  margin: 10px 0 0;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+
+/* Table 1: right-align every numeric column (not just the last one —
+   there are three here), highlight the selected backbone's row, and
+   keep its "· selected" note at normal weight even inside that bold
+   row. */
+.tbl th.num,
+.tbl td.num {
+  text-align: right;
+}
+.tbl-row-highlight td {
+  color: var(--text);
+  font-weight: 500;
+}
+.tbl-row-note {
+  color: var(--cyan-hi);
+  font-weight: 400;
+}
+
 .pub-evidence {
   flex: 1 1 380px;
   /* Without this, the flex item's automatic min-width equals its
      content's min-content size — which includes the table's hard
      min-width two levels down — and refuses to shrink below it even
      though .tbl-scroll's own overflow-x:auto is there to contain
-     exactly that overflow. min-width: 0 lets the shrink happen so
-     the table scrolls inside its own box instead of pushing this
-     whole panel wider than the viewport. */
+     exactly that overflow (the table now lives in .pub-featured-main,
+     but the same shrink trap applies to any wide content here too).
+     min-width: 0 lets the shrink happen. */
   min-width: 0;
-  max-width: 520px;
-  padding: clamp(24px, 3vw, 40px);
+  max-width: 540px;
   border-left: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 20px;
   background: rgba(16, 22, 31, 0.8);
 }
 
@@ -125,18 +172,62 @@
   }
 }
 
+/* Each block below manages its own padding + border-top divider,
+   full-bleed to the panel edges, rather than one uniform outer
+   padding — matching the artboard's figure/stats layout exactly. */
 .pub-evidence-label-row {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
   font-size: 10px;
   color: var(--text-3);
 }
 
-.pub-plot-caption {
+.pub-fig-wrap {
+  padding: 24px 28px 8px;
+}
+
+.pub-stats {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+}
+
+.pub-stat {
+  flex: 1 1 33%;
+  min-width: 110px;
+  padding: 18px 20px;
+}
+.pub-stat + .pub-stat {
+  border-left: 1px solid var(--line);
+}
+
+.pub-stat-value {
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.pub-stat-label {
+  margin: 6px 0 0;
   font-size: 10px;
   color: var(--text-3);
-  margin-top: 6px;
+  line-height: 1.6;
+}
+
+.pub-stats-note {
+  margin: 0;
+  padding: 12px 20px 16px;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--text-3);
+  text-transform: none;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
 }
 
 .pub-ledger {

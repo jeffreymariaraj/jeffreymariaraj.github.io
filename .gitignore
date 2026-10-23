@@ -28,3 +28,4 @@ test-results/
 
 # local dev-only screenshot helper (not part of the app)
 .tmp-screenshot.mjs
+.tmp-section-shot.mjs
