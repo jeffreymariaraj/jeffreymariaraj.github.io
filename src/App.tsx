@@ -3,7 +3,6 @@ import { Hero } from './components/Hero';
 import { ResearchFocus } from './components/ResearchFocus';
 import { Publications } from './components/Publications';
 import { Projects } from './components/Projects';
-import { Method } from './components/Method';
 import { CV } from './components/CV';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -31,7 +30,6 @@ function App() {
           <ResearchFocus />
           <Publications />
           <Projects />
-          <Method />
           <Contact />
         </main>
 

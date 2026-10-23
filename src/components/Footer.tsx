@@ -1,5 +1,4 @@
 import { content } from '../content/content';
-import { Rich } from './Rich';
 import './Footer.css';
 
 /**
@@ -14,9 +13,7 @@ export function Footer() {
   return (
     <footer className="wrap site-footer">
       <div className="site-footer-row">
-        <span className="mono site-footer-meta">
-          <Rich value={footer.copyright} />
-        </span>
+        <span className="mono site-footer-meta">{footer.copyright}</span>
         <span className="mono site-footer-meta">{footer.stack}</span>
         <a className="lnk mono" href="#top" style={{ fontSize: 10, color: 'var(--text-1)' }}>
           {footer.backToTop}

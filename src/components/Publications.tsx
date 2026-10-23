@@ -1,9 +1,13 @@
-import { content, type Rich as RichValue } from '../content/content';
-import { Rich } from './Rich';
+import { content } from '../content/content';
 import { Chip } from './Chip';
-import { PlotPlaceholder } from './figures/PlotPlaceholder';
 import './Publications.css';
 
+/**
+ * Step 1 (content & structure) stub: wires the new real-content shape
+ * (Table 1, Fig. 1, stats, single ledger entry) so the build stays
+ * green while content.ts changes land. The full featured-panel layout
+ * with the real figure and table arrives in Step 2.
+ */
 export function Publications() {
   const { publications } = content;
   const { featured } = publications;
@@ -28,88 +32,39 @@ export function Publications() {
           </div>
         </div>
 
-        <article className="panel pub-featured">
-          <div className="pub-featured-main">
-            <div className="pub-featured-top">
-              <Chip status={featured.status} />
-              <span className="mono pub-featured-venue">
-                <Rich value={featured.venue} />
-              </span>
-            </div>
-            <h3 className="pub-featured-title">
-              <Rich value={featured.title} />
-            </h3>
-            <div className="pub-featured-authors">
-              <Rich value={featured.authors} />
-            </div>
-            <p className="p pub-featured-abstract">
-              <Rich value={featured.abstract} />
-            </p>
-            <div className="pub-featured-links">
-              {featured.links.map((link, i) => (
-                <a key={i} className="lnk mono" href={link.href}>
-                  <Rich value={link.label} />
-                </a>
-              ))}
-            </div>
+        <article className="panel pub-featured" style={{ padding: 32 }}>
+          <div className="pub-featured-top">
+            <Chip status={featured.status} />
+            <span className="mono pub-featured-venue">{featured.venue}</span>
           </div>
-
-          <aside className="pub-evidence">
-            <div className="mono pub-evidence-label-row">
-              <span>{featured.evidenceLabel}</span>
-              <span className="hide-l">{featured.evidenceSwipeHint}</span>
-            </div>
-            <div className="tbl-scroll" tabIndex={0} role="region" aria-label="Benchmark table, scrolls horizontally on narrow screens">
-              <table className="tbl">
-                <thead>
-                  <tr>
-                    {featured.table.headers.map((h) => (
-                      <th key={h}>{h}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {featured.table.rows.map((row, i) => (
-                    <tr key={i}>
-                      <td className="ph">
-                        <Rich value={row[0] as RichValue} />
-                      </td>
-                      {(row.slice(1) as string[]).map((cell, j) => (
-                        <td key={j} className="dash">
-                          {cell}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div>
-              <PlotPlaceholder ariaLabel={featured.plotAriaLabel} placeholderText={featured.plotPlaceholderText} />
-              <div className="mono pub-plot-caption">{featured.plotCaption}</div>
-            </div>
-          </aside>
+          <h3 className="pub-featured-title">{featured.title}</h3>
+          <div className="pub-featured-authors">{featured.authors}</div>
+          <p className="p pub-featured-abstract">{featured.abstract}</p>
+          <div className="pub-featured-links">
+            {featured.links.map((link) => (
+              <a key={link.href} className="lnk mono" href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="mono" style={{ fontSize: 10, color: 'var(--text-3)', marginTop: 16 }}>
+            Table 1 + Fig. 1 + stats — Step 2
+          </div>
         </article>
 
         <div className="pub-ledger">
           <div className="lbl pub-ledger-label">{publications.ledgerLabel}</div>
           <div className="pub-ledger-list">
-            {publications.ledger.map((entry, i) => (
-              <a key={i} className="entry pub-ledger-row" href={entry.href}>
+            {publications.ledger.map((entry) => (
+              <a key={entry.title} className="entry pub-ledger-row" href={entry.href}>
                 <span className="pub-ledger-row-chip">
                   <Chip status={entry.status} />
                 </span>
                 <div className="pub-ledger-row-main">
-                  <div className="pub-ledger-row-title">
-                    <Rich value={entry.title} />
-                  </div>
-                  <div className="p pub-ledger-row-desc">
-                    <Rich value={entry.description} />
-                  </div>
+                  <div className="pub-ledger-row-title">{entry.title}</div>
+                  <div className="p pub-ledger-row-desc">{entry.description}</div>
                 </div>
-                <div className="mono pub-ledger-row-meta">
-                  <Rich value={entry.meta} />
-                </div>
+                <div className="mono pub-ledger-row-meta">{entry.meta}</div>
                 <span className="go mono" aria-hidden="true">
                   →
                 </span>

@@ -3,7 +3,10 @@
  *
  * Every verified fact comes from CLAUDE.md. Everything else is an
  * explicit placeholder created with `ph()`, which components render
- * with the `.ph` (amber, dashed underline) style via <Rich>.
+ * with the `.ph` (amber, dashed underline) style via <Rich>. As of
+ * revision 3, only two placeholders remain site-wide: the CV's
+ * "Last updated" date and the contact email — everything else below
+ * is real.
  *
  * Run `npm run check:placeholders` to list every `ph()` still present.
  */
@@ -23,7 +26,11 @@ export function isPh(seg: unknown): seg is Ph {
 /** A sentence that may interleave verified text and placeholders. */
 export type Rich = (string | Ph)[];
 
-export type Status = 'published' | 'ongoing' | 'exploratory';
+/**
+ * Exploratory is kept in the type (and in Chip/design-system CSS) per
+ * DESIGN.md even though no current content uses it on the page.
+ */
+export type Status = 'published' | 'ongoing' | 'completed' | 'exploratory';
 
 export interface NavItem {
   id: string;
@@ -32,7 +39,7 @@ export interface NavItem {
 }
 
 export interface Link {
-  label: Rich;
+  label: string;
   href: string;
   external?: boolean;
 }
@@ -48,33 +55,54 @@ export interface ResearchItem {
   figureCaption: string;
 }
 
+export interface TableRow {
+  model: string;
+  /** Short suffix after the model name, e.g. "· selected" (rendered in cyan). */
+  note?: string;
+  /** The chosen backbone's row is bold/white, not just another row. */
+  highlight?: boolean;
+  accuracy: string;
+  time: string;
+  size: string;
+}
+
+export interface Stat {
+  value: string;
+  label: string;
+}
+
 export interface LedgerEntry {
   status: Status;
-  title: Rich;
-  description: Rich;
-  meta: Rich;
+  title: string;
+  description: string;
+  meta: string;
   href: string;
 }
 
 export interface ProjectItem {
   code: string;
   status: Status;
-  title: Rich;
-  problem: Rich;
-  approach: Rich;
-  tags: Rich[];
-  links: Link[];
-  figure: 'p1' | 'p2' | 'p3';
-  figureAriaLabel: string;
-  figureCaption: string;
-  figureNote: Rich;
-  flip?: boolean;
-}
-
-export interface MethodStep {
-  code: string;
   title: string;
-  body: string;
+  /** Mono line under the title (collaborators, internship, or paper cross-reference). */
+  meta?: string;
+  problem: string;
+  approach: string;
+  tags: string[];
+  /** Short mono status note, e.g. "No results reported yet." */
+  note?: string;
+  links: Link[];
+  figure: 'xylo' | 'molecule' | 'routing';
+  figureAriaLabel: string;
+  /**
+   * Only set when the mobile redraw describes a genuinely different
+   * layout (P.1's cross-section sits above the curves on mobile, beside
+   * them on desktop). Where the mobile SVG is just a redrawn version of
+   * the same arrangement, the desktop aria-label is reused for both.
+   */
+  figureAriaLabelMobile?: string;
+  figureCaption: string;
+  figureNote: string;
+  flip?: boolean;
 }
 
 export interface ContactRow {
@@ -82,23 +110,24 @@ export interface ContactRow {
   value: Rich;
   href: string;
   icon: '↗' | '→' | '↓';
+  tileIcon: 'linkedin' | 'x' | 'github' | 'mail' | 'document';
 }
 
 export const content = {
   meta: {
-    title: 'Jeff — research portfolio',
+    title: 'Jeff Mariaraj — research portfolio',
     description:
-      'Jeff — student researcher at RVCE Bengaluru working on quantization, spiking networks and distillation for efficient, resource-constrained machine learning.',
+      'Jeff Mariaraj — student researcher at RVCE Bengaluru working on quantization, spiking networks and distillation for efficient, resource-constrained machine learning.',
   },
 
   nav: {
-    logoName: ['Jeff ', ph('[Surname]')] as Rich,
+    logoName: 'Jeff Mariaraj',
     items: [
       { id: 'cv', n: '01', label: 'CV' },
       { id: 'research', n: '02', label: 'Research' },
       { id: 'publications', n: '03', label: 'Publications' },
       { id: 'projects', n: '04', label: 'Projects' },
-      { id: 'contact', n: '06', label: 'Contact' },
+      { id: 'contact', n: '05', label: 'Contact' },
     ] as NavItem[],
   },
 
@@ -108,9 +137,9 @@ export const content = {
       domain: 'Efficient & resource-constrained ML',
     },
     nameFirst: 'Jeff',
-    nameSurname: ph('[Surname]'),
+    nameSurname: 'Mariaraj',
     portrait: {
-      alt: ['Portrait of Jeff ', ph('[Surname]')] as Rich,
+      alt: 'Portrait of Jeff Mariaraj',
       captionLabel: 'Fig. 00 · portrait',
       position: '12.92°N 77.50°E',
       placeholderLabel: ['[Your photo]', 'face shot · 4:5 · cool grade'],
@@ -128,8 +157,14 @@ export const content = {
       { label: 'View CV', href: '#cv', variant: 'primary', icon: '↓' },
       { label: 'Research', href: '#research', variant: 'ghost' },
       { label: 'Publications', href: '#publications', variant: 'ghost' },
-      { label: 'GitHub', href: '#contact', variant: 'ghost', icon: '↗' },
-    ] as { label: string; href: string; variant: 'primary' | 'ghost'; icon?: string }[],
+      {
+        label: 'GitHub',
+        href: 'https://github.com/jeffreymariaraj',
+        variant: 'ghost',
+        icon: '↗',
+        external: true,
+      },
+    ] as { label: string; href: string; variant: 'primary' | 'ghost'; icon?: string; external?: boolean }[],
     annotation: {
       focusLabel: 'Focus',
       focus: 'Quantization · SNNs · Distillation',
@@ -186,73 +221,69 @@ export const content = {
 
   publications: {
     eyebrow: '03 — Publications & ongoing work',
-    heading: 'Published, ongoing and exploratory work, kept visibly apart.',
+    heading: 'Published and ongoing work, kept visibly apart.',
     statusKey: [
       { status: 'published' as Status, note: 'peer-reviewed, citable' },
       { status: 'ongoing' as Status, note: 'active, not yet reported' },
-      { status: 'exploratory' as Status, note: 'early, may not continue' },
+      { status: 'completed' as Status, note: 'finished, outcome documented' },
     ],
     featured: {
       status: 'published' as Status,
-      venue: ['IEEE conference · ', ph('[Conference name, Year]')] as Rich,
-      title: [ph('[Verified paper title]')] as Rich,
-      authors: [
-        'Authors: ',
-        ph('[confirm order]'),
-        ' Maurya Pradeep Gowda, Ronan Lobo, Jeff ',
-        ph('[Surname]'),
-      ] as Rich,
-      abstract: [
-        'Topic on record: routing incoming queries between large language models using a fine-tuned DistilBERT classifier. ',
-        ph(
-          '[Two to three sentence abstract summary: problem, method, headline result with its numbers, once verified.]'
-        ),
-      ] as Rich,
+      venue: 'IEEE · CSITSS 2025',
+      title:
+        'Smart Meta-controller: Energy Efficient Dynamic Routing for Large Language Model Inference Systems',
+      authors: 'R. Jeffrey Mariaraj, Ronan Lobo, Maurya P. Gowda',
+      venueFull:
+        '2025 9th International Conference on Computational System and Information Technology for Sustainable Solutions (CSITSS)',
+      doi: 'DOI 10.1109/CSITSS67709.2025.11295492',
+      abstract:
+        "Most queries do not need the largest model. We built a two-stage router: a fine-tuned DistilBERT classifier makes a fast first call on whether a prompt is simple or complex, and an escalation protocol lets the lightweight agent hand a prompt up to the deep agent when it detects it is out of its depth. In the paper's evaluation, routing cut estimated cost by 84% under a simulated cost model and energy per query by 62%, with task completion held at 99.1%.",
       links: [
-        { label: ['Paper ', ph('[DOI / IEEE Xplore]'), ' ↗'] as Rich, href: '#publications' },
-        { label: ['Code ', ph('[GitHub repo]'), ' ↗'] as Rich, href: '#projects' },
-        { label: ['BibTeX'] as Rich, href: '#publications' },
+        {
+          label: 'Paper (DOI) ↗',
+          href: 'https://doi.org/10.1109/CSITSS67709.2025.11295492',
+          external: true,
+        },
+        { label: 'Code ↗', href: 'https://github.com/mauryapg13/smart-meta-controller', external: true },
       ] as Link[],
-      evidenceLabel: 'Evidence slot · placeholder',
-      evidenceSwipeHint: 'swipe →',
       table: {
-        headers: ['Method', 'Acc.', 'Params', 'Latency'],
+        caption: 'Table 1 · choice of classifier backbone (paper, Table II)',
+        headers: ['Model', 'Accuracy', 'Inference time', 'Size'],
         rows: [
-          [[ph('[Baseline]')] as Rich, '—', '—', '—'],
-          [[ph('[Router]')] as Rich, '—', '—', '—'],
-        ],
+          { model: 'BERT-base', accuracy: '89.8%', time: 'baseline', size: 'baseline' },
+          {
+            model: 'DistilBERT',
+            note: '· selected',
+            highlight: true,
+            accuracy: '88.6%',
+            time: '−47.0%',
+            size: '−40.0%',
+          },
+          { model: 'DynaBERT', accuracy: '89.1%', time: '−32.0%', size: '−25.0%' },
+          { model: 'RoBERTa-base', accuracy: '89.4%', time: '0.0%', size: '0.0%' },
+        ] as TableRow[],
+        note: 'All four fine-tuned under identical settings on the query-classification task. Time and size are relative to BERT-base.',
       },
-      plotAriaLabel: 'Empty accuracy versus model size plot, placeholder',
-      plotPlaceholderText: '[plot goes here]',
-      plotCaption: 'Fig. 1 · accuracy vs. model size · no values shown',
+      figureCaption: 'Fig. 1 · where 100 queries go',
+      figureNote: 'reported split',
+      figureAriaLabel:
+        "A ten by ten grid of 100 queries: 85 routed to the light agent shown as dots, 15 escalated to the deep agent shown as ringed dots. Below, a cost bar comparison: 10,000,000 units if every query goes to the deep agent against 1,585,000 units with the meta-controller, an 84.15 percent saving under the paper's simulated cost model.",
+      stats: [
+        { value: '97%', label: 'classifier accuracy, curated test set, ~15 ms' },
+        { value: '−62%', label: 'energy per query' },
+        { value: '−68%', label: 'computational load' },
+      ] as Stat[],
+      statsNote:
+        'As reported in the paper. Cost bars use its simulated cost model (deep = 10 units, light = 0.1 unit, 85% of queries to the light agent).',
     },
     ledgerLabel: 'Research ledger',
     ledger: [
       {
         status: 'ongoing',
-        title: ['Contradictions in vision-model quantization'] as Rich,
-        description: [
-          'Mining conflicting published claims on PTQ and QAT; the research question is to emerge from one that survives scrutiny.',
-        ] as Rich,
-        meta: ['Student team · Colab-class compute', ' · Target: ', ph('[journal / venue]')] as Rich,
-        href: '#projects',
-      },
-      {
-        status: 'exploratory',
-        title: [ph('[Spiking-network experiment title]')] as Rich,
-        description: [
-          ph('[One line: the question and the setup. Remove this entry if it is not yet real work.]'),
-        ] as Rich,
-        meta: ['Started ', ph('[month year]'), ' · Code ', ph('[repo]')] as Rich,
-        href: '#projects',
-      },
-      {
-        status: 'exploratory',
-        title: [ph('[Distillation experiment title]')] as Rich,
-        description: [
-          ph('[One line: teacher, student, constraint. Remove if not yet real work.]'),
-        ] as Rich,
-        meta: ['Started ', ph('[month year]'), ' · Code ', ph('[repo]')] as Rich,
+        title: 'XyloTron Vision Model Quantization',
+        description:
+          'An offline, edge-deployable species classifier for wood identification. We are quantizing the XyloTron vision model and fine-tuning it for XyloPhone, a camera-based device that runs without a network connection, so identification works where connectivity does not. Carried out by two students in collaboration with Prabu Ravindran and Dr. Wiedenhoeft of the Department of Botany, University of Wisconsin–Madison.',
+        meta: 'Two-person student team · Prototype stage · no results reported yet',
         href: '#projects',
       },
     ] as LedgerEntry[],
@@ -265,99 +296,69 @@ export const content = {
       {
         code: 'P.1',
         status: 'ongoing',
-        title: ['Contradiction mining in vision-model quantization'] as Rich,
-        problem: [
-          'Published results on quantizing vision models do not always agree. Which disagreements are real, and which come from differences in protocol?',
-        ] as Rich,
-        approach: [
-          'Collect conflicting claims across papers, keep only contradictions that survive scrutiny, and let the research question emerge from one. Public checkpoints, PyTorch and timm, Colab-class GPUs.',
-        ] as Rich,
-        tags: [['PyTorch'], ['timm'], ['torchvision'], ['PTQ / QAT']] as Rich[],
-        links: [
-          { label: ['Code ', ph('[repo]'), ' ↗'] as Rich, href: '#projects' },
-          { label: ['Notes ', ph('[doc]'), ' ↗'] as Rich, href: '#projects' },
-        ],
-        figure: 'p1',
+        title: 'XyloTron quantization for offline wood identification',
+        meta: 'With Prabu Ravindran and Dr. Wiedenhoeft · Department of Botany, University of Wisconsin–Madison',
+        problem:
+          'XyloTron identifies wood species from macroscopic images. Field identification often happens without a network or a workstation, so the model has to be small and fast enough to run entirely on the device.',
+        approach:
+          'We are quantizing the XyloTron vision model and fine-tuning it to recover accuracy, targeting XyloPhone, an offline camera device. A companion mobile application that runs the same model is in development. Two students carry out the work.',
+        tags: ['Quantization', 'Fine-tuning', 'Edge inference', 'Wood identification', 'Mobile'],
+        note: 'No results reported yet.',
+        links: [] as Link[],
+        figure: 'xylo',
         figureAriaLabel:
-          'Schematic: two accuracy-versus-bit-width curves agree at high precision and diverge at low bit-widths, leaving an unexplained gap',
-        figureCaption: 'Fig. P.1 · conflicting claims',
-        figureNote: ['schematic · not data'] as Rich,
+          'Schematic: a stylised wood cross-section with growth rings and pores on the left. An arrow leads to two panels on the right: smooth floating-point weight curves above, and the same curves snapped to coarse integer levels below.',
+        figureAriaLabelMobile:
+          'Schematic: a stylised wood cross-section with growth rings and pores at the top. An arrow leads down to two panels: smooth floating-point weight curves on the left, and the same curves snapped to coarse integer levels on the right.',
+        figureCaption: 'Fig. P.1 · from wood section to int8',
+        figureNote: 'schematic · not data',
       },
       {
         code: 'P.2',
-        status: 'exploratory',
-        title: [ph('[SNN project title]')] as Rich,
-        problem: [ph('[One sentence: the question you are investigating in spiking networks.]')] as Rich,
-        approach: [ph('[Two sentences: model, training method, what is measured.]')] as Rich,
-        tags: [[ph('[framework]')], [ph('[dataset]')]] as Rich[],
+        status: 'completed',
+        title: 'Drug-like molecule generator',
+        meta: 'Internship · Agilisium Consulting, Agilisium Labs (R&D division)',
+        problem:
+          'Exploring chemical space means combining known building blocks, and doing it by hand is slow. Candidate libraries need validity and basic drug-likeness checks built in.',
+        approach:
+          'A Streamlit application that assembles molecules combinatorially from a curated set of heteroaromatic fragments and linkers, validates each structure with RDKit, keeps those within a 150–500 Da molecular-weight window, and reports MW, LogP, TPSA and hydrogen-bond donors and acceptors. Results appear as a table and 2D structure grid, with CSV export.',
+        tags: ['Python', 'Streamlit', 'RDKit', 'pandas', 'Cheminformatics'],
+        note: 'Rule-based MVP · no benchmark results reported.',
         links: [
-          { label: ['Code ', ph('[repo]'), ' ↗'] as Rich, href: '#projects' },
-          { label: ['Write-up ', ph('[doc]'), ' ↗'] as Rich, href: '#projects' },
-        ],
-        figure: 'p2',
+          {
+            label: 'Code ↗',
+            href: 'https://github.com/jeffreymariaraj/drug-like-molecule-generator',
+            external: true,
+          },
+        ] as Link[],
+        figure: 'molecule',
         figureAriaLabel:
-          'Schematic: a dense activation grid, fully active, beside an event-driven grid where only a few cells fire',
-        figureCaption: 'Fig. P.2 · dense vs. event-driven',
-        figureNote: ['schematic · not data'] as Rich,
+          'Schematic: two aromatic ring fragments joined by a short linker chain, with a molecular-weight window of 150 to 500 daltons marked below',
+        figureCaption: 'Fig. P.2 · fragment + linker + fragment',
+        figureNote: 'schematic · not data',
         flip: true,
       },
       {
         code: 'P.3',
         status: 'published',
-        title: ['LLM query routing with a DistilBERT classifier'] as Rich,
-        problem: [
-          'Not every query needs the largest model. Can a small classifier decide, quickly and cheaply, where each query should go?',
-        ] as Rich,
-        approach: [
-          'A fine-tuned DistilBERT classifier routes incoming queries between language models. Evaluated against ',
-          ph('[baselines]'),
-          ' on ',
-          ph('[dataset / metric]'),
-          '.',
-        ] as Rich,
-        tags: [['DistilBERT'], ['text classification'], ['LLM routing']] as Rich[],
+        title: 'LLM query routing with a DistilBERT classifier',
+        meta: 'IEEE CSITSS 2025 · with Ronan Lobo and Maurya P. Gowda · same work as the publication above',
+        problem:
+          'Most queries do not need the largest model, yet serving all of them with it costs energy and latency. Can a small classifier decide, quickly and cheaply, where each query should go?',
+        approach:
+          'A fine-tuned DistilBERT classifier, chosen over BERT, DynaBERT and RoBERTa for its speed and size, routes each query to a lightweight or a deep agent. An escalation protocol lets the lightweight agent pass a prompt up when it is out of its depth. The paper reports 97% classifier accuracy at about 15 ms, with 68% lower computational load and 62% less energy per query.',
+        tags: ['DistilBERT', 'LLM routing', 'Energy efficiency', 'Python'],
         links: [
-          { label: ['Paper ↗'] as Rich, href: '#publications' },
-          { label: ['Code ', ph('[repo]'), ' ↗'] as Rich, href: '#projects' },
-        ],
-        figure: 'p3',
-        figureAriaLabel: 'Diagram: a query passes through a fine-tuned DistilBERT classifier to one of two models',
-        figureCaption: 'Fig. P.3 · routing pipeline',
-        figureNote: ['proposed diagram · confirm against paper'] as Rich,
+          { label: 'Paper (DOI) ↗', href: 'https://doi.org/10.1109/CSITSS67709.2025.11295492', external: true },
+          { label: 'Code ↗', href: 'https://github.com/mauryapg13/smart-meta-controller', external: true },
+        ] as Link[],
+        figure: 'routing',
+        figureAriaLabel:
+          'Pipeline diagram: a query enters a DistilBERT classifier. Simple queries, about 85 percent, go to a light agent; complex queries, about 15 percent, go to a deep agent. A dashed escalation path leads from the light agent to the deep agent. Both agents return a response.',
+        figureCaption: 'Fig. P.3 · two-stage routing',
+        figureNote: 'schematic · not data',
       },
     ] as ProjectItem[],
-  },
-
-  method: {
-    eyebrow: '05 — Method',
-    heading: 'Evidence before claims.',
-    intro:
-      'Accuracy alone is a thin result. I try to report what changed, by how much, across how many runs, and where the method fails.',
-    steps: [
-      { code: 'M.1', title: 'Hypothesis', body: 'A falsifiable statement of what should change, and by how much.' },
-      {
-        code: 'M.2',
-        title: 'Controlled setup',
-        body: 'One variable at a time. Fixed seeds, public checkpoints, stated compute limits.',
-      },
-      { code: 'M.3', title: 'Quantitative evaluation', body: 'Accuracy against size and latency, with variance across runs.' },
-      { code: 'M.4', title: 'Failure analysis', body: 'Which inputs, layers or settings break, and why, not only how often.' },
-      {
-        code: 'M.5',
-        title: 'Reproducible release',
-        body: 'Code, configs and logs sufficient to regenerate each table.',
-      },
-    ] as MethodStep[],
-    repoIntro:
-      'What a finished experiment should leave behind, as a repository layout I intend to hold my own work to:',
-    repoTree: [
-      { name: 'results/', comment: null },
-      { name: 'config.yaml', comment: 'every hyperparameter' },
-      { name: 'seeds.txt', comment: 'runs reported, not best-of' },
-      { name: 'table_1.csv', comment: 'raw numbers behind each figure' },
-      { name: 'failures.md', comment: 'cases the method gets wrong' },
-    ],
-    repoNote: 'Proposed structure · not yet a published repo',
   },
 
   cv: {
@@ -375,19 +376,50 @@ export const content = {
   },
 
   contact: {
-    eyebrow: '06 — Contact',
+    eyebrow: '05 — Contact',
     heading: 'If this overlaps with what you work on, I would like to compare notes.',
     lead: 'I am looking for research collaboration in efficient and resource-constrained machine learning, and happy to share code, logs and open questions.',
     rows: [
-      { label: 'GitHub', value: ['github.com/jeffreymariaraj'] as Rich, href: 'https://github.com/jeffreymariaraj', icon: '↗' },
-      { label: 'LinkedIn', value: ['linkedin.com/in/', ph('[username]')] as Rich, href: '#contact', icon: '↗' },
-      { label: 'Email', value: [ph('[email address]')] as Rich, href: '#contact', icon: '→' },
-      { label: 'CV', value: ['Download as PDF'] as Rich, href: '#cv', icon: '↓' },
-    ] as (Omit<ContactRow, 'value'> & { value: Rich })[],
+      {
+        label: 'LinkedIn',
+        value: ['linkedin.com/in/jeffrey-mariaraj'] as Rich,
+        href: 'https://www.linkedin.com/in/jeffrey-mariaraj',
+        icon: '↗',
+        tileIcon: 'linkedin',
+      },
+      {
+        label: 'X',
+        value: ['x.com/ffsj3ff'] as Rich,
+        href: 'https://x.com/ffsj3ff',
+        icon: '↗',
+        tileIcon: 'x',
+      },
+      {
+        label: 'GitHub',
+        value: ['github.com/jeffreymariaraj'] as Rich,
+        href: 'https://github.com/jeffreymariaraj',
+        icon: '↗',
+        tileIcon: 'github',
+      },
+      {
+        label: 'Email',
+        value: [ph('[email address]')] as Rich,
+        href: '#contact',
+        icon: '→',
+        tileIcon: 'mail',
+      },
+      {
+        label: 'CV',
+        value: ['Download as PDF'] as Rich,
+        href: '#cv',
+        icon: '↓',
+        tileIcon: 'document',
+      },
+    ] as ContactRow[],
   },
 
   footer: {
-    copyright: ['© 2026 Jeff ', ph('[Surname]'), ' · RVCE Bengaluru'] as Rich,
+    copyright: '© 2026 Jeff Mariaraj · RVCE Bengaluru',
     stack: 'Static site · React + CSS + Canvas 2D · GitHub Pages',
     backToTop: 'Back to top ↑',
     // Not a `ph()` placeholder itself — this is the legend explaining

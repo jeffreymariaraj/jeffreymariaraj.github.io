@@ -1,4 +1,4 @@
-import { content, isPh } from '../content/content';
+import { content } from '../content/content';
 import './Portrait.css';
 
 // `import.meta.glob` on a literal (non-wildcard) path still resolves
@@ -21,10 +21,6 @@ const portraitUrl = portraitModules['../assets/portrait.webp'];
 // once a real photo exists; harmless as a width/height hint otherwise.
 const PORTRAIT_WIDTH = 838;
 const PORTRAIT_HEIGHT = 1048;
-
-function altText(): string {
-  return content.hero.portrait.alt.map((seg) => (isPh(seg) ? seg.ph : seg)).join('');
-}
 
 /**
  * The hero portrait: a real, LCP-prioritized <img> when
@@ -49,7 +45,7 @@ export function Portrait({ className = '' }: { className?: string }) {
             sizes="(max-width: 720px) 100vw, min(33vw, 440px)"
             width={PORTRAIT_WIDTH}
             height={PORTRAIT_HEIGHT}
-            alt={altText()}
+            alt={portrait.alt}
             decoding="async"
             // React 18 doesn't know the `fetchPriority` DOM prop yet
             // (that lands in React 19) and would otherwise warn and

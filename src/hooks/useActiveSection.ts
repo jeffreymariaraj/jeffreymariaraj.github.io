@@ -5,17 +5,12 @@ import { useEffect, useState } from 'react';
  * 2px cyan active rule right now. Ported from the `componentDidMount`
  * scroll-spy in Main.dc.html — a single passive, rAF-throttled scroll
  * listener that reads (never writes) layout once per frame.
- *
- * The Method section has no nav entry of its own (see DESIGN.md), so
- * it reports its nearest nav neighbour, Projects, exactly as the
- * design's own spy does.
  */
 const SECTION_TO_NAV: [sectionId: string, navId: string][] = [
   ['cv', 'cv'],
   ['research', 'research'],
   ['publications', 'publications'],
   ['projects', 'projects'],
-  ['method', 'projects'],
   ['contact', 'contact'],
 ];
 

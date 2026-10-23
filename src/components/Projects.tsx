@@ -1,35 +1,32 @@
 import { content, type ProjectItem } from '../content/content';
-import { Rich } from './Rich';
 import { Chip } from './Chip';
-import { FigP1 } from './figures/FigP1';
-import { FigP2 } from './figures/FigP2';
-import { RoutingPipeline } from './figures/RoutingPipeline';
 import './Projects.css';
 
-const FIGURES: Record<ProjectItem['figure'], (props: { ariaLabel: string }) => React.JSX.Element> = {
-  p1: FigP1,
-  p2: FigP2,
-  p3: RoutingPipeline,
-};
-
+/**
+ * Step 1 (content & structure) stub: wires the real P.1-P.3 content
+ * (XyloTron, molecule generator, query routing) so the build stays
+ * green. The real inline-SVG figures (FigXylo/FigMolecule/FigRouting)
+ * and final layout arrive in Step 3.
+ */
 function ProjectEntry({ item }: { item: ProjectItem }) {
-  const Figure = FIGURES[item.figure];
-
   const text = (
     <div className="project-entry-text" key="text">
       <div className="project-entry-top">
         <span className="mono project-entry-code">{item.code}</span>
         <Chip status={item.status} />
       </div>
-      <h3 className="project-entry-title">
-        <Rich value={item.title} />
-      </h3>
+      <h3 className="project-entry-title">{item.title}</h3>
+      {item.meta && (
+        <div className="mono" style={{ fontSize: 11, color: 'var(--text-3)' }}>
+          {item.meta}
+        </div>
+      )}
       <div className="project-entry-field">
         <div className="lbl" style={{ fontSize: 10 }}>
           Problem
         </div>
         <p className="p" style={{ fontSize: 16 }}>
-          <Rich value={item.problem} />
+          {item.problem}
         </p>
       </div>
       <div className="project-entry-field">
@@ -37,20 +34,25 @@ function ProjectEntry({ item }: { item: ProjectItem }) {
           Approach
         </div>
         <p className="p" style={{ fontSize: 16 }}>
-          <Rich value={item.approach} />
+          {item.approach}
         </p>
       </div>
       <div className="project-entry-tags">
-        {item.tags.map((tag, i) => (
-          <span key={i} className="tag">
-            <Rich value={tag} />
+        {item.tags.map((tag) => (
+          <span key={tag} className="tag">
+            {tag}
           </span>
         ))}
       </div>
+      {item.note && (
+        <div className="mono" style={{ fontSize: 11, color: 'var(--text-3)' }}>
+          {item.note}
+        </div>
+      )}
       <div className="project-entry-links">
-        {item.links.map((link, i) => (
-          <a key={i} className="lnk mono" href={link.href}>
-            <Rich value={link.label} />
+        {item.links.map((link) => (
+          <a key={link.href} className="lnk mono" href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label}
           </a>
         ))}
       </div>
@@ -61,21 +63,20 @@ function ProjectEntry({ item }: { item: ProjectItem }) {
     <figure className="panel project-entry-figure" key="figure">
       <div className="mono fig-caption">
         <span>{item.figureCaption}</span>
-        <span className="project-entry-figure-note">
-          <Rich value={item.figureNote} />
+        <span className="project-entry-figure-note">{item.figureNote}</span>
+      </div>
+      <div
+        role="img"
+        aria-label={item.figureAriaLabel}
+        style={{ minHeight: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <span className="mono" style={{ fontSize: 11, color: 'var(--text-3)' }}>
+          Fig. {item.code} — Step 3
         </span>
       </div>
-      <Figure ariaLabel={item.figureAriaLabel} />
     </figure>
   );
 
-  // `flip` puts the figure first in source order and pairs it with
-  // flex-wrap: wrap-reverse. On a single unwrapped line (desktop) that
-  // swaps which side the figure renders on; once the row wraps to a
-  // single column (mobile), wrap-reverse flips the *line* order back,
-  // so text still reads above the figure there — same as every other
-  // (non-flipped) entry. Order matters here; wrap-reverse alone does
-  // nothing on an unwrapped line.
   return (
     <article className={`project-entry${item.flip ? ' project-entry-flip' : ''}`}>
       {item.flip ? [figure, text] : [text, figure]}

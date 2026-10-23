@@ -113,6 +113,15 @@
   border: 1px solid var(--cyan);
 }
 
+/* Completed — hollow square, solid grey border */
+.c-done {
+  color: var(--text-1);
+  border: 1px solid var(--mute);
+}
+.c-done::before {
+  border: 1px solid var(--text-2);
+}
+
 /* Exploratory — hollow circle, dashed border */
 .c-ex {
   color: var(--text-2);
@@ -246,6 +255,30 @@
   color: var(--cyan-hi);
 }
 
+/* Contact icon tile (revision 3): 44x44, cyan glyph, brightens with
+   the row on hover/focus. Decorative — aria-hidden; the row text
+   carries the name. */
+.tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  color: var(--cyan);
+  background: rgba(12, 17, 25, 0.9);
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+.crow:hover .tile,
+.crow:focus-visible .tile {
+  border-color: var(--cyan);
+  color: var(--cyan-hi);
+}
+
 /* ---------------------------------------------------------------- */
 /* Figure panel + data table                                         */
 /* ---------------------------------------------------------------- */
@@ -332,5 +365,26 @@
 @media (max-width: 480px) {
   .hide-l {
     display: inline;
+  }
+}
+
+/* Swaps between a figure's desktop and mobile SVG markup at the same
+   720px breakpoint as .hide-s, rather than scaling one version with
+   CSS — the mobile redraws have their own labels/layout, not just a
+   smaller viewBox. Both exist in the DOM; only one is ever visible,
+   and the hidden one is removed from the accessibility tree by
+   display:none, so its aria-label is never double-announced. */
+.fig-mobile {
+  display: none;
+}
+.fig-desktop {
+  display: block;
+}
+@media (max-width: 720px) {
+  .fig-mobile {
+    display: block;
+  }
+  .fig-desktop {
+    display: none;
   }
 }

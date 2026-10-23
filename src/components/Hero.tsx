@@ -29,7 +29,7 @@ export function Hero() {
 
             <h1 className="fi hero-name" style={{ animationDelay: '80ms' }}>
               {hero.nameFirst} <br />
-              <span className="ph">{hero.nameSurname.ph}</span>
+              {hero.nameSurname}
             </h1>
 
             <dl className="fi hero-identity" style={{ animationDelay: '160ms' }}>
@@ -51,6 +51,7 @@ export function Hero() {
                   key={cta.label}
                   className={`btn ${cta.variant === 'primary' ? 'btn-p' : 'btn-g'}`}
                   href={cta.href}
+                  {...(cta.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   {cta.label}
                   {cta.icon && (

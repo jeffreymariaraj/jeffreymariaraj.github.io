@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { content } from '../content/content';
-import { Rich } from './Rich';
 import { useActiveSection } from '../hooks/useActiveSection';
 import './Nav.css';
 
@@ -44,7 +43,7 @@ export function Nav() {
         <a href="#top" className="nav-logo">
           <LogoMark />
           <span className="mono nav-logo-name">
-            <Rich value={content.nav.logoName} />
+            {content.nav.logoName}
           </span>
         </a>
 
